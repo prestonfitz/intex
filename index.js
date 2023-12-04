@@ -19,11 +19,12 @@ app.use(express.urlencoded({ extended: true }));
 //const knex = require('knex')({
 //    client: 'pg',
 //    connection: {
-//        host: 'localhost',
-//        user: 'postgres',
-//        password: '4preston',
-//        database: 'bucket_list',
-//        port: 5432
+//        host: process.env.RDS_HOSTNAME || 'localhost',
+//        user: process.env.RDS_USERNAME || 'postgres',
+//        password: process.env.RDS_PASSWORD || '4preston',
+//        database: process.env.RDS_DB_NAME || 'bucket_list',
+//        port: process.env.RDS_PORT || 5432
+//        ssl: process.env.DB_SSL ? { rejectUnauthorized: false } : false
 //    }
 //});
 
