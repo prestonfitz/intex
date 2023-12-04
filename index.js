@@ -58,6 +58,11 @@ app.get('/login',(req,res) => {
     res.render('login')
 })
 
+app.get('/account', (req, res) => {
+    res.render('account')
+})
+
+//Log in log out functions
 app.get('/loggedin',(req,res) => {
     accountStatus = true;
     res.render('index',{
