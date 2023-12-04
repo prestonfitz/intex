@@ -1,4 +1,5 @@
 // Intex Project
+// This is the index.js page. It is the brains of the node application that links everything together. 
 // Alex Fankhauser, Seth Brock, Zach Hansen, Preston Fitzgerald
 // import packages and prep apps
 const express = require('express');
@@ -26,18 +27,45 @@ app.use(express.urlencoded({ extended: true }));
 //    }
 //});
 
+//session storage test
+//sessionStorage.setItem("login", false);
+
 // Because we want it to look nice
 app.use(express.static(path.join(__dirname, '/views')));
-
+var test = false;
 // Survey page - use to write
 app.get("/survey", (req, res) => {
-    res.render('survey')
-});
+    if (test == true) {
+        res.render('survey',{
+            login: ''
+        })
+    }
+    else
+        res.render('login')
+    // res.render('survey',{
+    //     login: true
+    })
+//})
+;
+
+app.get("/graphs", (req,res) => {
+    res.render('graphs',{
+        login: false
+    })
+})
+
+app.get('/login',(req,res) => {
+    res.render('login')
+})
+
+
 
 // Grass. I lied about the wheels. 
 // home page
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index',{
+        login: ''
+    })
 });
 
 // set to listen

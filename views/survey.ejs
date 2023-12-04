@@ -23,8 +23,12 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/survey">Survey</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/graphs">Data</a></li>
+                        <% if (login == true) { %>
+                            <li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
+                        <% } else {%>
+                            <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                        <% } %>
                     </ul>
                 </div>
             </div>
@@ -74,7 +78,7 @@
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
+            <div class="container px-5"><p class="m-0 text-center text-white">Put an email here  |  Put a phone number here</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
         </footer>
 
         <!-- Bootstrap core JS-->
