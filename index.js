@@ -65,7 +65,12 @@ app.get('/loggedin',(req,res) => {
     })
 })
 
-
+app.get('/loggedout',(req,res) => {
+    accountStatus = false;
+    res.render('index',{
+        login: accountStatus
+    })
+})
 
 // Grass. I lied about the wheels. 
 // home page
