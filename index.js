@@ -63,6 +63,19 @@ app.get('/account', (req, res) => {
 })
 
 //Log in log out functions
+app.post('/validate',(req,res) => {
+    if ((req.body.username == 'admin') && (req.body.password == 'badmin'))
+    {    accountStatus = true;
+        res.render('index',{
+            login: accountStatus
+        })}
+    let sOutput;
+    
+    sOutput = req.body.username + " " + req.body.password + '!';
+
+    res.send(sOutput); 
+})
+
 app.get('/loggedin',(req,res) => {
     accountStatus = true;
     res.render('index',{
