@@ -4,7 +4,8 @@
   "description": "This website helps the citizen of Provo, Utah better understand the impacts of social media on mental health",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Preston Fitzgerald, Seth Brock, Zach Hansen, Alex Fankhauser",
   "license": "ISC",
