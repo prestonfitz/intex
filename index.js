@@ -28,17 +28,16 @@ app.use(express.urlencoded({ extended: true }));
 //    }
 //});
 
-//session storage test
-//sessionStorage.setItem("login", false);
-
 // Because we want it to look nice
 app.use(express.static(path.join(__dirname, '/views')));
-var test = false;
+
+var accountStatus = false;
+
 // Survey page - use to write
 app.get("/survey", (req, res) => {
-    if (test == true) {
+    if (accountStatus == true) {
         res.render('survey',{
-            login: ''
+            login: accountStatus
         })
     }
     else
@@ -51,12 +50,19 @@ app.get("/survey", (req, res) => {
 
 app.get("/graphs", (req,res) => {
     res.render('graphs',{
-        login: false
+        login: accountStatus
     })
 })
 
 app.get('/login',(req,res) => {
     res.render('login')
+})
+
+app.get('/loggedin',(req,res) => {
+    accountStatus = true;
+    res.render('index',{
+        login: accountStatus
+    })
 })
 
 
@@ -65,7 +71,7 @@ app.get('/login',(req,res) => {
 // home page
 app.get('/', (req, res) => {
     res.render('index',{
-        login: ''
+        login: accountStatus
     })
 });
 
