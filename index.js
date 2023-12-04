@@ -12,20 +12,20 @@ const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
-app.use(express.urlencoded( {extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // What's green and has wheels?
 // This will eventually be a database
-const knex = require('knex')({
-    client: 'pg',
-    connection: {
-        host: 'localhost',
-        user: 'postgres',
-        password: '4preston',
-        database: 'bucket_list',
-        port: 5432
-    }
-});
+//const knex = require('knex')({
+//    client: 'pg',
+//    connection: {
+//        host: 'localhost',
+//        user: 'postgres',
+//        password: '4preston',
+//        database: 'bucket_list',
+//        port: 5432
+//    }
+//});
 
 //session storage test
 //sessionStorage.setItem("login", false);
