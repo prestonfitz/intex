@@ -1,0 +1,18 @@
+{
+  "name": "intex-1",
+  "version": "1.0.0",
+  "description": "This website helps the citizen of Provo, Utah better understand the impacts of social media on mental health",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Preston Fitzgerald, Seth Brock, Zach Hansen, Alex Fankhauser",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "knex": "^3.0.1",
+    "path": "^0.12.7",
+    "pg": "^8.11.3"
+  }
+}
