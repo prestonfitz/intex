@@ -22,18 +22,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <% if (login == true) { %>
-                            <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
-                        <% } else { %>
-                            <li class="nav-item"><a class="nav-link" href="/login">Survey</a></li>
-                        <% } %>
-                        
+                        <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>                        
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/graphs">Data</a></li>
-                        <% if (login == true) { %>
-                        <li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
-                        <% } else {%>
-                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
-                        <% } %>
+                        <li id="account" class="nav-item"></li>
                     </ul>
                 </div>
             </div>
@@ -96,6 +87,13 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+            if (sessionStorage.getItem('login') == 'true') {
+                document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>'
+                } else { 
+                document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>'
+                }
+        </script>
     </body>
 </html>
 

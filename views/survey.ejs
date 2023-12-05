@@ -24,11 +24,7 @@
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/survey">Survey</a></li>
                         <li class="nav-item"><a class="nav-link" href="/graphs">Data</a></li>
-                        <% if (login == true) { %>
-                            <li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
-                        <% } else {%>
-                            <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
-                        <% } %>
+                        <li id="account" class="nav-item"></li>
                     </ul>
                 </div>
             </div>
@@ -497,6 +493,13 @@
               s20Output.innerHTML = t20Output;
             };
         </script>
+        <script>
+          if (sessionStorage.getItem('login') == 'true') {
+              document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>'
+              } else { 
+              document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>'
+              }
+      </script>
     </body>
 </html>
 
