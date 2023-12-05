@@ -69,9 +69,10 @@ app.get('/account', (req, res) => {
 })
 
 //Log in log out functions
-app.post('/validate',(req,res) => {
-    if ((req.body.username == 'admin') && (req.body.password == 'badmin'))
-    {res.render('validate')}
+app.post('/validate',(req,res) => { //This is the route called by the login function
+    if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
+    {res.render('validate')} // if the username and password match, this sends the user to the validate.ejs page
+    // if you get here, your username or password was wrong and you got an error
     let sOutput;
     
     sOutput = req.body.username + " " + req.body.password + '!';

@@ -156,16 +156,17 @@
 
     
 <main class="form-signin w-100 m-auto">
+  <!-- This form is a post method to call the validate route -->
   <form action="/validate" method="post">
     <img class="mb-4" src="assets/Provo logo 2.png" alt="Provo City Logo" style="margin: auto; display: block;">
     <h1 class="h3 mb-3 fw-normal">Sign In</h1>
 
     <div class="form-floating">
-      <input type="username" class="form-control" id="username" name="username" placeholder="name@example.com">
+      <input type="username" class="form-control" id="username" name="username" placeholder="Username"> <!--The id username sets the name of this attribute-->
       <label for="floatingInput">Username</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+      <input type="password" class="form-control" id="password" name="password" placeholder="Password"> <!--The id password sets the name of this attribute-->
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -175,6 +176,7 @@
         Remember me
       </label>
     </div> -->
+    
     <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-body-secondary">&copy; Provo City, 2023</p>
   </form>

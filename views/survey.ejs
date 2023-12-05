@@ -51,44 +51,49 @@
                 </div>
             </div>
         </header>
-        <!-- Features section-->
+        <!-- Here is the survey in all of it's glory. I used a variety of input with some Javascript to make it more fun-->
         <section class="py-5 border-bottom" id="features">
             <div class="container px-5 my-5">
                 <form method="post">
                     <ol>
                         <li><label for="age">What is your age?</label></li>
-                        <input type="number" min="1" max="100" id="age" name="age" style="text-align: center;">
+                            <input type="number" min="1" max="100" id="age" name="age" style="text-align: center;">
+                        
                         <li><label for="gender">What is your gender?</label></li>
                         <input list="listGender" name="gender" id="txtGender">
-                        <datalist name="gender" id="listGender">
-                            <option value="Male">
-                            <option value="Female">
-                            <option value="Non-binary">
-                        </datalist>
+                            <datalist name="gender" id="listGender">
+                                <option value="Male">
+                                <option value="Female">
+                                <option value="Non-binary">
+                            </datalist>
+
                         <li><label for="relationship">What is your relationship status?</label></li>
-                        <select name="relationship" id="relationship">
-                            <option value="single">Single</option>
-                            <option value="married">Married</option>
-                        </select>
+                            <select name="relationship" id="relationship">
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                            </select>
+
                         <li><label>What is your occupation status?</label></li>  
-                        <input type="radio" id="" name="occupation" value="">
-                        <lable for=""></lable>
-                        <input type="radio" id="" name="occupation" value="">
-                        <lable for=""></lable>
-                        <input type="radio" id="" name="occupation" value="">
-                        <lable for=""></lable>
-                        <input type="radio" id="" name="occupation" value="">
-                        <lable for=""></lable>
+                            <input type="radio" id="" name="occupation" value="">
+                            <lable for=""></lable>
+                            <input type="radio" id="" name="occupation" value="">
+                            <lable for=""></lable>
+                            <input type="radio" id="" name="occupation" value="">
+                            <lable for=""></lable>
+                            <input type="radio" id="" name="occupation" value="">
+                            <lable for=""></lable>
 
                         <li><label>What type of organizations are you affiliated with?</label></li> 
-                        <input type="checkbox" id="" name="organizations" value="">
-                        <lable for=""></lable>
-                        <input type="checkbox" id="" name="organizations" value="">
-                        <lable for=""></lable>
-                        <input type="checkbox" id="" name="organizations" value="">
-                        <lable for=""></lable>
-                        <input type="checkbox" id="" name="organizations" value="">
-                        <lable for=""></lable>
+                            <input type="checkbox" id="University" name="organizations" value="1">
+                            <lable for="University">University</lable>
+                            <input type="checkbox" id="Private" name="organizations" value="2">
+                            <lable for="Private">Private</lable>
+                            <input type="checkbox" id="School" name="organizations" value="3">
+                            <lable for="School">School</lable>
+                            <input type="checkbox" id="Company" name="organizations" value="4">
+                            <lable for="Company">Company</lable>
+                            <input type="checkbox" id="Government" name="organizations" value="5">
+                            <lable for="Government">Government</lable> 
 
                         <li><label>Do you use social media?</label></li>
                             <input type="radio" id="ySocial" value="Yes" name="useSocial">
@@ -192,8 +197,10 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- All scripts from here on out serve a similar purpose, and it is to match sliders up with text. They read the imput from the sliders and generate text immiediately underneath them. Currently it only works for 3 -->
         <script>
-            var sTimeOutput = '';
+            // This sets up initial values and sets slider and output variables
+            var sTimeOutput = 'Between 3 and 4 hours';
             var timeSlider = document.getElementById("time");
             var timeOutput = document.getElementById("timeOutput");
             timeOutput.innerHTML = sTimeOutput;
@@ -221,7 +228,7 @@
             }
         </script>
         <script>
-            var t9Output = '';
+            var t9Output = 'Sometimes';
             var i9Slider = document.getElementById("9");
             var s9Output = document.getElementById("9Output");
             s9Output.innerHTML = t9Output;
@@ -246,7 +253,7 @@
             }
         </script>
         <script>
-            var t16Output = '';
+            var t16Output = 'Okay';
             var i16Slider = document.getElementById("16");
             var s16Output = document.getElementById("16Output");
             s16Output.innerHTML = t16Output;
