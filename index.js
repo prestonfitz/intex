@@ -4,13 +4,15 @@
 // import packages and prep apps
 const express = require('express');
 
-let app = express();
+
 
 let path = require('path');
 
 const port = process.env.PORT || 3000;
 
 const session = require('express-session');
+
+let app = express();
 
 const cookieParser = require('cookie-parser');
 
@@ -111,8 +113,9 @@ app.post('/newSurvey', (req, res) => {
 app.post('/validate',(req,res) => { //This is the route called by the login function
     if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
     {
-        res.render('loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
-        res.session.login = true;
+        req.session.login = true;
+        return res.render('loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
+        
     } 
 
     // if you get here, your username or password was wrong and you got an error
