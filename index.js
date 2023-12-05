@@ -45,30 +45,28 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
     knex.select('username').from('Accounts').then(uname =>{
       for (icount = 0; icount < uname.length; icount++){
       if (uname[icount].username == req.body.username){
-        console.log(req.body.username);
+        console.log("May tagumpay");
         icount2 = icount;
         icount = uname.length;
-        knex.select('password').from('Accounts').where('username',req.body.username).then(pass =>{
+        knex.select('password','account_id').from('Accounts').where('username',req.body.username).then(pass =>{
           if (pass[0].password == req.body.password)
           {
-            console.log('success')
+            console.log('May tagumpay ulit');
+            req.session.loggedIn = true;
+            req.session.userid = pass[0].account_id;
+            console.log(req.session.userid);
+            console.log(req.session.loggedIn);
+            res.redirect('/');
           }
-          else {console.log('fail')}
+          else {console.log('error2'); res.redirect('/login')}
         })
       }
-      else{console.log(req.body.password)}}
-    })
-  
-  // if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
-  //   {
-  //       req.session.loggedIn = true; 
-  //       res.redirect('/loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
-  //   } 
+      
+    }
+    });
+    console.log('error1'); res.redirect('/login');
 })
 
-app.get('/loggedin',(req,res) => {
-  res.render('loggedin')
-})
 
 //Protected routes
 //These are used to see if someone is logged in
