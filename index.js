@@ -112,7 +112,7 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
     if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
     {
         res.render('loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
-        req.session.login = true;
+        res.session.login = true;
     } 
 
     // if you get here, your username or password was wrong and you got an error
