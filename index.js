@@ -27,10 +27,10 @@ app.use(session({
 const knex = require('knex')({
   client: 'pg',
   connection: {
-      host: process.env.RDS_HOSTNAME || 'awseb-e-3dufqi35us-stack-awsebrdsdatabase-nlgbmm88ql1w.cjrehplvv4i8.us-east-1.rds.amazonaws.com',
-      user: process.env.RDS_USERNAME || 'intexAdmin',
-      password: process.env.RDS_PASSWORD || '1nt3xis$uperCrazy!',
-      database: process.env.RDS_DB_NAME || 'ebdb',
+      host: process.env.RDS_HOSTNAME || 'localhost',
+      user: process.env.RDS_USERNAME || 'postgres',
+      password: process.env.RDS_PASSWORD || '4preston',
+      database: process.env.RDS_DB_NAME || 'postgres',
       port: process.env.RDS_PORT || 5432,
       ssl: process.env.DB_SSL ? { rejectUnauthorized: false } : false
     }
@@ -42,18 +42,32 @@ app.use(express.static(path.join(__dirname, '/views')));
 //Log in log out functions
 //log in
 app.post('/validate',(req,res) => { //This is the route called by the login function
-    if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
-    {
-        req.session.loggedIn = true; 
-        res.redirect('/loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
-    } 
+    knex.select('username').from('Accounts').then(uname =>{
+      for (icount = 0; icount < uname.length; icount++){
+      if (uname[icount].username == req.body.username){
+        console.log(req.body.username);
+        icount2 = icount;
+        icount = uname.length;
+        knex.select('password').from('Accounts').where('username',req.body.username).then(pass =>{
+          if (pass[0].password == req.body.password)
+          {
+            console.log('success')
+          }
+          else {console.log('fail')}
+        })
+      }
+      else{console.log(req.body.password)}}
+    })
+  
+  // if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
+  //   {
+  //       req.session.loggedIn = true; 
+  //       res.redirect('/loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
+  //   } 
 })
 
 app.get('/loggedin',(req,res) => {
-  accountStatus = true;
-  res.render('index',{
-      login: accountStatus
-  })
+  res.render('loggedin')
 })
 
 //Protected routes
