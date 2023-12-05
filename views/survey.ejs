@@ -60,28 +60,35 @@
                             <input type="number" min="1" max="100" id="age" name="age" style="text-align: center;">
                         
                         <li><label for="gender">What is your gender?</label></li>
-                        <input list="listGender" name="gender" id="txtGender">
-                            <datalist name="gender" id="listGender">
-                                <option value="Male">
-                                <option value="Female">
-                                <option value="Non-binary">
-                            </datalist>
+                            <select name="gender" id="listGender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Non-binary">Non-binary</option>
+                                <option value="Other">Other</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                            </select>
 
                         <li><label for="relationship">What is your relationship status?</label></li>
                             <select name="relationship" id="relationship">
                                 <option value="single">Single</option>
+                                <option value="in-relationship">In a relationship</option>
                                 <option value="married">Married</option>
+                                <option value="divorced">Divorced</option>
+                                <option value="widowed">Widowed</option>
+                                <option value="complicated">It's complicated</option>
                             </select>
 
                         <li><label>What is your occupation status?</label></li>  
-                            <input type="radio" id="" name="occupation" value="">
-                            <lable for=""></lable>
-                            <input type="radio" id="" name="occupation" value="">
-                            <lable for=""></lable>
-                            <input type="radio" id="" name="occupation" value="">
-                            <lable for=""></lable>
-                            <input type="radio" id="" name="occupation" value="">
-                            <lable for=""></lable>
+                            <input type="radio" id="S-Student" name="occupation" value="School student">
+                            <lable for="S-Student">School Student</lable>
+                            <input type="radio" id="U-Student" name="occupation" value="University student">
+                            <lable for="U-Student">University Student</lable>
+                            <input type="radio" id="work" name="occupation" value="Salaried Worker">
+                            <lable for="work">Working</lable>
+                            <input type="radio" id="No-work" name="occupation" value="Not working">
+                            <label for="No-work">Not working</label>
+                            <input type="radio" id="retired" name="occupation" value="Retired">
+                            <lable for="retired">Retired</lable>
 
                         <li><label>What type of organizations are you affiliated with?</label></li> 
                             <input type="checkbox" id="University" name="organizations" value="1">
@@ -135,48 +142,48 @@
                         <p id="9Output"></p>
 
                         <li><label for="10">How often do you get distracted by social media when you are busy doing something?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <input type="range" name="10" id="10" min="1" max="5">
+                        <p id="10Output"></p>
 
-                        <li><label>Do you feel restless if you haven&#39;t used social media in a while?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="11">Do you feel restless if you haven&#39;t used social media in a while?</label></li>
+                        <input type="range" name="11" id="11" min="1" max="5">
+                        <p id="11Output"></p>
 
-                        <li><label>How easily distracted are you?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="12">How easily distracted are you?</label></li>
+                        <input type="range" name="12" id="12" min="1" max="5">
+                        <p id="12Output"></p>
 
-                        <li><label>How much are you bothered by worries?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="13">How much are you bothered by worries?</label></li>
+                        <input type="range" name="13" id="13" min="1" max="5">
+                        <p id="13Output"></p>
 
-                        <li><label>Do you find it difficult to concentrate on things?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="14">Do you find it difficult to concentrate on things?</label></li>
+                        <input type="range" name="14" id="14" min="1" max="5">
+                        <p id="14Output"></p>
 
-                        <li><label>How often do you compare yourself to other successful people through the use of social media?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="15">How often do you compare yourself to other successful people through the use of social media?</label></li>
+                        <input type="range" name="15" id="15" min="1" max="5">
+                        <p id="15Output"></p>
 
                         <li><label for="16">Following the previous question, how do you feel about these comparisons, generally speaking?</label></li>
                         <input type="range" name="16" id="16" min="1" max="5">
                         <p id="16Output"></p>
 
-                        <li><label>How often do you look to seek validation from features of social media?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="17">How often do you look to seek validation from features of social media?</label></li>
+                        <input type="range" name="17" id="17" min="1" max="5">
+                        <p id="17Output"></p>
 
-                        <li><label>How often do you feel depressed or down?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="18">How often do you feel depressed or down?</label></li>
+                        <input type="range" name="18" id="18" min="1" max="5">
+                        <p id="18Output"></p>
 
-                        <li><label>How frequently does your interested in daily activities fluctuate?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="19">How frequently does your interested in daily activities fluctuate?</label></li>
+                        <input type="range" name="19" id="19" min="1" max="5">
+                        <p id="19Output"></p>
 
-                        <li><label>How often do you face issues regarding sleep?</label></li>
-                        <input type="range" name="" id="" min="1" max="5">
-                        <p id=""></p>
+                        <li><label for="20">How often do you face issues regarding sleep?</label></li>
+                        <input type="range" name="20" id="20" min="1" max="5">
+                        <p id="20Output"></p>
                     </ol>
                 </form>
             </div>
@@ -253,6 +260,132 @@
             }
         </script>
         <script>
+            var t10Output = 'Sometimes';
+            var i10Slider = document.getElementById("10");
+            var s10Output = document.getElementById("10Output");
+            s10Output.innerHTML = t10Output;
+          
+            i10Slider.oninput = function() {
+              if (this.value == 1) {
+                t10Output = "Almost never";
+              } else if (this.value == 2) {
+                t10Output = "Rarely";
+              } else if (this.value == 3) {
+                t10Output = "Sometimes";
+              } else if (this.value == 4) {
+                t10Output = "Often";
+              } else if (this.value == 5) {
+                t10Output = "Always";
+              }
+              s10Output.innerHTML = t10Output;
+            };
+        </script>
+        <script>
+            var t11Output = 'Sometimes';
+            var i11Slider = document.getElementById("11");
+            var s11Output = document.getElementById("11Output");
+            s11Output.innerHTML = t11Output;
+          
+            i11Slider.oninput = function() {
+              if (this.value == 1) {
+                t11Output = "Almost never";
+              } else if (this.value == 2) {
+                t11Output = "Rarely";
+              } else if (this.value == 3) {
+                t11Output = "Sometimes";
+              } else if (this.value == 4) {
+                t11Output = "Often";
+              } else if (this.value == 5) {
+                t11Output = "Always";
+              }
+              s11Output.innerHTML = t11Output;
+            };
+        </script>
+        <script>
+            var t12Output = 'Sometimes';
+            var i12Slider = document.getElementById("12");
+            var s12Output = document.getElementById("12Output");
+            s12Output.innerHTML = t12Output;
+          
+            i12Slider.oninput = function() {
+              if (this.value == 1) {
+                t12Output = "Almost never";
+              } else if (this.value == 2) {
+                t12Output = "Rarely";
+              } else if (this.value == 3) {
+                t12Output = "Sometimes";
+              } else if (this.value == 4) {
+                t12Output = "Often";
+              } else if (this.value == 5) {
+                t12Output = "Always";
+              }
+              s12Output.innerHTML = t12Output;
+            };
+        </script>
+        <script>
+            var t13Output = 'Sometimes';
+            var i13Slider = document.getElementById("13");
+            var s13Output = document.getElementById("13Output");
+            s13Output.innerHTML = t13Output;
+          
+            i13Slider.oninput = function() {
+              if (this.value == 1) {
+                t13Output = "Almost never";
+              } else if (this.value == 2) {
+                t13Output = "Rarely";
+              } else if (this.value == 3) {
+                t13Output = "Sometimes";
+              } else if (this.value == 4) {
+                t13Output = "Often";
+              } else if (this.value == 5) {
+                t13Output = "Always";
+              }
+              s13Output.innerHTML = t13Output;
+            };
+        </script>
+        <script>
+            var t14Output = 'Sometimes';
+            var i14Slider = document.getElementById("14");
+            var s14Output = document.getElementById("14Output");
+            s14Output.innerHTML = t14Output;
+          
+            i14Slider.oninput = function() {
+              if (this.value == 1) {
+                t14Output = "Almost never";
+              } else if (this.value == 2) {
+                t14Output = "Rarely";
+              } else if (this.value == 3) {
+                t14Output = "Sometimes";
+              } else if (this.value == 4) {
+                t14Output = "Often";
+              } else if (this.value == 5) {
+                t14Output = "Always";
+              }
+              s14Output.innerHTML = t14Output;
+            };
+        </script>
+        <script>
+            var t15Output = 'Sometimes';
+            var i15Slider = document.getElementById("15");
+            var s15Output = document.getElementById("15Output");
+            s15Output.innerHTML = t15Output;
+          
+            i15Slider.oninput = function() {
+              if (this.value == 1) {
+                t15Output = "Almost never";
+              } else if (this.value == 2) {
+                t15Output = "Rarely";
+              } else if (this.value == 3) {
+                t15Output = "Sometimes";
+              } else if (this.value == 4) {
+                t15Output = "Often";
+              } else if (this.value == 5) {
+                t15Output = "Always";
+              }
+              s15Output.innerHTML = t15Output;
+            };
+        </script>
+        <script>
             var t16Output = 'Okay';
             var i16Slider = document.getElementById("16");
             var s16Output = document.getElementById("16Output");
@@ -276,6 +409,90 @@
                 }
                 s16Output.innerHTML = t16Output;
             }
+        </script>
+        <script>
+            var t17Output = 'Sometimes';
+            var i17Slider = document.getElementById("17");
+            var s17Output = document.getElementById("17Output");
+            s17Output.innerHTML = t17Output;
+          
+            i17Slider.oninput = function() {
+              if (this.value == 1) {
+                t17Output = "Almost never";
+              } else if (this.value == 2) {
+                t17Output = "Rarely";
+              } else if (this.value == 3) {
+                t17Output = "Sometimes";
+              } else if (this.value == 4) {
+                t17Output = "Often";
+              } else if (this.value == 5) {
+                t17Output = "Always";
+              }
+              s17Output.innerHTML = t17Output;
+            };
+        </script>
+        <script>
+            var t18Output = 'Sometimes';
+            var i18Slider = document.getElementById("18");
+            var s18Output = document.getElementById("18Output");
+            s18Output.innerHTML = t18Output;
+          
+            i18Slider.oninput = function() {
+              if (this.value == 1) {
+                t18Output = "Almost never";
+              } else if (this.value == 2) {
+                t18Output = "Rarely";
+              } else if (this.value == 3) {
+                t18Output = "Sometimes";
+              } else if (this.value == 4) {
+                t18Output = "Often";
+              } else if (this.value == 5) {
+                t18Output = "Always";
+              }
+              s18Output.innerHTML = t18Output;
+            };
+        </script>
+        <script>
+            var t19Output = 'Sometimes';
+            var i19Slider = document.getElementById("19");
+            var s19Output = document.getElementById("19Output");
+            s19Output.innerHTML = t19Output;
+          
+            i19Slider.oninput = function() {
+              if (this.value == 1) {
+                t19Output = "Almost never";
+              } else if (this.value == 2) {
+                t19Output = "Rarely";
+              } else if (this.value == 3) {
+                t19Output = "Sometimes";
+              } else if (this.value == 4) {
+                t19Output = "Often";
+              } else if (this.value == 5) {
+                t19Output = "Always";
+              }
+              s19Output.innerHTML = t19Output;
+            };
+        </script>
+        <script>
+            var t20Output = 'Sometimes';
+            var i20Slider = document.getElementById("20");
+            var s20Output = document.getElementById("20Output");
+            s20Output.innerHTML = t20Output;
+          
+            i20Slider.oninput = function() {
+              if (this.value == 1) {
+                t20Output = "Almost never";
+              } else if (this.value == 2) {
+                t20Output = "Rarely";
+              } else if (this.value == 3) {
+                t20Output = "Sometimes";
+              } else if (this.value == 4) {
+                t20Output = "Often";
+              } else if (this.value == 5) {
+                t20Output = "Always";
+              }
+              s20Output.innerHTML = t20Output;
+            };
         </script>
     </body>
 </html>
