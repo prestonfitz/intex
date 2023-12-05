@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, '/views')));
 
 var accountStatus = false;
 
+
 // Survey page - use to write
 app.get("/survey", (req, res) => {
     if (accountStatus == true) {
@@ -65,10 +66,7 @@ app.get('/account', (req, res) => {
 //Log in log out functions
 app.post('/validate',(req,res) => {
     if ((req.body.username == 'admin') && (req.body.password == 'badmin'))
-    {    accountStatus = true;
-        res.render('index',{
-            login: accountStatus
-        })}
+    {res.render('validate')}
     let sOutput;
     
     sOutput = req.body.username + " " + req.body.password + '!';
