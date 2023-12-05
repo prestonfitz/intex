@@ -35,13 +35,11 @@ const knex = require('knex')({
 });
 
 app.use(session({
-    secret: 'ThisIsMy$uperSecretKey',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 60 * 60 * 1000, // 1 hour
-        httpOnly: true, // Prevents JavaScript access to the cookie
-}}))
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+app.use(express.json());
 
 // initialize the cookie to not logged in
 app.use((req, res, next) => {
@@ -108,20 +106,50 @@ app.post('/newSurvey', (req, res) => {
 })
 
 //Log in log out functions
-app.post('/validate',(req,res) => { //This is the route called by the login function
-    if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
-    {
-        res.render('loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
-        req.session.login = true;
-    } 
+// app.post('/validate',(req,res) => { //This is the route called by the login function
+//     if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
+//     {
+//         res.render('loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
 
-    // if you get here, your username or password was wrong and you got an error
-    let sOutput;
+//     } 
+
+//     // if you get here, your username or password was wrong and you got an error
+//     let sOutput;
     
-    sOutput = req.body.username + " " + req.body.password + '!';
+//     sOutput = req.body.username + " " + req.body.password + '!';
 
-    res.send(sOutput); 
-})
+//     res.send(sOutput); 
+// })
+
+// http://localhost:3000/auth
+app.post('/validate', function(request, response) {
+	// Capture the input fields
+	let username = request.body.username;
+	let password = request.body.password;
+	// Ensure the input fields exists and are not empty
+	if (username && password) {
+		// Execute SQL query that'll select the account from the database based on the specified username and password
+		connection.query('SELECT * FROM Accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (results.length > 0) {
+				// Authenticate the user
+				request.session.loggedin = true;
+				request.session.username = username;
+				// Redirect to home page
+				response.redirect('/');
+			} else {
+				response.send('Incorrect Username and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
+});
+
 
 app.get('/loggedin',(req,res) => {
     accountStatus = true;
