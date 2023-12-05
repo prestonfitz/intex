@@ -51,28 +51,134 @@
                 </div>
             </div>
         </header>
-        <!-- Features section-->
+        <!-- Here is the survey in all of it's glory. I used a variety of input with some Javascript to make it more fun-->
         <section class="py-5 border-bottom" id="features">
             <div class="container px-5 my-5">
+                <form method="post">
+                    <ol>
+                        <li><label for="age">What is your age?</label></li>
+                            <input type="number" min="1" max="100" id="age" name="age" style="text-align: center;">
+                        
+                        <li><label for="gender">What is your gender?</label></li>
+                        <input list="listGender" name="gender" id="txtGender">
+                            <datalist name="gender" id="listGender">
+                                <option value="Male">
+                                <option value="Female">
+                                <option value="Non-binary">
+                            </datalist>
 
-            </div>
-        </section>
-        <!-- Pricing section-->
-        <section class="bg-light py-5 border-bottom">
-            <div class="container px-5 my-5">
-               
-            </div>
-        </section>
-        <!-- Testimonials section-->
-        <section class="py-5 border-bottom">
-            <div class="container px-5 my-5 px-5">
+                        <li><label for="relationship">What is your relationship status?</label></li>
+                            <select name="relationship" id="relationship">
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                            </select>
 
-            </div>
-        </section>
+                        <li><label>What is your occupation status?</label></li>  
+                            <input type="radio" id="" name="occupation" value="">
+                            <lable for=""></lable>
+                            <input type="radio" id="" name="occupation" value="">
+                            <lable for=""></lable>
+                            <input type="radio" id="" name="occupation" value="">
+                            <lable for=""></lable>
+                            <input type="radio" id="" name="occupation" value="">
+                            <lable for=""></lable>
 
-        <!-- Contact section-->
-        <section class="bg-light py-5">
-            <div class="container px-5 my-5 px-5">
+                        <li><label>What type of organizations are you affiliated with?</label></li> 
+                            <input type="checkbox" id="University" name="organizations" value="1">
+                            <lable for="University">University</lable>
+                            <input type="checkbox" id="Private" name="organizations" value="2">
+                            <lable for="Private">Private</lable>
+                            <input type="checkbox" id="School" name="organizations" value="3">
+                            <lable for="School">School</lable>
+                            <input type="checkbox" id="Company" name="organizations" value="4">
+                            <lable for="Company">Company</lable>
+                            <input type="checkbox" id="Government" name="organizations" value="5">
+                            <lable for="Government">Government</lable> 
+
+                        <li><label>Do you use social media?</label></li>
+                            <input type="radio" id="ySocial" value="Yes" name="useSocial">
+                            <label for="ySocial">Yes</label>
+                            <input type="radio" id="nSocial" value="No" name="useSocial">
+                            <label for="nSocial">No</label>
+
+                        <!-- Something extra: replace the checkboxes with platform logos -->
+                            <li><label>What social media platforms do you commonly use?</label></li> 
+                            <input type="checkbox" id="Facebook" name="platform" value="1">
+                            <label for="Facebook">Facebook</label>
+                            <input type="checkbox" id="Youtube" name="platform" value="2">                            
+                            <label for="Youtube">Youtube</label>
+                            <input type="checkbox" id="Pintrest" name="platform" value="3">
+                            <label for="Pintrest">Pintrest</label>
+                            <input type="checkbox" id="Instagram" name="platform" value="4">
+                            <label for="Instagram">Instagram</label>
+                            <input type="checkbox" id="Snapchat" name="platform" value="5">
+                            <label for="Snapchat">Snapchat</label>
+                            <input type="checkbox" id="TikTok" name="platform" value="6">
+                            <label for="TikTok">TikTok</label>
+                            <input type="checkbox" id="Reddit" name="platform" value="7">
+                            <label for="Reddit">Reddit</label>
+                            <input type="checkbox" id="Discord" name="platform" value="8">
+                            <label for="Discord">Discord</label>
+                            <input type="checkbox" id="Twitter/X" name="platform" value="9">
+                            <label for="Twitter/X">Twitter/X</label>
+                            <input type="checkbox" id="BeReal" name="platform" value="10">
+                            <label for="BeReal">BeReal</label>
+                            <input type="checkbox" id="Other" name="platform" value="11">
+                            <label for="Other">Other</label>
+
+                        <li><label for="time">What is the average time you spend on social media every day?</label></li>
+                        <input type="range" name="time" id="time" min="1" max="6">
+                        <p id="timeOutput"></p>
+
+                        <li><label for="9">How often do you find yourself using social media without a specific purpose?</label></li>
+                        <input type="range" name="9" id="9" min="1" max="5">
+                        <p id="9Output"></p>
+
+                        <li><label for="10">How often do you get distracted by social media when you are busy doing something?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label>Do you feel restless if you haven&#39;t used social media in a while?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label>How easily distracted are you?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label>How much are you bothered by worries?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label>Do you find it difficult to concentrate on things?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label>How often do you compare yourself to other successful people through the use of social media?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label for="16">Following the previous question, how do you feel about these comparisons, generally speaking?</label></li>
+                        <input type="range" name="16" id="16" min="1" max="5">
+                        <p id="16Output"></p>
+
+                        <li><label>How often do you look to seek validation from features of social media?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label>How often do you feel depressed or down?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label>How frequently does your interested in daily activities fluctuate?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+
+                        <li><label>How often do you face issues regarding sleep?</label></li>
+                        <input type="range" name="" id="" min="1" max="5">
+                        <p id=""></p>
+                    </ol>
+                </form>
             </div>
         </section>
 
@@ -91,6 +197,86 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- All scripts from here on out serve a similar purpose, and it is to match sliders up with text. They read the imput from the sliders and generate text immiediately underneath them. Currently it only works for 3 -->
+        <script>
+            // This sets up initial values and sets slider and output variables
+            var sTimeOutput = 'Between 3 and 4 hours';
+            var timeSlider = document.getElementById("time");
+            var timeOutput = document.getElementById("timeOutput");
+            timeOutput.innerHTML = sTimeOutput;
+
+            timeSlider.oninput = function() {
+                if (this.value == 1){
+                    sTimeOutput = "Less than an hour"
+                }
+                else if (this.value ==2 ){
+                    sTimeOutput = "Between 1 and 2 hours"
+                }
+                else if (this.value == 3){
+                    sTimeOutput = "Between 2 and 3 hours"
+                }
+                else if (this.value == 4){
+                    sTimeOutput = "Between 3 and 4 hours"
+                }
+                else if (this.value == 5){
+                    sTimeOutput = "Between 4 and 5 hours"
+                }
+                else{
+                    sTimeOutput = "More than 5 hours"
+                }
+            timeOutput.innerHTML = sTimeOutput;
+            }
+        </script>
+        <script>
+            var t9Output = 'Sometimes';
+            var i9Slider = document.getElementById("9");
+            var s9Output = document.getElementById("9Output");
+            s9Output.innerHTML = t9Output;
+
+            i9Slider.oninput = function() {
+                if (this.value == 1){
+                    t9Output = "Almost never"
+                }
+                else if (this.value ==2 ){
+                    t9Output = "Rarely"
+                }
+                else if (this.value == 3){
+                    t9Output = "Sometimes"
+                }
+                else if (this.value == 4){
+                    t9Output = "Often"
+                }
+                else if (this.value == 5){
+                    t9Output = "Always"
+                }
+                s9Output.innerHTML = t9Output;
+            }
+        </script>
+        <script>
+            var t16Output = 'Okay';
+            var i16Slider = document.getElementById("16");
+            var s16Output = document.getElementById("16Output");
+            s16Output.innerHTML = t16Output;
+        
+            i16Slider.oninput = function() {
+                if (this.value == 1){
+                    t16Output = "Really bad"
+                }
+                else if (this.value ==2 ){
+                    t16Output = "Bad"
+                }
+                else if (this.value == 3){
+                    t16Output = "Okay"
+                }
+                else if (this.value == 4){
+                    t16Output = "Good"
+                }
+                else if (this.value == 5){
+                    t16Output = "Really good"
+                }
+                s16Output.innerHTML = t16Output;
+            }
+        </script>
     </body>
 </html>
 
