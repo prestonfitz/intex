@@ -81,13 +81,13 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
 //These are used to see if someone is logged in
 
 //This protects the account route
-app.use('/account', (req, res, next) => {
-  console.log(req.session.loggedIn)
-  if (!req.session.loggedIn) {
-    return res.redirect('/login');
-  }
-  next(); // Allow access to protected route
-});
+// app.use('/account', (req, res, next) => {
+//   console.log(req.session.loggedIn)
+//   if (!req.session.loggedIn) {
+//     return res.redirect('/login');
+//   }
+//   next(); // Allow access to protected route
+// });
 
 //pages
 //data page
@@ -113,9 +113,24 @@ app.get('/login',(req,res) => {
 
 //This is the accounts page
 app.get('/account', (req, res) => {
-  res.render('account')
-  //knex.select().from('Accounts').where('');
-})
+  knex.select().from('Accounts').where('Username', 'admin').then(account =>{
+    res.render('account', {myaccount: account});
+  }).catch( err => {
+    console.log(err);
+    res.status(500).json({err});
+ });
+});
+
+//This is an accountant
+app.post("/editAccount", (req, res)=> {
+  knex("Accounts").where("Account_Num", parseInt(req.body.Account_Num)).update({
+    Username: req.body.Username,
+    Password: req.body.Password,
+    Email: req.body.Email,
+ }).then(myaccount => {
+    res.redirect("/");
+ })
+});
 
 // home page
 app.get('/', (req, res) => {
