@@ -89,6 +89,14 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
 //   next(); // Allow access to protected route
 // });
 
+// app.use('/newAccount', (req, res, next) => {
+//   console.log(req.session.loggedIn)
+//   if (!req.session.loggedIn) {
+//     return res.redirect('/login');
+//   }
+//   next(); // Allow access to protected route
+// });
+
 //pages
 //data page
 app.get("/graphs", (req,res) => {
@@ -130,6 +138,23 @@ app.post("/editAccount", (req, res)=> {
  }).then(myaccount => {
     res.redirect("/");
  })
+});
+
+// this is a senior accountant
+app.post("/newAccount", (req, res)=> {
+  knex("Accounts").insert({
+    Username: req.body.Username,
+    Password: req.body.Password,
+    Email: req.body.Email,
+    Admin_Status: req.body.Admin_Status
+ }).then(account => {
+    res.redirect("/account");
+ })
+});
+
+//This is the new accounts page
+app.get('/newAccount', (req, res) => {
+  res.render('newAccount')
 });
 
 // home page
