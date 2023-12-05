@@ -10,9 +10,15 @@ let path = require('path');
 
 const port = process.env.PORT || 3000;
 
+const session = require('express-session');
+
+const cookieParser = require('cookie-parser');
+
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
 
 // What's green and has wheels?
 // Connect to the database
@@ -27,6 +33,21 @@ const knex = require('knex')({
         ssl: process.env.DB_SSL ? { rejectUnauthorized: false } : false
     }
 });
+
+app.use(session({
+    secret: 'ThisIsMy$uperSecretKey',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60 * 60 * 1000, // 1 hour
+        httpOnly: true, // Prevents JavaScript access to the cookie
+}}))
+
+// initialize the cookie to not logged in
+app.use((req, res, next) => {
+    req.session.login = false;
+    next();
+  });
 
 // Because we want it to look nice
 app.use(express.static(path.join(__dirname, '/views')));
@@ -61,17 +82,39 @@ app.get("/graphs", (req,res) => {
 })
 
 app.get('/login',(req,res) => {
-    res.render('login')
+    if (req.session.login == true)
+    {
+        res.render('account')
+    }
+    else
+    {
+        res.render('login')
+    }
 })
 
 app.get('/account', (req, res) => {
-    res.render('account')
+    if (req.session.login == true)
+    {
+        res.render('account');
+    }
+    else
+    {
+        res.render('login');
+    }
+})
+
+app.post('/newSurvey', (req, res) => {
+    res.render('index')
 })
 
 //Log in log out functions
 app.post('/validate',(req,res) => { //This is the route called by the login function
     if ((req.body.username == 'admin') && (req.body.password == 'badmin')) // the req.body is querying the post body from the log in page
-    {res.render('validate')} // if the username and password match, this sends the user to the validate.ejs page
+    {
+        res.render('loggedin'); // if the username and password match, this sends the user to the loggedin.ejs page
+        req.session.login = true;
+    } 
+
     // if you get here, your username or password was wrong and you got an error
     let sOutput;
     

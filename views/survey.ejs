@@ -54,13 +54,13 @@
         <!-- Here is the survey in all of it's glory. I used a variety of input with some Javascript to make it more fun-->
         <section class="py-5 border-bottom" id="features">
             <div class="container px-5 my-5">
-                <form method="post">
+                <form action="/newSurvey" method="post">
                     <ol>
                         <li><label for="age">What is your age?</label></li>
-                            <input type="number" min="1" max="100" id="age" name="age" style="text-align: center;">
+                            <input type="number" min="1" max="100" id="age" name="age" style="text-align: center;" required="required">
                         
                         <li><label for="gender">What is your gender?</label></li>
-                            <select name="gender" id="listGender">
+                            <select name="gender" id="listGender" required="required">
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Non-binary">Non-binary</option>
@@ -68,8 +68,10 @@
                                 <option value="Prefer not to say">Prefer not to say</option>
                             </select>
 
+                        <input type="hidden" name="city" id="city" value="Provo">
+
                         <li><label for="relationship">What is your relationship status?</label></li>
-                            <select name="relationship" id="relationship">
+                            <select name="relationship" id="relationship" required="required">
                                 <option value="single">Single</option>
                                 <option value="in-relationship">In a relationship</option>
                                 <option value="married">Married</option>
@@ -79,15 +81,15 @@
                             </select>
 
                         <li><label>What is your occupation status?</label></li>  
-                            <input type="radio" id="S-Student" name="occupation" value="School student">
+                            <input type="radio" id="S-Student" name="occupation" value="School student" required="required">
                             <lable for="S-Student">School Student</lable>
-                            <input type="radio" id="U-Student" name="occupation" value="University student">
+                            <input type="radio" id="U-Student" name="occupation" value="University student" required="required">
                             <lable for="U-Student">University Student</lable>
-                            <input type="radio" id="work" name="occupation" value="Salaried Worker">
+                            <input type="radio" id="work" name="occupation" value="Salaried Worker" required="required">
                             <lable for="work">Working</lable>
-                            <input type="radio" id="No-work" name="occupation" value="Not working">
+                            <input type="radio" id="No-work" name="occupation" value="Not working" required="required">
                             <label for="No-work">Not working</label>
-                            <input type="radio" id="retired" name="occupation" value="Retired">
+                            <input type="radio" id="retired" name="occupation" value="Retired" required="required">
                             <lable for="retired">Retired</lable>
 
                         <li><label>What type of organizations are you affiliated with?</label></li> 
@@ -103,88 +105,89 @@
                             <lable for="Government">Government</lable> 
 
                         <li><label>Do you use social media?</label></li>
-                            <input type="radio" id="ySocial" value="Yes" name="useSocial">
+                            <input type="radio" id="ySocial" value="Yes" name="useSocial" required="required">
                             <label for="ySocial">Yes</label>
-                            <input type="radio" id="nSocial" value="No" name="useSocial">
+                            <input type="radio" id="nSocial" value="No" name="useSocial" required="required">
                             <label for="nSocial">No</label>
 
                         <!-- Something extra: replace the checkboxes with platform logos -->
-                            <li><label>What social media platforms do you commonly use?</label></li> 
-                            <input type="checkbox" id="Facebook" name="platform" value="1">
-                            <label for="Facebook">Facebook</label>
-                            <input type="checkbox" id="Youtube" name="platform" value="2">                            
-                            <label for="Youtube">Youtube</label>
-                            <input type="checkbox" id="Pintrest" name="platform" value="3">
-                            <label for="Pintrest">Pintrest</label>
-                            <input type="checkbox" id="Instagram" name="platform" value="4">
-                            <label for="Instagram">Instagram</label>
-                            <input type="checkbox" id="Snapchat" name="platform" value="5">
-                            <label for="Snapchat">Snapchat</label>
-                            <input type="checkbox" id="TikTok" name="platform" value="6">
-                            <label for="TikTok">TikTok</label>
-                            <input type="checkbox" id="Reddit" name="platform" value="7">
-                            <label for="Reddit">Reddit</label>
-                            <input type="checkbox" id="Discord" name="platform" value="8">
-                            <label for="Discord">Discord</label>
-                            <input type="checkbox" id="Twitter/X" name="platform" value="9">
-                            <label for="Twitter/X">Twitter/X</label>
-                            <input type="checkbox" id="BeReal" name="platform" value="10">
-                            <label for="BeReal">BeReal</label>
-                            <input type="checkbox" id="Other" name="platform" value="11">
-                            <label for="Other">Other</label>
+                        <li><label>What social media platforms do you commonly use?</label></li> 
+                        <input type="checkbox" id="Facebook" name="platform" value="1">
+                        <label for="Facebook">Facebook</label>
+                        <input type="checkbox" id="Youtube" name="platform" value="2">                            
+                        <label for="Youtube">Youtube</label>
+                        <input type="checkbox" id="Pintrest" name="platform" value="3">
+                        <label for="Pintrest">Pintrest</label>
+                        <input type="checkbox" id="Instagram" name="platform" value="4">
+                        <label for="Instagram">Instagram</label>
+                        <input type="checkbox" id="Snapchat" name="platform" value="5">
+                        <label for="Snapchat">Snapchat</label>
+                        <input type="checkbox" id="TikTok" name="platform" value="6">
+                        <label for="TikTok">TikTok</label>
+                        <input type="checkbox" id="Reddit" name="platform" value="7">
+                        <label for="Reddit">Reddit</label>
+                        <input type="checkbox" id="Discord" name="platform" value="8">
+                        <label for="Discord">Discord</label>
+                        <input type="checkbox" id="Twitter/X" name="platform" value="9">
+                        <label for="Twitter/X">Twitter/X</label>
+                        <input type="checkbox" id="BeReal" name="platform" value="10">
+                        <label for="BeReal">BeReal</label>
+                        <input type="checkbox" id="Other" name="platform" value="11">
+                        <label for="Other">Other</label>
 
-                        <li><label for="time">What is the average time you spend on social media every day?</label></li>
-                        <input type="range" name="time" id="time" min="1" max="6">
-                        <p id="timeOutput"></p>
-
-                        <li><label for="9">How often do you find yourself using social media without a specific purpose?</label></li>
-                        <input type="range" name="9" id="9" min="1" max="5">
-                        <p id="9Output"></p>
-
-                        <li><label for="10">How often do you get distracted by social media when you are busy doing something?</label></li>
-                        <input type="range" name="10" id="10" min="1" max="5">
-                        <p id="10Output"></p>
-
-                        <li><label for="11">Do you feel restless if you haven&#39;t used social media in a while?</label></li>
-                        <input type="range" name="11" id="11" min="1" max="5">
-                        <p id="11Output"></p>
-
-                        <li><label for="12">How easily distracted are you?</label></li>
-                        <input type="range" name="12" id="12" min="1" max="5">
-                        <p id="12Output"></p>
-
-                        <li><label for="13">How much are you bothered by worries?</label></li>
-                        <input type="range" name="13" id="13" min="1" max="5">
-                        <p id="13Output"></p>
-
-                        <li><label for="14">Do you find it difficult to concentrate on things?</label></li>
-                        <input type="range" name="14" id="14" min="1" max="5">
-                        <p id="14Output"></p>
-
-                        <li><label for="15">How often do you compare yourself to other successful people through the use of social media?</label></li>
-                        <input type="range" name="15" id="15" min="1" max="5">
-                        <p id="15Output"></p>
-
-                        <li><label for="16">Following the previous question, how do you feel about these comparisons, generally speaking?</label></li>
-                        <input type="range" name="16" id="16" min="1" max="5">
-                        <p id="16Output"></p>
-
-                        <li><label for="17">How often do you look to seek validation from features of social media?</label></li>
-                        <input type="range" name="17" id="17" min="1" max="5">
-                        <p id="17Output"></p>
-
-                        <li><label for="18">How often do you feel depressed or down?</label></li>
-                        <input type="range" name="18" id="18" min="1" max="5">
-                        <p id="18Output"></p>
-
-                        <li><label for="19">How frequently does your interested in daily activities fluctuate?</label></li>
-                        <input type="range" name="19" id="19" min="1" max="5">
-                        <p id="19Output"></p>
-
-                        <li><label for="20">How often do you face issues regarding sleep?</label></li>
-                        <input type="range" name="20" id="20" min="1" max="5">
-                        <p id="20Output"></p>
+                            <li><label for="time">What is the average time you spend on social media every day?</label></li>
+                            <input type="range" name="time" id="time" min="1" max="6" >
+                            <p id="timeOutput"></p>
+    
+                            <li><label for="9">How often do you find yourself using social media without a specific purpose?</label></li>
+                            <input type="range" name="9" id="9" min="1" max="5" >
+                            <p id="9Output"></p>
+    
+                            <li><label for="10">How often do you get distracted by social media when you are busy doing something?</label></li>
+                            <input type="range" name="10" id="10" min="1" max="5" >
+                            <p id="10Output"></p>
+    
+                            <li><label for="11">Do you feel restless if you haven&#39;t used social media in a while?</label></li>
+                            <input type="range" name="11" id="11" min="1" max="5" >
+                            <p id="11Output"></p>
+    
+                            <li><label for="12">How easily distracted are you?</label></li>
+                            <input type="range" name="12" id="12" min="1" max="5" >
+                            <p id="12Output"></p>
+    
+                            <li><label for="13">How much are you bothered by worries?</label></li>
+                            <input type="range" name="13" id="13" min="1" max="5" >
+                            <p id="13Output"></p>
+    
+                            <li><label for="14">Do you find it difficult to concentrate on things?</label></li>
+                            <input type="range" name="14" id="14" min="1" max="5" >
+                            <p id="14Output"></p>
+    
+                            <li><label for="15">How often do you compare yourself to other successful people through the use of social media?</label></li>
+                            <input type="range" name="15" id="15" min="1" max="5" >
+                            <p id="15Output"></p>
+    
+                            <li><label for="16">Following the previous question, how do you feel about these comparisons, generally speaking?</label></li>
+                            <input type="range" name="16" id="16" min="1" max="5" >
+                            <p id="16Output"></p>
+    
+                            <li><label for="17">How often do you look to seek validation from features of social media?</label></li>
+                            <input type="range" name="17" id="17" min="1" max="5" >
+                            <p id="17Output"></p>
+    
+                            <li><label for="18">How often do you feel depressed or down?</label></li>
+                            <input type="range" name="18" id="18" min="1" max="5" >
+                            <p id="18Output"></p>
+    
+                            <li><label for="19">How frequently does your interested in daily activities fluctuate?</label></li>
+                            <input type="range" name="19" id="19" min="1" max="5" >
+                            <p id="19Output"></p>
+    
+                            <li><label for="20">How often do you face issues regarding sleep?</label></li>
+                            <input type="range" name="20" id="20" min="1" max="5" >
+                            <p id="20Output"></p>
                     </ol>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </section>
