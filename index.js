@@ -42,29 +42,38 @@ app.use(express.static(path.join(__dirname, '/views')));
 //Log in log out functions
 //log in
 app.post('/validate',(req,res) => { //This is the route called by the login function
-    knex.select('username').from('Accounts').then(uname =>{
+    let success = false;
+    knex.select('Username').from('Accounts').then(uname =>{
       for (icount = 0; icount < uname.length; icount++){
-      if (uname[icount].username == req.body.username){
+      if (uname[icount].Username == req.body.username){
         console.log("May tagumpay");
         icount2 = icount;
         icount = uname.length;
-        knex.select('password','account_id').from('Accounts').where('username',req.body.username).then(pass =>{
-          if (pass[0].password == req.body.password)
+        knex.select('Password','Account_Num').from('Accounts').where('Username',req.body.username).then(pass =>{
+          if (pass[0].Password == req.body.password)
           {
             console.log('May tagumpay ulit');
             req.session.loggedIn = true;
-            req.session.userid = pass[0].account_id;
+            req.session.userid = pass[0].Account_Num;
             console.log(req.session.userid);
             console.log(req.session.loggedIn);
-            res.redirect('/');
+            success = true;
+            res.redirect('/account')
           }
-          else {console.log('error2'); res.redirect('/login')}
+          // else 
+          // {console.log('error2'); res.redirect('/login')}
+          //{res.render('login', { errorMessage: 'Incorrect username or password' });}
+          //{ console.log('error2'); res.render('login', {error: 'Incorrect username or password'})}
         })
       }
       
     }
+    if (success == false)
+    {console.log('you suck')}
     });
-    console.log('error1'); res.redirect('/login');
+    //console.log('error1'); res.redirect('/login');
+    // console.log(req.session.loggedIn);
+    //res.redirect('/login');
 })
 
 
@@ -73,12 +82,12 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
 
 //This protects the account route
 app.use('/account', (req, res, next) => {
+  console.log(req.session.loggedIn)
   if (!req.session.loggedIn) {
     return res.redirect('/login');
   }
   next(); // Allow access to protected route
 });
-
 
 //pages
 //data page
@@ -104,7 +113,8 @@ app.get('/login',(req,res) => {
 
 //This is the accounts page
 app.get('/account', (req, res) => {
-        res.render('account');
+  res.render('account')
+  //knex.select().from('Accounts').where('');
 })
 
 // home page
