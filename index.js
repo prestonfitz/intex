@@ -19,10 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 const knex = require('knex')({
     client: 'pg',
     connection: {
-        host: process.env.RDS_HOSTNAME || 'localhost',
-        user: process.env.RDS_USERNAME || 'postgres',
-        password: process.env.RDS_PASSWORD || '4preston',
-        database: process.env.RDS_DB_NAME || 'bucket_list',
+        host: process.env.RDS_HOSTNAME || 'awseb-e-3dufqi35us-stack-awsebrdsdatabase-nlgbmm88ql1w.cjrehplvv4i8.us-east-1.rds.amazonaws.com',
+        user: process.env.RDS_USERNAME || 'intexAdmin',
+        password: process.env.RDS_PASSWORD || '1nt3xis$uperCrazy!',
+        database: process.env.RDS_DB_NAME || 'postgres',
         port: process.env.RDS_PORT || 5432,
         ssl: process.env.DB_SSL ? { rejectUnauthorized: false } : false
     }
@@ -33,6 +33,11 @@ app.use(express.static(path.join(__dirname, '/views')));
 
 var accountStatus = false;
 
+app.get('/test', (req, res) => {
+    knex.select().from('Accounts').then( Accounts => {
+        res.render('displayCountry', { account : Accounts });
+    });
+});
 
 // Survey page - use to write
 app.get("/survey", (req, res) => {
