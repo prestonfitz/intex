@@ -320,5 +320,10 @@ app.post("/newSurvey", async (req, res)=> {
   }));
 });
 
+//404
+app.get('*', function(req, res){
+  res.status(404).render('404');
+});
+
 // set to listen
 app.listen( port, () => console.log('Server is listening'));
