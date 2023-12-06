@@ -45,21 +45,15 @@ app.use(express.static(path.join(__dirname, '/views')));
 //Log in log out functions
 //log in
 app.post('/validate',(req,res) => { //This is the route called by the login function
-    let success = false;
     knex.select('Username').from('Accounts').then(uname =>{
       for (icount = 0; icount < uname.length; icount++){
       if (uname[icount].Username == req.body.username){
-        console.log("May tagumpay");
-        icount2 = icount;
         icount = uname.length;
         knex.select('Password','Account_Num').from('Accounts').where('Username',req.body.username).then(pass =>{
           if (pass[0].Password == req.body.password)
           {
-            console.log('May tagumpay ulit');
             req.session.loggedIn = true;
             req.session.userid = pass[0].Account_Num;
-            console.log(req.session.userid);
-            console.log(req.session.loggedIn);
             req.session.save(function (err) { //this is what we were missing for a while when baking cookies
               if (err) return next(err)
             });
