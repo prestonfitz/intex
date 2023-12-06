@@ -57,8 +57,9 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
             req.session.userid = pass[0].Account_Num;
             console.log(req.session.userid);
             console.log(req.session.loggedIn);
-            success = true;
-            res.redirect('/account')
+            req.session.save(function (err) {
+              if (err) return next(err)
+            });
           }
           // else 
           // {console.log('error2'); res.redirect('/login')}
@@ -68,8 +69,7 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
       }
       
     }
-    if (success == false)
-    {console.log('you suck')}
+    res.redirect('/account')
     });
     //console.log('error1'); res.redirect('/login');
     // console.log(req.session.loggedIn);
@@ -142,7 +142,7 @@ app.get('/login',(req,res) => {
 
 //This is the accounts page
 app.get('/account', (req, res) => {
-  knex.select().from('Accounts').where('Username', 'Alex').then(account =>{
+  knex.select().from('Accounts').where('Account_Num', req.session.userid).then(account =>{
     res.render('account', {myaccount: account});
   }).catch( err => {
     console.log(err);
