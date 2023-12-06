@@ -153,6 +153,9 @@
 					<input type="range" name="time" id="time" min="1" max="6">
 					<p id="timeOutput"></p>
 
+					<!--HIDDEN INPUT TO WRITE TIME SPENT STRING TO DATABASE-->
+					<input type="hidden" name="timeOutput2" id="timeOutput2" value="">
+
 					<!--Q9: ON SOCIAL MEDIA WITH NO PURPOSE-->
 					<li><label for="np">How often do you find yourself using social media without a specific
 							purpose?</label></li>
@@ -246,34 +249,30 @@
 		var sTimeOutput = 'Between 3 and 4 hours';
 		var timeSlider = document.getElementById("time");
 		var timeOutput = document.getElementById("timeOutput");
+		var timeOutput2 = document.getElementById("timeOutput2");
 		timeOutput.innerHTML = sTimeOutput;
 
 		timeSlider.oninput = function () {
 			if (this.value == 1) {
 				sTimeOutput = "Less than an hour";
-				this.value = "Less than an Hour";
 			}
 			else if (this.value == 2) {
 				sTimeOutput = "Between 1 and 2 hours";
-				this.value = "Between 1 and 2 hours";
 			}
 			else if (this.value == 3) {
 				sTimeOutput = "Between 2 and 3 hours";
-				this.value = "Between 2 and 3 hours";
 			}
 			else if (this.value == 4) {
 				sTimeOutput = "Between 3 and 4 hours";
-				this.value = "Between 3 and 4 hours";
 			}
 			else if (this.value == 5) {
 				sTimeOutput = "Between 4 and 5 hours";
-				this.value = "Between 4 and 5 hours";
 			}
 			else {
 				sTimeOutput = "More than 5 hours";
-				this.value = "More than 5 hours";
 			}
 			timeOutput.innerHTML = sTimeOutput;
+			timeOutput2.value = sTimeOutput;
 		}
 	</script>
 	<script>
