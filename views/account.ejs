@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
+        <meta name="description" content="Users edit account data from this page. It also links to account creation pages and allows users to log out or delete their account" />
         <meta name="author" content="Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen" />
         <title>Social Media Usage and Mental Health | Account Settings</title>
         <!-- Favicon-->
@@ -36,45 +36,51 @@
                     <div class="col-lg-6">
                         <div class="text-center my-5">
                             <br><br><br><br>
-                            <h1 class="display-5 fw-bolder text-white mb-2">Present your business in a whole new way</h1>
-                            <p class="lead text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
+                            <h1 class="display-5 fw-bolder text-white mb-2">View and modify account data</h1><br>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/newAccount">Create new account</a>
+                                <a class="btn btn-outline-light btn-lg px-4" href="#editAccount">Edit account data</a>
                             </div>
                         </div>
+                        <div id="editAccount"></div>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- Features section-->
-        <section class="py-5 border-bottom" id="features">
-            <div class="container px-5 my-5">
 
-            </div>
-        </section>
-        <!-- Pricing section-->
+        <!-- This is the account information form. It auto generates the account data from the database and allows account creation. -->
         <section class="bg-light py-5 border-bottom">
             <div class="container px-5 my-5">
-               
+               <form action="editAccount" method="post" class="AccountEditor">
+                <input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>">
+                    <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <input class="form-control" type="text" id="Username" name="Username" value="<%= myaccount[0].Username %>">
+                        <label for="Username">Username:</label>
+                    </div>
+                    <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <input class="form-control" type="text" id="Password" name="Password" value="<%= myaccount[0].Password %>">
+                        <label for="Password">Password:</label>
+                    </div>
+                    <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <input class="form-control" type="text" id="Email" name="Email" value="<%= myaccount[0].Email %>" />
+                        <label for="Email">Email:</label>    
+                    </div>
+                    <div class="form-floating mb-3"></div>
+                    <input type="hidden" id="Admin_Status" name="Admin_Status" value="true">
+                    <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit" style="width: 75%; margin: auto">Update account</button></div>  
+               </form>
+               <br>
+               <div class="d-grid"><a class="btn btn-secondary btn-lg" href="/logout" style="width: 75%; margin: auto;">Log out</a></div><br>
+               <div class="d-grid"><a class="btn btn-secondary btn-lg" onclick="deleteAccount()" style="width: 75%; margin: auto; background-color: red;" id="beCareful">Delete account</a></div>
             </div>
         </section>
-        <!-- Testimonials section-->
-        <section class="py-5 border-bottom">
-            <div class="container px-5 my-5 px-5">
 
-            </div>
-        </section>
-
-        <!-- Contact section-->
-        <section class="bg-light py-5">
-            <div class="container px-5 my-5 px-5">
-            </div>
-        </section>
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-5"><p class="m-0 text-center text-white">Put an email here  |  Put a phone number here</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
+            <!-- top sneaky button to hide work with the function to ensure users know what they're doing -->
+            <span hidden><form method='post' action='deleteAccount'><input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>"><button id="my-button" onclick="testing()" type="submit"></button></form></span>
+            <div class="container px-5"><p class="m-0 text-center text-white">smumh@byu.net  |  (801) 378-1557</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
         </footer>
 
         <!-- Bootstrap core JS-->
@@ -87,6 +93,23 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        
+        <!-- This function checks with users to make sure that they want to delete their account, because that is awfully close to the log out button -->
+        <script>
+            // This function makes a pop up to see if the user really wants to delete their account
+            function deleteAccount()
+            {if (confirm("Are you sure you want to delete your account? This action cannot be undone."))
+            {clickButton(button)}}
+
+            // This function clicks the real button to delete the account, because the real button is top sneaky
+            function clickButton(buttonElement) {
+            const clickEvent = new MouseEvent('click');
+            buttonElement.dispatchEvent(clickEvent);
+            }
+
+            // This tells the clickButton function where the top sneaky button is
+            const button = document.getElementById('my-button');
+        </script>
     </body>
 </html>
 

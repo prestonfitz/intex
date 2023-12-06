@@ -24,7 +24,7 @@
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>                        
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/graphs">Data</a></li>
-                        <li id="account" class="nav-item"></li>
+                        <li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
                     </ul>
                 </div>
             </div>
@@ -90,7 +90,7 @@
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-5"><p class="m-0 text-center text-white">Put an email here  |  Put a phone number here</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
+            <div class="container px-5"><p class="m-0 text-center text-white">smumh@byu.net   |  (801) 378-1557</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
         </footer>
 
         <!-----------JAVASCRIPT SCRIPTS----------->
@@ -100,13 +100,7 @@
         <!-- Core theme JS-->
         <script src="../js/scripts.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script>
-            if (sessionStorage.getItem('login') == 'true') {
-                document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>'
-                } else { 
-                document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>'
-                }
-        </script>
+
     </body>
 </html>
 
