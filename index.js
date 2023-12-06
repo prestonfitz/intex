@@ -9,7 +9,8 @@ const path = require('path');
 const port = process.env.PORT || 3000;
 
 const app = express();
-
+// load static
+app.use(express.static(path.join(__dirname, '/html')));
 // Use ejs to get access to database and other fun things
 app.set('view engine', 'ejs');
 
