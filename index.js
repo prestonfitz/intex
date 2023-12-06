@@ -113,13 +113,17 @@ app.use('/newAccount', (req, res, next) => {
 
 app.use('/loggedin', (req, res, next) => {
   if (!req.session.loggedIn) {
-    return res.redirect('/login');
+    return res.redirect('/relogin');
   }
   next();
 })
 
 //pages
 //data page
+app.get('/relogin', (req,res) =>{
+  res.render('relog')
+})
+
 app.get("/graphs", (req,res) => {
   res.render('graphs')
 });
