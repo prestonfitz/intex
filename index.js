@@ -91,6 +91,7 @@ app.get('/logout', function (req, res, next) {
 //These are used to see if someone is logged in
 
 // This protects the account route
+// an idea to check changing the username: run an if statement where it is not in the database OR it is the current session username
 app.use('/account', (req, res, next) => {
   console.log(req.session.loggedIn)
   if (!req.session.loggedIn) {
@@ -142,6 +143,18 @@ app.get('/account', (req, res) => {
 
 //This is an accountant
 app.post("/editAccount", (req, res)=> {
+  knex.select('Username').from('Accounts').then(uname =>{
+    let aUsernames = [];
+    for(iCount = 0; iCount < uname.length + 1; iCount++)
+    {
+      aUsernames.push(uname[0].Username);
+      uname.shift();
+    }
+    if ((!aUsernames.includes(req.body.Username)) ||(req.body.Account_Num == req.session.userid))
+    {console.log(" Found"); console.log(aUsernames); console.log(req.body.Account_Num)}
+    else{console.log('not found');
+  console.log(aUsernames); console.log(req.body.Username), console.log(req.session.loggedIn)}
+  })
   knex("Accounts").where("Account_Num", parseInt(req.body.Account_Num)).update({
     Username: req.body.Username,
     Password: req.body.Password,
@@ -153,13 +166,23 @@ app.post("/editAccount", (req, res)=> {
 
 // this is a senior accountant
 app.post("/newAccount", (req, res)=> {
-  knex("Accounts").insert({
-    Username: req.body.Username,
-    Password: req.body.Password,
-    Email: req.body.Email,
-    Admin_Status: req.body.Admin_Status
- }).then(account => {
-    res.redirect("/account");
+  knex.select('Username').from('Accounts').then(uname =>{
+    let aUsernames = [];
+    for(iCount = 0; iCount < uname.length + 1; iCount++)
+    {
+      aUsernames.push(uname[0].Username);
+      uname.shift();
+    }
+    if (!aUsernames.includes(req.body.Username))
+    {knex("Accounts").insert({
+      Username: req.body.Username,
+      Password: req.body.Password,
+      Email: req.body.Email,
+      Admin_Status: req.body.Admin_Status
+   }).then(myaccount => {});console.log('it worked', aUsernames)}
+    else{console.log('didn\'t work');
+  }
+  res.redirect("/account");
  })
 });
 
