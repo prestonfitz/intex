@@ -15,7 +15,10 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 
-// Preheating the oven. We don't have a very strong log on our oven
+// load static
+app.use(express.static(path.join(__dirname, '/views/assets')));
+
+// Preheating the oven. We don't have a very strong lock on our oven
 app.use(session({
     secret: 'your_secret_key', // This should be a long and random string, but it isn't
     resave: false, // Don't save the session if nothing changed
