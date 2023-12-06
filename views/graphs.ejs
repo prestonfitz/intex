@@ -24,7 +24,7 @@
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>                        
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/graphs">Data</a></li>
-                        <li id="account" class="nav-item"></li>
+                        <li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,11 +36,12 @@
                     <div class="col-lg-6">
                         <div class="text-center my-5">
                             <br><br><br><br>
-                            <h1 class="display-5 fw-bolder text-white mb-2">Present your business in a whole new way</h1>
-                            <p class="lead text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
+                            <h1 class="display-5 fw-bolder text-white mb-2">View how social media usage impacts mental health</h1>
+                            <!-- <p class="lead text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p> -->
+                            <br><br>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                                <!-- <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a> -->
                             </div>
                         </div>
                     </div>
@@ -53,28 +54,10 @@
 
             </div>
         </section>
-        <!-- Pricing section-->
-        <section class="bg-light py-5 border-bottom">
-            <div class="container px-5 my-5">
-               
-            </div>
-        </section>
-        <!-- Testimonials section-->
-        <section class="py-5 border-bottom">
-            <div class="container px-5 my-5 px-5">
-
-            </div>
-        </section>
-
-        <!-- Contact section-->
-        <section class="bg-light py-5">
-            <div class="container px-5 my-5 px-5">
-            </div>
-        </section>
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-5"><p class="m-0 text-center text-white">Put an email here  |  Put a phone number here</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
+            <div class="container px-5"><p class="m-0 text-center text-white">smumh@provo.org  |  (801) 378-1557</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
         </footer>
 
         <!-- Bootstrap core JS-->
@@ -87,13 +70,7 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script>
-            if (sessionStorage.getItem('login') == 'true') {
-                document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>'
-                } else { 
-                document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>'
-                }
-        </script>
+
     </body>
 </html>
 
