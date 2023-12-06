@@ -24,6 +24,7 @@ app.use(session({
     },
   }));
 
+
 const knex = require('knex')({
   client: 'pg',
   connection: {
@@ -120,6 +121,86 @@ app.get('/account', (req, res) => {
 // home page
 app.get('/', (req, res) => {
     res.render('index')
+});
+
+// This function gets the timestamp of the survey submission
+function getTodayDate() {
+  // Implement this function as per your requirement
+  // For example, you can use the JavaScript Date object
+  return new Date().toISOString();
+}
+
+// sending the survey stuff to the database ya know
+app.post("/newSurvey", async (req, res)=> {
+  // I will return the participant_id to use in the other tables
+  const [participant_id] = await knex("PersonalDetails")
+  .returning('participant_id')
+  .insert({
+    timestamp: getTodayDate(),
+    age: req.body.age,
+    gender: req.body.gender,
+    city: req.body.city,
+    relationship_status: req.body.relationship,
+    occupational_status: req.body.occupation,
+    sm_use: req.body.useSocial,
+    sm_time: req.body.time,
+    sm_no_purpose: req.body.np,
+    sm_distraction: req.body.dsm,
+    sm_restless_withdrawal: req.body.rw,
+    easily_distracted: req.body.ed,
+    worries: req.body.w,
+    concentration_difficulty: req.body.dc,
+    sm_comparing: req.body.smc,
+    sm_comparing_feel: req.body.cf,
+    sm_validation: req.body.val,
+    depressed_or_down: req.body.dd,
+    activity_interest: req.body.ai,
+    sleep_issues: req.body.si
+ });
+
+ // redirect the user back to the home page after submitting the survey
+ res.redirect('/');
+
+  // create a variable that will hold the array of checked organizations
+  const checkboxValuesOrgs = [];
+
+  // show the participant_id to the log just so I know
+  console.log(participant_id);
+
+  // Extract selected checkbox values from the request body
+  for(let iCount = 1; iCount <= 5; iCount++) {
+    const name = `org${iCount}`;
+    if (req.body[name]) {
+      checkboxValuesOrgs.push(req.body[name]);
+    }
+  }
+
+  // Insert the checkbox values to the participant organizations table
+  // all will have the same participant_id
+  await Promise.all(checkboxValuesOrgs.map(async (affiliationNum) => {
+    await knex("ParticipantOrganizations").insert({
+      Participant_ID: participant_id.participant_id,
+      Affiliation_Num: affiliationNum
+    });
+  }));
+
+  // Everything below here is the same thing as above but just for the platforms
+  const checkboxValuesSocs = [];
+
+  // Extract selected checkbox values from the request body
+  for(let iCount = 1; iCount <= 11; iCount++) {
+    const name = `soc${iCount}`;
+    if (req.body[name]) {
+      checkboxValuesSocs.push(req.body[name]);
+    }
+  }
+
+  await Promise.all(checkboxValuesSocs.map(async (platformNum) => {
+    await knex("ParticipantPlatforms").insert({
+      Participant_ID: participant_id.participant_id,
+      Platform_Num: platformNum
+    });
+  }));
 });
 
 // set to listen
