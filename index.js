@@ -57,8 +57,9 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
             req.session.userid = pass[0].Account_Num;
             console.log(req.session.userid);
             console.log(req.session.loggedIn);
-            success = true;
-            res.redirect('/account')
+            req.session.save(function (err) {
+              if (err) return next(err)
+            });
           }
           // else 
           // {console.log('error2'); res.redirect('/login')}
@@ -68,20 +69,48 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
       }
       
     }
-    if (success == false)
-    {console.log('you suck')}
+    res.redirect('/account')
     });
     //console.log('error1'); res.redirect('/login');
     // console.log(req.session.loggedIn);
     //res.redirect('/login');
 })
 
+//cookie monster
+app.get('/logout', function (req, res, next) {
+  // logout logic
+
+  // clear the user from the session object and save.
+  // this will ensure that re-using the old session id
+  // does not have a logged in user
+  req.session.loggedIn = null
+  req.session.userid = null
+  req.session.save(function (err) {
+    if (err) next(err)
+
+    // regenerate the session, which is good practice to help
+    // guard against forms of session fixation
+    req.session.regenerate(function (err) {
+      if (err) next(err)
+      res.redirect('/')
+    })
+  })
+})
 
 //Protected routes
 //These are used to see if someone is logged in
 
-//This protects the account route
+// This protects the account route
 app.use('/account', (req, res, next) => {
+  console.log(req.session.loggedIn)
+  if (!req.session.loggedIn) {
+    return res.redirect('/login');
+  }
+  next(); // Allow access to protected route
+});
+
+//This protects the new account route
+app.use('/newAccount', (req, res, next) => {
   console.log(req.session.loggedIn)
   if (!req.session.loggedIn) {
     return res.redirect('/login');
@@ -113,9 +142,50 @@ app.get('/login',(req,res) => {
 
 //This is the accounts page
 app.get('/account', (req, res) => {
-  res.render('account')
-  //knex.select().from('Accounts').where('');
-})
+  knex.select().from('Accounts').where('Account_Num', req.session.userid).then(account =>{
+    res.render('account', {myaccount: account});
+  }).catch( err => {
+    console.log(err);
+    res.status(500).json({err});
+ });
+});
+
+//This is an accountant
+app.post("/editAccount", (req, res)=> {
+  knex("Accounts").where("Account_Num", parseInt(req.body.Account_Num)).update({
+    Username: req.body.Username,
+    Password: req.body.Password,
+    Email: req.body.Email,
+ }).then(myaccount => {
+    res.redirect("/");
+ })
+});
+
+// this is a senior accountant
+app.post("/newAccount", (req, res)=> {
+  knex("Accounts").insert({
+    Username: req.body.Username,
+    Password: req.body.Password,
+    Email: req.body.Email,
+    Admin_Status: req.body.Admin_Status
+ }).then(account => {
+    res.redirect("/account");
+ })
+});
+
+app.post("/deleteAccount", (req, res) => {
+  knex("Accounts").where("Account_Num",req.body.Account_Num).del().then( account => {
+    res.redirect("/");
+ }).catch( err => {
+    console.log(err);
+    res.status(500).json({err});
+ });
+});
+
+//This is the new accounts page
+app.get('/newAccount', (req, res) => {
+  res.render('newAccount')
+});
 
 // home page
 app.get('/', (req, res) => {
