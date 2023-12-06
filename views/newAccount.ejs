@@ -13,7 +13,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
     </head>
-    <body>
+    <body onload="errorCheck()">
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-white bg-white">
             <div class="container px-5">
@@ -54,6 +54,7 @@
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
                         <input class="form-control" type="text" id="Username" name="Username" >
                         <label for="Username">Username:</label>
+                        <p id="stop" style="color: red; font-weight: bolder;"></p>
                     </div>
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
                         <input class="form-control" type="text" id="Password" name="Password" >
@@ -86,5 +87,15 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+            function errorCheck(){
+            if (sessionStorage.getItem('fail') == 'true')
+            {
+              console.log('success')
+              document.getElementById('stop').innerHTML = 'Requested username is already in use.'
+                sessionStorage.clear('fail');
+                sessionStorage.setItem('login', 'true');
+            }}
+          </script>
     </body>
 </html>

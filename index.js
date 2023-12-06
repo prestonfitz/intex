@@ -171,8 +171,8 @@ app.post("/editAccount", (req, res)=> {
       Password: req.body.Password,
       Email: req.body.Email,
    }).then(myaccount => {})}
-    else{}
-  res.redirect("/account");})
+    else{return res.render('reedit')}
+  return res.redirect("/account");})
 });
 
 // this is a senior accountant
@@ -194,6 +194,7 @@ app.post("/newAccount", (req, res)=> {
       Admin_Status: req.body.Admin_Status
    }).then(myaccount => {});
   }
+  else{return res.render('recreate')}
   res.redirect("/account");
  })
 });
