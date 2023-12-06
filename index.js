@@ -217,28 +217,28 @@ function getTodayDate() {
 app.post("/newSurvey", async (req, res)=> {
   // I will return the participant_id to use in the other tables
   const [participant_id] = await knex("PersonalDetails")
-  .returning('participant_id')
+  .returning('Participant_ID')
   .insert({
-    timestamp: getTodayDate(),
-    age: req.body.age,
-    gender: req.body.gender,
-    city: req.body.city,
-    relationship_status: req.body.relationship,
-    occupational_status: req.body.occupation,
-    sm_use: req.body.useSocial,
-    sm_time: req.body.timeOutput2,
-    sm_no_purpose: req.body.np,
-    sm_distraction: req.body.dsm,
-    sm_restless_withdrawal: req.body.rw,
-    easily_distracted: req.body.ed,
-    worries: req.body.w,
-    concentration_difficulty: req.body.dc,
-    sm_comparing: req.body.smc,
-    sm_comparing_feel: req.body.cf,
-    sm_validation: req.body.val,
-    depressed_or_down: req.body.dd,
-    activity_interest: req.body.ai,
-    sleep_issues: req.body.si
+    Timestamp: getTodayDate(),
+    Age: req.body.age,
+    Gender: req.body.gender,
+    City: req.body.city,
+    Relationship_Status: req.body.relationship,
+    Occupational_Status: req.body.occupation,
+    SM_Use: req.body.useSocial,
+    SM_Time: req.body.timeOutput2,
+    SM_No_Purpose: req.body.np,
+    SM_Distraction: req.body.dsm,
+    SM_Restless_Withdrawal: req.body.rw,
+    Easily_Distracted: req.body.ed,
+    Worries: req.body.w,
+    Concentration_Difficulty: req.body.dc,
+    SM_Comparing: req.body.smc,
+    SM_Comparing_Feel: req.body.cf,
+    SM_Validation: req.body.val,
+    Depressed_or_Down: req.body.dd,
+    Activity_Interest: req.body.ai,
+    Sleep_Issues: req.body.si
  });
 
  // redirect the user back to the home page after submitting the survey
@@ -280,7 +280,7 @@ app.post("/newSurvey", async (req, res)=> {
 
   await Promise.all(checkboxValuesSocs.map(async (platformNum) => {
     await knex("ParticipantPlatforms").insert({
-      Participant_ID: participant_id.participant_id,
+      Participant_ID: participant_id.Participant_ID,
       Platform_Num: platformNum
     });
   }));
