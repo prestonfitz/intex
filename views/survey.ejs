@@ -12,6 +12,52 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
+		<style>
+			/* .container2 {
+				font-size: 24px;
+				cursor: pointer;
+				caret-color: transparent;
+				display: flex;
+				align-items: center;
+			}
+			img { padding-right: 5px;}
+
+
+			/* Hide the browser's default checkbox */
+			.container2 input {
+			display: none;
+			}
+
+			/* Hide the checked checkbox */
+			.img-checked {
+				display: none;
+			}
+			.img-hover {
+				display: none;
+			}
+
+
+			.container2 input:checked ~ .img-checked {
+				display: inline;
+			}
+
+
+			.container2 input:checked ~ .img-unchecked {
+				display: none;
+			}
+
+			.container2:hover input:not(:checked) ~ .img-hover {
+				display: inline;
+			} */
+
+			/* .container2:hover input:not(:checked) ~ .img-checked {
+				display: none;
+			}
+
+			.container2:hover input:not(:checked) ~ .img-unchecked {
+				display: none;
+			} */
+		</style>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -108,8 +154,11 @@
 
                         <!-- Something extra: replace the checkboxes with platform logos -->
                         <li><label>What social media platforms do you commonly use?</label></li> 
-                        <input type="checkbox" id="Facebook" name="platform" value="1">
-                        <label for="Facebook">Facebook</label>
+                        <!-- <label for="Facebook" class="container2">
+							<input type="checkbox" id="Facebook" name="platform" value="1">
+							<img class="img-checked" src="assets/provo logo.png" alt="Facebook checked">
+							<img class="img-unchecked" src="assets/favicon.ico" alt="Facebook unchecked">
+						</label> -->
                         <input type="checkbox" id="Youtube" name="platform" value="2">                            
                         <label for="Youtube">Youtube</label>
                         <input type="checkbox" id="Pintrest" name="platform" value="3">
