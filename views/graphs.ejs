@@ -33,42 +33,57 @@
         <header class="bg-dark py-5">
             <div class="container px-5">
                 <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                        <div class="text-center my-5">
-                            <br><br><br><br>
-                            <h1 class="display-5 fw-bolder text-white mb-2">Present your business in a whole new way</h1>
-                            <p class="lead text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
-                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                                <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
-                            </div>
-                        </div>
+                    <div class="text-center">
+                        <br><br><br><br>
+                        <h1 class="display-5 fw-bolder text-white mb-2">Survey Dashboard</h1>
+                        <p class="lead text-white-50 mb-4">Below are the analytics and data from the mental health survey updated in realtime.</p>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- Features section-->
+        <!--Dashboard section-->
         <section class="py-5 border-bottom" id="features">
             <div class="container px-5 my-5">
 
             </div>
         </section>
-        <!-- Pricing section-->
+
+        <!--Data section-->
         <section class="bg-light py-5 border-bottom">
             <div class="container px-5 my-5">
-               
-            </div>
-        </section>
-        <!-- Testimonials section-->
-        <section class="py-5 border-bottom">
-            <div class="container px-5 my-5 px-5">
-
-            </div>
-        </section>
-
-        <!-- Contact section-->
-        <section class="bg-light py-5">
-            <div class="container px-5 my-5 px-5">
+                <label><b>Form Responses:</b></label>
+                <br><br>
+                <table style="width: 100%; background-color: antiquewhite; border: 1px solid black;">
+                    <thead style="background-color: cornflowerblue; color: white;">
+                        <tr>
+                            <th style="text-align: left;">TIMESTAMP</th>
+                            <th style="text-align: left;">AGE</th>
+                            <th style="text-align: left;">GENDER</th>
+                            <th style="text-align: left;">CITY</th>
+                            <th style="text-align: left;">RELATIONSHIP</th>
+                            <th style="text-align: left;">OCCUPATION</th>
+                            <th style="text-align: left;">AFF. ORGANIZATIONS</th>
+                            <th style="text-align: left;">USE SOCIAL</th>
+                            <th style="text-align: left;">PLATFORMS USED</th>
+                            <th style="text-align: left;">TIME SPENT ON SOCIAL MEDIA</th>
+                            <th style="text-align: left;">SOCIAL MEDIA NO PURPOSE</th>
+                            <th style="text-align: left;">DISTRACTED BY SOCIAL MEDIA</th>
+                            <th style="text-align: left;">RESTLESS AFTER SOCIAL MEDIA</th>
+                            <th style="text-align: left;">HOW EASILY DISTRACTED</th>
+                            <th style="text-align: left;">BOTHERED BY WORRIES</th>
+                            <th style="text-align: left;">DIFFICULTY CONCENTRATING</th>
+                            <th style="text-align: left;">FREQ. COMPARING SOCIAL MEDIA</th>
+                            <th style="text-align: left;">FEELINGS AFTER COMPARING</th>
+                            <th style="text-align: left;">VALIDATION SOCIAL MEDIA</th>
+                            <th style="text-align: left;">DEPRESSED/DOWN</th>
+                            <th style="text-align: left;">INTEREST IN DAILY ACTIVITIES</th>
+                            <th style="text-align: left;">SLEEP ISSUES</th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-family: Arial; font-size: 9pt;">
+                        
+                    </tbody>
+                </table>
             </div>
         </section>
 
@@ -77,15 +92,12 @@
             <div class="container px-5"><p class="m-0 text-center text-white">Put an email here  |  Put a phone number here</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
         </footer>
 
+        <!-----------JAVASCRIPT SCRIPTS----------->
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         
         <!-- Core theme JS-->
         <script src="../js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script>
             if (sessionStorage.getItem('login') == 'true') {
