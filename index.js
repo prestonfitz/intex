@@ -9,7 +9,8 @@ const path = require('path');
 const port = process.env.PORT || 3000;
 
 const app = express();
-
+// load static
+app.use(express.static(path.join(__dirname, '/html')));
 // Use ejs to get access to database and other fun things
 app.set('view engine', 'ejs');
 
@@ -112,13 +113,17 @@ app.use('/newAccount', (req, res, next) => {
 
 app.use('/loggedin', (req, res, next) => {
   if (!req.session.loggedIn) {
-    return res.redirect('/login');
+    return res.redirect('/relogin');
   }
   next();
 })
 
 //pages
 //data page
+app.get('/relogin', (req,res) =>{
+  res.render('relog')
+})
+
 app.get("/graphs", (req,res) => {
   res.render('graphs')
 });
