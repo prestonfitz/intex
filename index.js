@@ -262,7 +262,7 @@ app.post("/newSurvey", async (req, res)=> {
   // all will have the same participant_id
   await Promise.all(checkboxValuesOrgs.map(async (affiliationNum) => {
     await knex("ParticipantOrganizations").insert({
-      Participant_ID: participant_id.participant_id,
+      Participant_ID: participant_id.Participant_ID,
       Affiliation_Num: affiliationNum
     });
   }));
