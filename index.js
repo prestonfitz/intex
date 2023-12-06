@@ -124,9 +124,21 @@ app.get('/relogin', (req,res) =>{
   res.render('relog')
 })
 
+// trying the redirect stuff
+app.use('/graphs', (req, res, next) => {
+  if (req.session.loggedIn) {
+    return res.redirect('/admin')
+  }
+  next();
+})
+
 app.get("/graphs", (req,res) => {
   res.render('graphs')
 });
+
+app.get('/admin', (req, res) => {
+  res.render('admin')
+})
 
 // Survey page - use to write
 app.get("/survey", (req, res) => {
