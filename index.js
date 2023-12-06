@@ -39,7 +39,7 @@ const knex = require('knex')({
       ssl: process.env.DB_SSL ? { rejectUnauthorized: false } : false
     }
   });
-  
+
 // Because we want it to look nice
 app.use(express.static(path.join(__dirname, '/views')));
 
@@ -138,6 +138,10 @@ app.get("/graphs", (req,res) => {
 
 app.get('/admin', (req, res) => {
   res.render('admin')
+})
+
+app.get('/userView', (req, res) => {
+  res.render('graphs')
 })
 
 // Survey page - use to write
