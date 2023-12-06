@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
+	<meta name="description" content="This survey helps us gage the mental health impact of social media usage on the citizens of Provo, UT" />
 	<meta name="author" content="Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen" />
 	<title>Social Media Usage and Mental Health | Survey</title>
 	<!-- Favicon-->
@@ -13,6 +13,37 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" rel="stylesheet" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="../css/styles.css" rel="stylesheet" />
+	<style>
+		/* Customize the ordered list, which affects the form */
+		ol		{font-size: large;
+				font-weight: medium;}
+		
+		/* This rounds the corners on the number box and the drop down boxes */
+		input[type=number] 	{border-radius: 10px;}
+		
+		select	{border-radius: 10px;
+				text-align: center;}
+				
+		input[type=radio]	{appearance: none;
+
+							border-radius: 50%;
+							width: 16px;
+							height: 16px;
+
+							border: 2px solid #999;
+							transition: 0.2s all linear;
+							margin-right: 5px;
+
+							position: relative;
+							top: 2px;}
+		input[type=radio]:checked {
+			border: 6px solid #76bd1d;
+			}
+
+		.radio-label	{margin-right: 15px;
+						line-height: 32px;}
+
+	</style>
 </head>
 
 <body>
@@ -57,13 +88,13 @@
 	</header>
 	<!-- Here is the survey in all of it's glory. I used a variety of input with some Javascript to make it more fun-->
 	<section class="py-5 border-bottom" id="features">
-		<div class="container px-5 my-5">
+		<div class="container px-5 my-5" style="width: 65%; margin: auto">
 			<form action="/newSurvey" method="post">
 				<ol>
 					<!--Q1: AGE-->
 					<li><label for="age">What is your age?</label></li>
 					<input type="number" min="1" max="100" id="age" name="age" style="text-align: center;"
-						required="required"><br><br>
+						required="required" class="form-number"><br><br>
 
 					<!--Q2: GENDER-->
 					<li><label for="gender">What is your gender?</label></li>
@@ -91,16 +122,16 @@
 
 					<!--Q4: OCCUPATION STATUS-->
 					<li><label>What is your occupation status?</label></li>
-					<input type="radio" id="S-Student" name="occupation" value="School Student" required="required">
-					<lable for="S-Student">School Student</lable>
+					<input type="radio" id="S-Student" name="occupation" value="School Student" required="required" checked="checked">
+					<lable for="S-Student" class="radio-label">School Student</lable>
 					<input type="radio" id="U-Student" name="occupation" value="University Student" required="required">
-					<lable for="U-Student">University Student</lable>
+					<lable for="U-Student" class="radio-label">University Student</lable>
 					<input type="radio" id="work" name="occupation" value="Salaried Worker" required="required">
-					<lable for="work">Working</lable>
+					<lable for="work" class="radio-label">Working</lable>
 					<input type="radio" id="No-work" name="occupation" value="Not Working" required="required">
-					<label for="No-work">Not working</label>
+					<label for="No-work" class="radio-label">Not working</label>
 					<input type="radio" id="retired" name="occupation" value="Retired" required="required">
-					<lable for="retired">Retired</lable><br><br>
+					<lable for="retired" class="radio-label">Retired</lable><br><br>
 
 					<!--Q5: AFFILIATED ORGANIZATIONS-->
 					<li><label>What type of organizations are you affiliated with?</label></li>
@@ -117,10 +148,10 @@
 
 					<!--Q6: USE SOCIAL MEDIA-->
 					<li><label>Do you use social media?</label></li>
-					<input type="radio" id="ySocial" value="Yes" name="useSocial" required="required">
-					<label for="ySocial">Yes</label>
+					<input type="radio" id="ySocial" value="Yes" name="useSocial" required="required" checked="checked">
+					<label for="ySocial" class="radio-label">Yes</label>
 					<input type="radio" id="nSocial" value="No" name="useSocial" required="required">
-					<label for="nSocial">No</label><br><br>
+					<label for="nSocial" class="radio-label">No</label><br><br>
 
 					<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
 					<!--Something extra: replace the checkboxes with platform logos-->
@@ -132,7 +163,7 @@
 					<input type="checkbox" id="Pinterest" name="soc3" value="3">
 					<label for="Pinterest">Pinterest</label>
 					<input type="checkbox" id="Instagram" name="soc4" value="4">
-					<label for="Instagram">Instagram</label>
+					<label for="Instagram">Instagram</label><br/>
 					<input type="checkbox" id="Snapchat" name="soc5" value="5">
 					<label for="Snapchat">Snapchat</label>
 					<input type="checkbox" id="TikTok" name="soc6" value="6">
@@ -140,7 +171,7 @@
 					<input type="checkbox" id="Reddit" name="soc7" value="7">
 					<label for="Reddit">Reddit</label>
 					<input type="checkbox" id="Discord" name="soc8" value="8">
-					<label for="Discord">Discord</label>
+					<label for="Discord">Discord</label><br/>
 					<input type="checkbox" id="Twitter/X" name="soc9" value="9">
 					<label for="Twitter/X">Twitter/X</label>
 					<input type="checkbox" id="BeReal" name="soc10" value="10">
@@ -150,8 +181,8 @@
 
 					<!--Q8: TIME SPENT ON SOCIAL MEDIA-->
 					<li><label for="time">What is the average time you spend on social media every day?</label></li>
-					<input type="range" name="time" id="time" min="1" max="6">
-					<p id="timeOutput"></p>
+					<p><input type="range" name="time" id="time" min="1" max="6" class="form-range"></p>
+					<p id="timeOutput" style="text-align: center;"></p>
 
 					<!--HIDDEN INPUT TO WRITE TIME SPENT STRING TO DATABASE-->
 					<input type="hidden" name="timeOutput2" id="timeOutput2" value="">

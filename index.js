@@ -63,7 +63,7 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
       }
       
     }
-    res.redirect('/account')
+    res.redirect('/loggedin')
     });
 })
 
@@ -109,6 +109,13 @@ app.use('/newAccount', (req, res, next) => {
   }
   next(); // Allow access to protected route
 });
+
+app.use('/loggedin', (req, res, next) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/login');
+  }
+  next();
+})
 
 //pages
 //data page
@@ -195,6 +202,10 @@ app.post("/deleteAccount", (req, res) => {
     res.status(500).json({err});
  });
 });
+
+app.get('/loggedin', (req, res) => {
+  res.render('loggedIn')
+})
 
 //This is the new accounts page
 app.get('/newAccount', (req, res) => {
