@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+    Click <a href="/">here</a> if redirect failed
+    <!-- The purpose of this page is to pass information via a session variable that the user is successfully logged in. This allows the login to interact with the HTMl -->
     <!-- This sets a session storage variable and then redirects the user to the homepage. -->
     <script>sessionStorage.setItem('login', 'true'); window.location.href='/'</script>
 </body>
