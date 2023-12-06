@@ -49,11 +49,12 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
       for (icount = 0; icount < uname.length; icount++){
       if (uname[icount].Username == req.body.username){
         icount = uname.length;
-        knex.select('Password','Account_Num').from('Accounts').where('Username',req.body.username).then(pass =>{
+        knex.select('Password','Account_Num', 'Username').from('Accounts').where('Username',req.body.username).then(pass =>{
           if (pass[0].Password == req.body.password)
           {
             req.session.loggedIn = true;
             req.session.userid = pass[0].Account_Num;
+            req.session.username = pass[0].Username;
             req.session.save(function (err) { //this is what we were missing for a while when baking cookies
               if (err) return next(err)
             });
@@ -145,42 +146,41 @@ app.get('/account', (req, res) => {
 app.post("/editAccount", (req, res)=> {
   knex.select('Username').from('Accounts').then(uname =>{
     let aUsernames = [];
+    let limit = uname.length;
     for(iCount = 0; iCount < uname.length + 1; iCount++)
     {
       aUsernames.push(uname[0].Username);
       uname.shift();
     }
-    if ((!aUsernames.includes(req.body.Username)) ||(req.body.Account_Num == req.session.userid))
-    {console.log(" Found"); console.log(aUsernames); console.log(req.body.Account_Num)}
-    else{console.log('not found');
-  console.log(aUsernames); console.log(req.body.Username), console.log(req.session.loggedIn)}
-  })
-  knex("Accounts").where("Account_Num", parseInt(req.body.Account_Num)).update({
-    Username: req.body.Username,
-    Password: req.body.Password,
-    Email: req.body.Email,
- }).then(myaccount => {
-    res.redirect("/");
- })
+    if ((!aUsernames.includes(req.body.Username)) || (req.body.Username == req.session.username))
+    { 
+    knex("Accounts").where("Account_Num", parseInt(req.body.Account_Num)).update({
+      Username: req.body.Username,
+      Password: req.body.Password,
+      Email: req.body.Email,
+   }).then(myaccount => {})}
+    else{}
+  res.redirect("/account");})
 });
 
 // this is a senior accountant
 app.post("/newAccount", (req, res)=> {
   knex.select('Username').from('Accounts').then(uname =>{
     let aUsernames = [];
-    for(iCount = 0; iCount < uname.length + 1; iCount++)
+    let limit = uname.length;
+    for(iCount = 0; iCount < limit; iCount++)
     {
+      console.log('uname: ' + String(uname.length))
       aUsernames.push(uname[0].Username);
       uname.shift();
     }
-    if (!aUsernames.includes(req.body.Username))
-    {knex("Accounts").insert({
+    if (!aUsernames.includes(req.body.Username)){
+    knex("Accounts").insert({
       Username: req.body.Username,
       Password: req.body.Password,
       Email: req.body.Email,
       Admin_Status: req.body.Admin_Status
-   }).then(myaccount => {});console.log('it worked', aUsernames)}
-    else{console.log('didn\'t work');
+   }).then(myaccount => {});
   }
   res.redirect("/account");
  })
