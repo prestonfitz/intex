@@ -226,7 +226,7 @@ app.post("/newSurvey", async (req, res)=> {
     relationship_status: req.body.relationship,
     occupational_status: req.body.occupation,
     sm_use: req.body.useSocial,
-    sm_time: req.body.time,
+    sm_time: req.body.timeOutput2,
     sm_no_purpose: req.body.np,
     sm_distraction: req.body.dsm,
     sm_restless_withdrawal: req.body.rw,
