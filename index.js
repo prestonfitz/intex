@@ -83,7 +83,7 @@ app.get('/logout', function (req, res, next) {
     // guard against forms of session fixation
     req.session.regenerate(function (err) {
       if (err) next(err)
-      res.redirect('/')
+      res.redirect('/loggedOut')
     })
   })
 })
@@ -203,9 +203,14 @@ app.post("/deleteAccount", (req, res) => {
  });
 });
 
+// these are log in log out pages designed to simply set a session storage variable. Don't worry about it. 
 app.get('/loggedin', (req, res) => {
   res.render('loggedIn')
-})
+});
+
+app.get('/loggedOut', (req, res) =>{
+  res.render('loggedOut')
+});
 
 //This is the new accounts page
 app.get('/newAccount', (req, res) => {
