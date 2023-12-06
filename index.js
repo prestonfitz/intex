@@ -205,7 +205,7 @@ app.post("/deleteAccount", (req, res) => {
 
 // these are log in log out pages designed to simply set a session storage variable. Don't worry about it. 
 app.get('/loggedin', (req, res) => {
-  res.render('loggedIn')
+  res.render('loggedin')
 });
 
 app.get('/loggedOut', (req, res) =>{
