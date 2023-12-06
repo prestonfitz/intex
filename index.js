@@ -2,7 +2,7 @@
 // This is the index.js page. It is the brains of the node application that links everything together. 
 // Alex Fankhauser, Seth Brock, Zach Hansen, Preston Fitzgerald
 
-// import packages and prep apps
+// import packages and prep apps. Express is for running the backend, express-session is for baking cookies. 
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
@@ -10,20 +10,23 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 
+// Use ejs to get access to database and other fun things
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 
+// Preheating the oven. We don't have a very strong log on our oven
 app.use(session({
-    secret: 'your_secret_key', // This should be a long and random string
+    secret: 'your_secret_key', // This should be a long and random string, but it isn't
     resave: false, // Don't save the session if nothing changed
     saveUninitialized: true, // Save new sessions even if not modified
     cookie: {
-      maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour
-      httpOnly: true, // Prevent JavaScript access to the cookie
+      maxAge: 60 * 60 * 1000, // Cookie expires in 1 hour, so eat up
+      httpOnly: true, // Prevent JavaScript access to the cookie. Otherwise it would put it in a cookie JAR
     },
   }));
 
+// This app knex the website to a database. 
 const knex = require('knex')({
   client: 'pg',
   connection: {
@@ -57,23 +60,16 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
             req.session.userid = pass[0].Account_Num;
             console.log(req.session.userid);
             console.log(req.session.loggedIn);
-            req.session.save(function (err) {
+            req.session.save(function (err) { //this is what we were missing for a while when baking cookies
               if (err) return next(err)
             });
           }
-          // else 
-          // {console.log('error2'); res.redirect('/login')}
-          //{res.render('login', { errorMessage: 'Incorrect username or password' });}
-          //{ console.log('error2'); res.render('login', {error: 'Incorrect username or password'})}
         })
       }
       
     }
     res.redirect('/account')
     });
-    //console.log('error1'); res.redirect('/login');
-    // console.log(req.session.loggedIn);
-    //res.redirect('/login');
 })
 
 //cookie monster
@@ -128,7 +124,7 @@ app.get("/graphs", (req,res) => {
 app.get("/survey", (req, res) => {
   res.render('survey')});
 
-// This verifies Database functionality
+// This verifies Database functionality. If it looks like it was stolen from Professor Anderson, just know that it was. Because we knew that it worked.
 app.get('/test', (req, res) => {
   knex.select().from('Accounts').then( Accounts => {
       res.render('displayCountry', { account : Accounts });
@@ -140,7 +136,7 @@ app.get('/login',(req,res) => {
     res.render('login')
 })
 
-//This is the accounts page
+//This is the accounts page. It accepts a userid from a cookie and uses that to query the database to get an account
 app.get('/account', (req, res) => {
   knex.select().from('Accounts').where('Account_Num', req.session.userid).then(account =>{
     res.render('account', {myaccount: account});
@@ -173,9 +169,10 @@ app.post("/newAccount", (req, res)=> {
  })
 });
 
+// This route is inevitable
 app.post("/deleteAccount", (req, res) => {
   knex("Accounts").where("Account_Num",req.body.Account_Num).del().then( account => {
-    res.redirect("/");
+    res.redirect("/logout");
  }).catch( err => {
     console.log(err);
     res.status(500).json({err});
@@ -187,7 +184,7 @@ app.get('/newAccount', (req, res) => {
   res.render('newAccount')
 });
 
-// home page
+// 127.0.0.1 page
 app.get('/', (req, res) => {
     res.render('index')
 });
