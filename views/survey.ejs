@@ -81,23 +81,23 @@
 					<!--Q3: RELATIONSHIP STATUS-->
 					<li><label for="relationship">What is your relationship status?</label></li>
 					<select name="relationship" id="relationship" required="required">
-						<option value="single">Single</option>
-						<option value="in-relationship">In a relationship</option>
-						<option value="married">Married</option>
-						<option value="divorced">Divorced</option>
-						<option value="widowed">Widowed</option>
-						<option value="complicated">It's complicated</option>
+						<option value="Single">Single</option>
+						<option value="In a relationship">In a relationship</option>
+						<option value="Married">Married</option>
+						<option value="Divorced">Divorced</option>
+						<option value="Widowed">Widowed</option>
+						<option value="It's complicated">It's complicated</option>
 					</select><br><br>
 
 					<!--Q4: OCCUPATION STATUS-->
 					<li><label>What is your occupation status?</label></li>
-					<input type="radio" id="S-Student" name="occupation" value="School student" required="required">
+					<input type="radio" id="S-Student" name="occupation" value="School Student" required="required">
 					<lable for="S-Student">School Student</lable>
-					<input type="radio" id="U-Student" name="occupation" value="University student" required="required">
+					<input type="radio" id="U-Student" name="occupation" value="University Student" required="required">
 					<lable for="U-Student">University Student</lable>
 					<input type="radio" id="work" name="occupation" value="Salaried Worker" required="required">
 					<lable for="work">Working</lable>
-					<input type="radio" id="No-work" name="occupation" value="Not working" required="required">
+					<input type="radio" id="No-work" name="occupation" value="Not Working" required="required">
 					<label for="No-work">Not working</label>
 					<input type="radio" id="retired" name="occupation" value="Retired" required="required">
 					<lable for="retired">Retired</lable><br><br>
@@ -250,22 +250,28 @@
 
 		timeSlider.oninput = function () {
 			if (this.value == 1) {
-				sTimeOutput = "Less than an hour"
+				sTimeOutput = "Less than an hour";
+				this.value = "Less than an Hour";
 			}
 			else if (this.value == 2) {
-				sTimeOutput = "Between 1 and 2 hours"
+				sTimeOutput = "Between 1 and 2 hours";
+				this.value = "Between 1 and 2 hours";
 			}
 			else if (this.value == 3) {
-				sTimeOutput = "Between 2 and 3 hours"
+				sTimeOutput = "Between 2 and 3 hours";
+				this.value = "Between 2 and 3 hours";
 			}
 			else if (this.value == 4) {
-				sTimeOutput = "Between 3 and 4 hours"
+				sTimeOutput = "Between 3 and 4 hours";
+				this.value = "Between 3 and 4 hours";
 			}
 			else if (this.value == 5) {
-				sTimeOutput = "Between 4 and 5 hours"
+				sTimeOutput = "Between 4 and 5 hours";
+				this.value = "Between 4 and 5 hours";
 			}
 			else {
-				sTimeOutput = "More than 5 hours"
+				sTimeOutput = "More than 5 hours";
+				this.value = "More than 5 hours";
 			}
 			timeOutput.innerHTML = sTimeOutput;
 		}
