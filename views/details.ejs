@@ -1,502 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="Survey <%= surveyDetails[0].Participant_ID %> data" />
-	<meta name="author" content="Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen" />
-	<title>Social Media Usage and Mental Health | Survey Data</title>
-	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="../assets/provoFavicon.png"/>
-	<!-- Bootstrap icons-->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" rel="stylesheet" />
-	<!-- Core theme CSS (includes Bootstrap)-->
-	<link href="../css/styles.css" rel="stylesheet" />
-	<style>
-		/* Customize the ordered list, which affects the form */
-		ol		{font-size: large;
-				font-weight: medium;}
-		
-		/* This rounds the corners on the number box and the drop down boxes */
-		input[type=number] 	{border-radius: 10px;
-							border-color: black;}
-		
-		select	{border-radius: 10px;
-				text-align: center;}
-				
-		input[type=radio]	{appearance: none;
-
-							border-radius: 50%;
-							width: 16px;
-							height: 16px;
-
-							border: 2px solid #999;
-							transition: 0.2s all linear;
-							margin-right: 5px;
-
-							position: relative;
-							top: 2px;}
-		input[type=radio]:checked {
-			border: 6px solid #76bd1d;
+	<head>
+		<!--Page shows the survey responses for individual survey submissions-->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="Survey <%= surveyDetails[0].Participant_ID %> data" />
+		<meta name="author" content="Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen" />
+		<title>Social Media Usage and Mental Health | Survey #<%= surveyDetails[0].Participant_ID %> Data</title>
+		<!-- Favicon-->
+		<link rel="icon" type="image/x-icon" href="../assets/provoFavicon.png" />
+		<!-- Bootstrap icons-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" rel="stylesheet" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="../css/styles.css" rel="stylesheet" />
+		<style>
+			/* Customize the ordered list, which affects the form */
+			ol {
+				font-size: large;
+				font-weight: medium;
 			}
 
-		.radio-label	{margin-right: 15px;
-						line-height: 32px;}
+			/* These round the corners on the number box and the drop down boxes */
+			input[type=number] {
+				border-radius: 10px;
+				border-color: black;
+			}
 
+			select {
+				border-radius: 10px;
+				text-align: center;
+			}
 
-		
+			/* Edit radio button formatting */
+			input[type=radio] {
+				appearance: none;
 
-	</style>
+				border-radius: 50%;
+				width: 16px;
+				height: 16px;
 
-</head>
+				border: 2px solid #999;
+				transition: 0.2s all linear;
+				margin-right: 5px;
 
-<body onload="q6(); q9(); q10(); q11(); q12(); q13(); q14(); q15(); q16(); q17(); q18(); q19(); q20()">
-	<!-- Responsive navbar-->
-	<nav class="navbar navbar-expand-lg navbar-white bg-white">
-		<div class="container px-5">
-			<a class="navbar-brand" href="/"><img src="../assets/provo logo.png" alt="Provo City Logo"></a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="/admin">Data</a></li>
-					<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- Header-->
-	<header class="bg-dark py-5">
-		<div class="container px-5">
-			<div class="row gx-5 justify-content-center">
-				<div class="text-center">
-					<br><br><br><br><br>
-					<h1 class="display-5 fw-bolder text-white mb-2">Survey <%= surveyDetails[0].Participant_ID %> Data</h1><br>
-					<p class="lead text-white-75 mb-4">
-					</p>
+				position: relative;
+				top: 2px;
+			}
+
+			input[type=radio]:checked {
+				border: 6px solid #76bd1d;
+			}
+
+			.radio-label {
+				margin-right: 15px;
+				line-height: 32px;
+			}
+		</style>
+	</head>
+
+<!--Run these functions that format the output upon loading the page-->
+
+	<body onload="q6(); q9(); q10(); q11(); q12(); q13(); q14(); q15(); q16(); q17(); q18(); q19(); q20()">
+		<!-- Responsive navbar-->
+		<nav class="navbar navbar-expand-lg navbar-white bg-white">
+			<div class="container px-5">
+				<a class="navbar-brand" href="/"><img src="../assets/provo logo.png" alt="Provo City Logo"></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="/survey">Survey</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="/admin">Data</a></li>
+						<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>
+					</ul>
 				</div>
 			</div>
-		</div>
-	</header>
-	<!-- Here is the survey data in all of it's glory. -->
-	<section class="py-5 border-bottom" id="features">
-		<div class="container px-5 my-5" style="width: 65%; margin: auto">
-      <label><b>Participant_ID:</b></label>
-                    <br/><p><%= surveyDetails[0].Participant_ID %></p><br/>
-                    <label><b>Time submitted:</b></label>
-                    <br/><p><%= new Date(surveyDetails[0].Timestamp).toLocaleString() %></p><br/>
-                    <label><b>City:</b></label>
-                    <br/><p><%= surveyDetails[0].City %></p><br/>
-			<form>
-				<ol>
-					<!--Q1: AGE-->
-          			<li>What is your age?</li>
-                    <p><%= surveyDetails[0].Age %></p><br/>
-                    
-					<!--Q2: GENDER-->
-          			<li>What is your gender?</li>
-                    <p><%= surveyDetails[0].Gender %></p><br/>
+		</nav>
+		<!-- Header-->
+		<header class="bg-dark py-5">
+			<div class="container px-5">
+				<div class="row gx-5 justify-content-center">
+					<div class="text-center">
+						<br><br><br><br><br>
+						<h1 class="display-5 fw-bolder text-white mb-2">Survey <%= surveyDetails[0].Participant_ID %> Data
+						</h1><br>
+						<p class="lead text-white-75 mb-4">
+						</p>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Here is the survey data in all of it's glory. -->
+		<section class="py-5 border-bottom" id="features">
+			<div class="container px-5 my-5" style="width: 65%; margin: auto">
+				<!--Header information with identifying information-->
+				<label><b>Participant_ID:</b></label>
+				<br />
+				<p>
+					<%= surveyDetails[0].Participant_ID %>
+				</p><br />
+				<label><b>Time submitted:</b></label>
+				<br />
+				<p>
+					<%= new Date(surveyDetails[0].Timestamp).toLocaleString() %>
+				</p><br />
+				<label><b>City:</b></label>
+				<br />
+				<p>
+					<%= surveyDetails[0].City %>
+				</p><br />
 
-					<!--Q3: RELATIONSHIP STATUS-->
-					<li>What is your relationship status?</li>
-                    <p><%= surveyDetails[0].Relationship_Status %></p><br/>
+				<!--Survey responses-->
+				<form>
+					<ol>
+						<!--Q1: AGE-->
+						<li>What is your age?</li>
+						<p>
+							<%= surveyDetails[0].Age %>
+						</p><br />
 
-					<!--Q4: OCCUPATION STATUS-->
-					<li>What is your occupation status?</li>
-                    <p><%= surveyDetails[0].Occupational_Status %></p><br/>
+						<!--Q2: GENDER-->
+						<li>What is your gender?</li>
+						<p>
+							<%= surveyDetails[0].Gender %>
+						</p><br />
 
-					<!--Q5: AFFILIATED ORGANIZATIONS-->
-          			<li>What type of organizations are you affiliated with?</li>
-					<ol type="a">
-					<%
-						let oOrganization_Description = []
-						for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
-							if (!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){ 
-								oOrganization_Description.push(surveyDetails[iCount].Organization_Description);
-					%>
-						<li><%= surveyDetails[iCount].Organization_Description %></li>
-					<% }} %>
+						<!--Q3: RELATIONSHIP STATUS-->
+						<li>What is your relationship status?</li>
+						<p>
+							<%= surveyDetails[0].Relationship_Status %>
+						</p><br />
+
+						<!--Q4: OCCUPATION STATUS-->
+						<li>What is your occupation status?</li>
+						<p>
+							<%= surveyDetails[0].Occupational_Status %>
+						</p><br />
+
+						<!--Q5: AFFILIATED ORGANIZATIONS-->
+						<li>What type of organizations are you affiliated with?</li>
+						<ol type="a">
+							<% let oOrganization_Description=[] for (iCount=0; iCount < surveyDetails.length; iCount++) { if
+								(!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){
+								oOrganization_Description.push(surveyDetails[iCount].Organization_Description); %>
+								<li>
+									<%= surveyDetails[iCount].Organization_Description %>
+								</li>
+								<% }} %>
+						</ol>
+						<br />
+
+						<!--Q6: USE SOCIAL MEDIA-->
+						<li>Do you use social media?</li>
+						<p id="6Output">
+							<%= surveyDetails[0].SM_Use %>
+						</p><br />
+
+						<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
+						<li>What social media platforms do you commonly use?</li>
+						<ol type="a">
+							<% let oPlatform_name=[] for (iCount=0; iCount < surveyDetails.length; iCount++) { if
+								(!oPlatform_name.includes(surveyDetails[iCount].Platform_Name)){
+								oPlatform_name.push(surveyDetails[iCount].Platform_Name); %>
+								<li>
+									<%= surveyDetails[iCount].Platform_Name %>
+								</li>
+								<% }} %>
+						</ol>
+						<br />
+
+
+						<!--Q8: TIME SPENT ON SOCIAL MEDIA-->
+						<li>What is the average time you spend on social media every day?</li>
+						<p>
+							<%= surveyDetails[0].SM_Time %>
+						</p><br />
+
+						<!--Q9: ON SOCIAL MEDIA WITH NO PURPOSE-->
+						<li>How often do you find yourself using social media without a specific purpose?</li>
+						<p id="9Output">
+							<%= surveyDetails[0].SM_No_Purpose %>
+						</p><br />
+
+						<!--Q10: DISTRACTED BY SOCIAL MEDIA-->
+						<li>How often do you get distracted by social media when you are busy doing something?</li>
+						<p id="10Output">
+							<%= surveyDetails[0].SM_Distraction %>
+						</p><br />
+
+						<!--Q11: RESTLESS AFTER NOT USING SOCIAL MEDIA-->
+						<li>Do you feel restless if you haven&#39;t used social media in a while?</li>
+						<p id="11Output">
+							<%= surveyDetails[0].SM_Restless_Withdrawal %>
+						</p><br />
+
+						<!--Q12: HOW EASILY DISTRACTED-->
+						<li>How easily distracted are you?</li>
+						<p id="12Output">
+							<%= surveyDetails[0].Easily_Distracted %>
+						</p><br />
+
+						<!--Q13: BOTHERED BY WORRIES-->
+						<li>How much are you bothered by worries?</li>
+						<p id="13Output">
+							<%= surveyDetails[0].Worries %>
+						</p><br />
+
+						<!--Q14: DIFFICULTY CONCENTRATING-->
+						<li>Do you find it difficult to concentrate on things?</li>
+						<p id="14Output">
+							<%= surveyDetails[0].Concentration_Difficulty %>
+						</p><br />
+
+						<!--Q15: FREQUENCY COMPARING THROUGH SOCIAL MEDIA-->
+						<li>How often do you compare yourself to other successful people through the use of social media?
+						</li>
+						<p id="15Output">
+							<%= surveyDetails[0].SM_Comparing %>
+						</p><br />
+
+						<!--Q16: FEELINGS ABOUT COMPARISONS ON SOCIAL MEDIA-->
+						<li>Following the previous question, how do you feel about these comparisons, generally speaking?
+						</li>
+						<p id="16Output">
+							<%= surveyDetails[0].SM_Comparing_Feel %>
+						</p><br />
+
+						<!--Q17: LOOKING FOR VALIDATION THROUGH SOCIAL MEDIA-->
+						<li>How often do you look to seek validation from features of social media?</li>
+						<p id="17Output">
+							<%= surveyDetails[0].SM_Validation %>
+						</p><br />
+
+						<!--Q18: FEELING DEPRESSED OR DOWN-->
+						<li>How often do you feel depressed or down?</li>
+						<p id="18Output">
+							<%= surveyDetails[0].Depressed_or_Down %>
+						</p><br />
+
+						<!--Q19: INTEREST IN DAILY ACTIVITIES-->
+						<li>How frequently does your interest in daily activities fluctuate?</li>
+						<p id="19Output">
+							<%= surveyDetails[0].Activity_Interest %>
+						</p><br />
+
+						<!--Q20: SLEEP ISSUES-->
+						<li>How often do you face issues regarding sleep?</li>
+						<p id="20Output">
+							<%= surveyDetails[0].Sleep_Issues %>
+						</p><br />
 					</ol>
-					<br/>
+					<br /><br />
+					<a type="button" class="btn btn-primary btn-lg px-4 me-sm-3" href="/admin">Return to Dashboard</a>
+				</form>
+			</div>
+		</section>
 
-					<!--Q6: USE SOCIAL MEDIA-->
-					<li>Do you use social media?</li>
-                    <p id="6Output"><%= surveyDetails[0].SM_Use %></p><br/>
+		<!-- Footer-->
+		<footer class="py-5 bg-dark">
+			<div class="container px-5">
+				<p class="m-0 text-center text-white">smumh@byu.net | (801) 378-1557</p>
+				<p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p>
+			</div>
+		</footer>
 
-					<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
-					<li>What social media platforms do you commonly use?</li>
-					<ol type="a">
-                    <% 
-						let oPlatform_name = []
-						for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
-							if (!oPlatform_name.includes(surveyDetails[iCount].Platform_Name)){ 
-								oPlatform_name.push(surveyDetails[iCount].Platform_Name);
-					%>
-                        <li><%= surveyDetails[iCount].Platform_Name %></li>
-                    <% }} %>
-					</ol>
-                    <br/>
+		<!--Some Javascript-->
+		<!-- Bootstrap core JS-->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
+		<!-- Core theme JS-->
+		<script src="../js/scripts.js"></script>
+		<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
-					<!--Q8: TIME SPENT ON SOCIAL MEDIA-->
-					<li>What is the average time you spend on social media every day?</li>
-                    <p><%= surveyDetails[0].SM_Time %></p><br/>
+		<!-- The following are scripts run on start up to set number values to be read by humans -->
+		<script>
+			let i6Output = document.getElementById("6Output").textContent;
+			let s6Output = document.getElementById('6Output');
 
-					<!--Q9: ON SOCIAL MEDIA WITH NO PURPOSE-->
-					<li>How often do you find yourself using social media without a specific purpose?</li>
-                    <p id="9Output"><%= surveyDetails[0].SM_No_Purpose %></p><br/>
-
-					<!--Q10: DISTRACTED BY SOCIAL MEDIA-->
-					<li>How often do you get distracted by social media when you are busy doing something?</li>
-                    <p id="10Output"><%= surveyDetails[0].SM_Distraction %></p><br/>
-
-					<!--Q11: RESTLESS AFTER NOT USING SOCIAL MEDIA-->
-					<li>Do you feel restless if you haven&#39;t used social media in a while?</li>
-                    <p id="11Output"><%= surveyDetails[0].SM_Restless_Withdrawal %></p><br/>
-
-					<!--Q12: HOW EASILY DISTRACTED-->
-					<li>How easily distracted are you?</li>
-                    <p id="12Output"><%= surveyDetails[0].Easily_Distracted %></p><br/>
-
-					<!--Q13: BOTHERED BY WORRIES-->
-					<li>How much are you bothered by worries?</li>
-                    <p id="13Output"><%= surveyDetails[0].Worries %></p><br/>
-
-					<!--Q14: DIFFICULTY CONCENTRATING-->
-					<li>Do you find it difficult to concentrate on things?</li>
-                    <p id="14Output"><%= surveyDetails[0].Concentration_Difficulty %></p><br/>
-
-					<!--Q15: FREQUENCY COMPARING THROUGH SOCIAL MEDIA-->
-					<li>How often do you compare yourself to other successful people through the use of social media?</li>
-                    <p id="15Output"><%= surveyDetails[0].SM_Comparing %></p><br/>
-
-					<!--Q16: FEELINGS ABOUT COMPARISONS ON SOCIAL MEDIA-->
-					<li>Following the previous question, how do you feel about these comparisons, generally speaking?</li>
-                    <p id="16Output"><%= surveyDetails[0].SM_Comparing_Feel %></p><br/>
-
-					<!--Q17: LOOKING FOR VALIDATION THROUGH SOCIAL MEDIA-->
-					<li>How often do you look to seek validation from features of social media?</li>
-                    <p id="17Output"><%= surveyDetails[0].SM_Validation %></p><br/>
-
-					<!--Q18: FEELING DEPRESSED OR DOWN-->
-					<li>How often do you feel depressed or down?</li>
-					<p id="18Output"><%= surveyDetails[0].Depressed_or_Down %></p><br/>
-
-					<!--Q19: INTEREST IN DAILY ACTIVITIES-->
-					<li>How frequently does your interest in daily activities fluctuate?</li>
-                    <p id="19Output"><%= surveyDetails[0].Activity_Interest %></p><br/>
-
-					<!--Q20: SLEEP ISSUES-->
-					<li>How often do you face issues regarding sleep?</li>
-                   <p id="20Output"><%= surveyDetails[0].Sleep_Issues %></p><br/>
-				</ol>
-				<br/><br/>
-				<a type="button" class="btn btn-primary btn-lg px-4 me-sm-3" href="/admin">Return to Dashboard</a>
-			</form>
-		</div>
-	</section>
-
-	<!-- Footer-->
-	<footer class="py-5 bg-dark">
-		<div class="container px-5">
-			<p class="m-0 text-center text-white">smumh@byu.net   |  (801) 378-1557</p>
-			<p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p>
-		</div>
-	</footer>
-
-	<!-- Bootstrap core JS-->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-	<!-- Core theme JS-->
-	<script src="../js/scripts.js"></script>
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-	
-
-    <!-- The following are scripts run on start up to set number values to be read by humans -->
-	<script>
-		let i6Output = document.getElementById("6Output").textContent;
-        let s6Output = document.getElementById('6Output');
-
-		function q6() {
-			if (i6Output == 'true') {
-				t6Output = "Yes";
+			function q6() {
+				if (i6Output == 'true') {
+					t6Output = "Yes";
+				}
+				else if (i6Output == 'false') {
+					t6Output = "No";
+				}
+				s6Output.innerHTML = t6Output;
 			}
-			else if (i6Output == 'false') {
-				t6Output = "No";
-			}
-			s6Output.innerHTML = t6Output;
-		}
-	</script>
-    <script>
-		let i9Output = parseInt(document.getElementById("9Output").textContent);
-        let s9Output = document.getElementById('9Output')
+		</script>
+		<script>
+			let i9Output = parseInt(document.getElementById("9Output").textContent);
+			let s9Output = document.getElementById('9Output')
 
-		function q9() {
-			if (i9Output == 1) {
-				t9Output = "Almost never"
+			function q9() {
+				if (i9Output == 1) {
+					t9Output = "Almost never"
+				}
+				else if (i9Output == 2) {
+					t9Output = "Rarely"
+				}
+				else if (i9Output == 3) {
+					t9Output = "Sometimes"
+				}
+				else if (i9Output == 4) {
+					t9Output = "Often"
+				}
+				else if (i9Output == 5) {
+					t9Output = "Always"
+				}
+				s9Output.innerHTML = t9Output;
 			}
-			else if (i9Output == 2) {
-				t9Output = "Rarely"
-			}
-			else if (i9Output == 3) {
-				t9Output = "Sometimes"
-			}
-			else if (i9Output == 4) {
-				t9Output = "Often"
-			}
-			else if (i9Output == 5) {
-				t9Output = "Always"
-			}
-			s9Output.innerHTML = t9Output;
-		}
-	</script>
-    <script>
-        let i10Output = parseInt(document.getElementById("10Output").textContent);
-        let s10Output = document.getElementById('10Output');
-      
-        function q10() {
-          if (i10Output == 1) {
-            t10Output = "Almost never";
-          } else if (i10Output == 2) {
-            t10Output = "Rarely";
-          } else if (i10Output == 3) {
-            t10Output = "Sometimes";
-          } else if (i10Output == 4) {
-            t10Output = "Often";
-          } else if (i10Output == 5) {
-            t10Output = "Always";
-          }
-          s10Output.innerHTML = t10Output;
-        }
-      </script>
-      <script>
-        let i11Output = parseInt(document.getElementById("11Output").textContent);
-        let s11Output = document.getElementById('11Output');
-      
-        function q11() {
-			if (i11Output == 1) {
-				t11Output = "Strongly Disagree";
-			} else if (i11Output == 2) {
-				t11Output = "Disagree";
-			} else if (i11Output == 3) {
-				t11Output = "Neutral";
-			} else if (i11Output == 4) {
-				t11Output = "Agree";
-			} else if (i11Output == 5) {
-				t11Output = "Strongly Agree";
-			}
-          	s11Output.innerHTML = t11Output;
-        }
-      </script>
-      
-      <script>
-        let i12Output = parseInt(document.getElementById("12Output").textContent);
-        let s12Output = document.getElementById('12Output');
-      
-        function q12() {
-			if (i12Output == 1) {
-				t12Output = "Not Easily Distracted";
-			} else if (i12Output == 2) {
-				t12Output = "Occasionally Distracted";
-			} else if (i12Output == 3) {
-				t12Output = "Moderately Distracted";
-			} else if (i12Output == 4) {
-				t12Output = "Easily Distracted";
-			} else if (i12Output== 5) {
-				t12Output = "Highly Distracted";
-			}
-			s12Output.innerHTML = t12Output;
-        }
-      </script>
-      
-      <script>
-        let i13Output = parseInt(document.getElementById("13Output").textContent);
-        let s13Output = document.getElementById('13Output');
-      
-        function q13() {
-			if (i13Output == 1) {
-				t13Output = "Not Bothered";
-			} else if (i13Output == 2) {
-				t13Output = "Occasionally Bothered";
-			} else if (i13Output == 3) {
-				t13Output = "Moderately Bothered";
-			} else if (i13Output == 4) {
-				t13Output = "Easily Bothered";
-			} else if (i13Output == 5) {
-				t13Output = "Highly Bothered";
-			}
-          	s13Output.innerHTML = t13Output;
-        }
-      </script>
-      
-      <script>
-        let i14Output = parseInt(document.getElementById("14Output").textContent);
-        let s14Output = document.getElementById('14Output');
-      
-        function q14() {
-			if (i14Output == 1) {
-				t14Output = "Strongly Disagree";
-			} else if (i14Output == 2) {
-				t14Output = "Disagree";
-			} else if (i14Output == 3) {
-				t14Output = "Neutral";
-			} else if (i14Output == 4) {
-				t14Output = "Agree";
-			} else if (i14Output == 5) {
-				t14Output = "Strongly Agree";
-			}
-          	s14Output.innerHTML = t14Output;
-        }
-      </script>
-      
-      <script>
-        let i15Output = parseInt(document.getElementById("15Output").textContent);
-        let s15Output = document.getElementById('15Output');
-      
-        function q15() {
-          if (i15Output == 1) {
-            t15Output = "Almost never";
-          } else if (i15Output == 2) {
-            t15Output = "Rarely";
-          } else if (i15Output == 3) {
-            t15Output = "Sometimes";
-          } else if (i15Output == 4) {
-            t15Output = "Often";
-          } else if (i15Output == 5) {
-            t15Output = "Always";
-          }
-          s15Output.innerHTML = t15Output;
-        }
-      </script>
-      <script>
-        let i16Output = parseInt(document.getElementById("16Output").textContent);
-        let s16Output = document.getElementById('16Output');
-      
-        function q16() {
-			if (i16Output == 1) {
-				t16Output = "Really Bad"
-			}
-			else if (i16Output == 2) {
-				t16Output = "Bad"
-			}
-			else if (i16Output == 3) {
-				t16Output = "Okay"
-			}
-			else if (i16Output == 4) {
-				t16Output = "Good"
-			}
-			else if (i16Output == 5) {
-				t16Output = "Really Good"
-			}
-          	s16Output.innerHTML = t16Output;
-        }
-      </script>
-      
-      <script>
-        let i17Output = parseInt(document.getElementById("17Output").textContent);
-        let s17Output = document.getElementById('17Output');
-      
-        function q17() {
-          if (i17Output == 1) {
-            t17Output = "Almost never";
-          } else if (i17Output == 2) {
-            t17Output = "Rarely";
-          } else if (i17Output == 3) {
-            t17Output = "Sometimes";
-          } else if (i17Output == 4) {
-            t17Output = "Often";
-          } else if (i17Output == 5) {
-            t17Output = "Always";
-          }
-          s17Output.innerHTML = t17Output;
-        }
-      </script>
-      
-      <script>
-        let i18Output = parseInt(document.getElementById("18Output").textContent);
-        let s18Output = document.getElementById('18Output');
-      
-        function q18() {
-          if (i18Output == 1) {
-            t18Output = "Almost never";
-          } else if (i18Output == 2) {
-            t18Output = "Rarely";
-          } else if (i18Output == 3) {
-            t18Output = "Sometimes";
-          } else if (i18Output == 4) {
-            t18Output = "Often";
-          } else if (i18Output == 5) {
-            t18Output = "Always";
-          }
-          s18Output.innerHTML = t18Output;
-        }
-      </script>
-      
-      <script>
-        let i19Output = parseInt(document.getElementById("19Output").textContent);
-        let s19Output = document.getElementById('19Output');
-      
-        function q19() {
-          if (i19Output == 1) {
-            t19Output = "Almost never";
-          } else if (i19Output == 2) {
-            t19Output = "Rarely";
-          } else if (i19Output == 3) {
-            t19Output = "Sometimes";
-          } else if (i19Output == 4) {
-            t19Output = "Often";
-          } else if (i19Output == 5) {
-            t19Output = "Always";
-          }
-          s19Output.innerHTML = t19Output;
-        }
-      </script>
-      
-      <script>
-        let i20Output = parseInt(document.getElementById("20Output").textContent);
-        let s20Output = document.getElementById('20Output');
-      
-        function q20() {
-          if (i20Output == 1) {
-            t20Output = "Almost never";
-          } else if (i20Output == 2) {
-            t20Output = "Rarely";
-          } else if (i20Output == 3) {
-            t20Output = "Sometimes";
-          } else if (i20Output == 4) {
-            t20Output = "Often";
-          } else if (i20Output == 5) {
-            t20Output = "Always";
-          }
-          s20Output.innerHTML = t20Output;
-        }
-      </script>
-            
-      
+		</script>
+		<script>
+			let i10Output = parseInt(document.getElementById("10Output").textContent);
+			let s10Output = document.getElementById('10Output');
 
-	<!-- All scripts from here on out serve a similar purpose, and it is to match sliders up with text. 
-		They read the imput from the sliders and generate text immiediately underneath them -->
-	<!-- <script>
-		if (sessionStorage.getItem('login') == 'true') {
-			document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>'
-		} else {
-			document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Log In</a></li>'
-		}
-	</script>
-	<script>
-		function validateForm() {
-			let validate = document.forms['survey']['age'].value;
-			if (validate == ''){
-				document.getElementById('error').innerHTML = "Please include your age";
-				return false;
+			function q10() {
+				if (i10Output == 1) {
+					t10Output = "Almost never";
+				} else if (i10Output == 2) {
+					t10Output = "Rarely";
+				} else if (i10Output == 3) {
+					t10Output = "Sometimes";
+				} else if (i10Output == 4) {
+					t10Output = "Often";
+				} else if (i10Output == 5) {
+					t10Output = "Always";
+				}
+				s10Output.innerHTML = t10Output;
 			}
-			console.log('it worked')
-		} -->
-	</script>	
-</body>
+		</script>
+		<script>
+			let i11Output = parseInt(document.getElementById("11Output").textContent);
+			let s11Output = document.getElementById('11Output');
 
+			function q11() {
+				if (i11Output == 1) {
+					t11Output = "Strongly Disagree";
+				} else if (i11Output == 2) {
+					t11Output = "Disagree";
+				} else if (i11Output == 3) {
+					t11Output = "Neutral";
+				} else if (i11Output == 4) {
+					t11Output = "Agree";
+				} else if (i11Output == 5) {
+					t11Output = "Strongly Agree";
+				}
+				s11Output.innerHTML = t11Output;
+			}
+		</script>
+
+		<script>
+			let i12Output = parseInt(document.getElementById("12Output").textContent);
+			let s12Output = document.getElementById('12Output');
+
+			function q12() {
+				if (i12Output == 1) {
+					t12Output = "Not Easily Distracted";
+				} else if (i12Output == 2) {
+					t12Output = "Occasionally Distracted";
+				} else if (i12Output == 3) {
+					t12Output = "Moderately Distracted";
+				} else if (i12Output == 4) {
+					t12Output = "Easily Distracted";
+				} else if (i12Output == 5) {
+					t12Output = "Highly Distracted";
+				}
+				s12Output.innerHTML = t12Output;
+			}
+		</script>
+
+		<script>
+			let i13Output = parseInt(document.getElementById("13Output").textContent);
+			let s13Output = document.getElementById('13Output');
+
+			function q13() {
+				if (i13Output == 1) {
+					t13Output = "Not Bothered";
+				} else if (i13Output == 2) {
+					t13Output = "Occasionally Bothered";
+				} else if (i13Output == 3) {
+					t13Output = "Moderately Bothered";
+				} else if (i13Output == 4) {
+					t13Output = "Easily Bothered";
+				} else if (i13Output == 5) {
+					t13Output = "Highly Bothered";
+				}
+				s13Output.innerHTML = t13Output;
+			}
+		</script>
+
+		<script>
+			let i14Output = parseInt(document.getElementById("14Output").textContent);
+			let s14Output = document.getElementById('14Output');
+
+			function q14() {
+				if (i14Output == 1) {
+					t14Output = "Strongly Disagree";
+				} else if (i14Output == 2) {
+					t14Output = "Disagree";
+				} else if (i14Output == 3) {
+					t14Output = "Neutral";
+				} else if (i14Output == 4) {
+					t14Output = "Agree";
+				} else if (i14Output == 5) {
+					t14Output = "Strongly Agree";
+				}
+				s14Output.innerHTML = t14Output;
+			}
+		</script>
+
+		<script>
+			let i15Output = parseInt(document.getElementById("15Output").textContent);
+			let s15Output = document.getElementById('15Output');
+
+			function q15() {
+				if (i15Output == 1) {
+					t15Output = "Almost never";
+				} else if (i15Output == 2) {
+					t15Output = "Rarely";
+				} else if (i15Output == 3) {
+					t15Output = "Sometimes";
+				} else if (i15Output == 4) {
+					t15Output = "Often";
+				} else if (i15Output == 5) {
+					t15Output = "Always";
+				}
+				s15Output.innerHTML = t15Output;
+			}
+		</script>
+		<script>
+			let i16Output = parseInt(document.getElementById("16Output").textContent);
+			let s16Output = document.getElementById('16Output');
+
+			function q16() {
+				if (i16Output == 1) {
+					t16Output = "Really Bad"
+				}
+				else if (i16Output == 2) {
+					t16Output = "Bad"
+				}
+				else if (i16Output == 3) {
+					t16Output = "Okay"
+				}
+				else if (i16Output == 4) {
+					t16Output = "Good"
+				}
+				else if (i16Output == 5) {
+					t16Output = "Really Good"
+				}
+				s16Output.innerHTML = t16Output;
+			}
+		</script>
+
+		<script>
+			let i17Output = parseInt(document.getElementById("17Output").textContent);
+			let s17Output = document.getElementById('17Output');
+
+			function q17() {
+				if (i17Output == 1) {
+					t17Output = "Almost never";
+				} else if (i17Output == 2) {
+					t17Output = "Rarely";
+				} else if (i17Output == 3) {
+					t17Output = "Sometimes";
+				} else if (i17Output == 4) {
+					t17Output = "Often";
+				} else if (i17Output == 5) {
+					t17Output = "Always";
+				}
+				s17Output.innerHTML = t17Output;
+			}
+		</script>
+
+		<script>
+			let i18Output = parseInt(document.getElementById("18Output").textContent);
+			let s18Output = document.getElementById('18Output');
+
+			function q18() {
+				if (i18Output == 1) {
+					t18Output = "Almost never";
+				} else if (i18Output == 2) {
+					t18Output = "Rarely";
+				} else if (i18Output == 3) {
+					t18Output = "Sometimes";
+				} else if (i18Output == 4) {
+					t18Output = "Often";
+				} else if (i18Output == 5) {
+					t18Output = "Always";
+				}
+				s18Output.innerHTML = t18Output;
+			}
+		</script>
+
+		<script>
+			let i19Output = parseInt(document.getElementById("19Output").textContent);
+			let s19Output = document.getElementById('19Output');
+
+			function q19() {
+				if (i19Output == 1) {
+					t19Output = "Almost never";
+				} else if (i19Output == 2) {
+					t19Output = "Rarely";
+				} else if (i19Output == 3) {
+					t19Output = "Sometimes";
+				} else if (i19Output == 4) {
+					t19Output = "Often";
+				} else if (i19Output == 5) {
+					t19Output = "Always";
+				}
+				s19Output.innerHTML = t19Output;
+			}
+		</script>
+
+		<script>
+			let i20Output = parseInt(document.getElementById("20Output").textContent);
+			let s20Output = document.getElementById('20Output');
+
+			function q20() {
+				if (i20Output == 1) {
+					t20Output = "Almost never";
+				} else if (i20Output == 2) {
+					t20Output = "Rarely";
+				} else if (i20Output == 3) {
+					t20Output = "Sometimes";
+				} else if (i20Output == 4) {
+					t20Output = "Often";
+				} else if (i20Output == 5) {
+					t20Output = "Always";
+				}
+				s20Output.innerHTML = t20Output;
+			}
+		</script>
+	</body>
 </html>

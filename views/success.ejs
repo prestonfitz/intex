@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen -->
     <!-- The purpose of this page is to pass information via a session variable that the survey successfully submitted -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../assets/provoFavicon.png"/>
+    <link rel="icon" type="image/x-icon" href="../assets/provoFavicon.png" />
     <title>Document</title>
 </head>
+
 <body>
     <!-- This is a backup -->
     Click <a href="/survey">here</a> if redirect failed
     <!-- This sets a session storage variable and then redirects the user to the survey. -->
-    <script>sessionStorage.setItem('submit', 'true'); window.location.href='/survey'</script>
+    <script>sessionStorage.setItem('submit', 'true'); window.location.href = '/survey'</script>
 </body>
+
 </html>

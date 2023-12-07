@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+	<!-- Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen -->
+	<!-- Section 1, Group 11 -->
+    <!-- This page is where we put the survey for the user to fill out -->
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="description" content="This survey helps us gage the mental health impact of social media usage on the citizens of Provo, UT" />
@@ -49,16 +52,6 @@
 
 	</style>
 		<style>
-			/* .container2 {
-				font-size: 24px;
-				cursor: pointer;
-				caret-color: transparent;
-				display: flex;
-				align-items: center;
-			}
-			img { padding-right: 5px;}
-
-
 			/* Hide the browser's default checkbox */
 			.container2 input {
 			display: none;
@@ -84,18 +77,11 @@
 
 			.container2:hover input:not(:checked) ~ .img-hover {
 				display: inline;
-			} */
-
-			/* .container2:hover input:not(:checked) ~ .img-checked {
-				display: none;
-			}
-
-			.container2:hover input:not(:checked) ~ .img-unchecked {
-				display: none;
-			} */
+			} 
 		</style>
 </head>
 
+<!-- successCheck will be called later to determine if a survey was submitted and if yes, it generates a pop up box -->
 <body onload="successCheck()">
 	<!-- Responsive navbar-->
 	<nav class="navbar navbar-expand-lg navbar-white bg-white">
@@ -114,7 +100,7 @@
 			</div>
 		</div>
 	</nav>
-	<!-- Header-->
+	<!-- Header explaining a little about the purpose of the survey -->
 	<header class="bg-dark py-5">
 		<div class="container px-5">
 			<div class="row gx-5 justify-content-center">
@@ -203,7 +189,6 @@
 					<label for="nSocial" class="radio-label">No</label><br><br>
 
 					<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
-					<!--Something extra: replace the checkboxes with platform logos-->
 					<li><label>What social media platforms do you commonly use?</label></li>
 					<input type="checkbox" id="Facebook" name="soc1" value="1">
 					<label for="Facebook">Facebook</label>
@@ -302,10 +287,14 @@
 					<div style="width: 25%;"><input type="range" name="si" id="si" min="1" max="5" class="form-range">
 					<p id="20Output" style="text-align: center;"></p></div>
 				</ol>
+
+				<!-- p tag that will display an error message if a required input is left blank (age) -->
 				<p id="error" style="color: red; font-weight: bolder;"></p><br/>
 				<br/><br/>
+				<!-- validate form is what checks to see if age is empty -->
 				<button type="button" onclick="validateForm()" class="btn btn-primary btn-lg px-4 me-sm-3">Submit</button>
-				<span hidden><button id="my-button" onclick="validateForm()" type="submit"></button></span>
+				<!-- super sneaky button that is clicked to submit form after validate form is called -->
+				<span hidden><button id="my-button" type="submit"></button></span>
 			</form>
 		</div>
 	</section>
@@ -620,7 +609,7 @@
 			s20Output.innerHTML = t20Output;
 		};
 	</script>
-	<!-- This script determines if the user is logged in to change the navbar -->
+	<!-- This script determines if the user is logged in to change the navbar from Log In to Account -->
 	<script>
 		if (sessionStorage.getItem('login') == 'true') {
 			document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>'
@@ -628,7 +617,7 @@
 			document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Log In</a></li>'
 		}
 	</script>
-	<!-- This script checks to make sure that the form is filled out -->
+	<!-- This script checks to make sure that the form is filled out fully and gives an error if its not -->
 	<script>
 		const button = document.getElementById('my-button');
 
