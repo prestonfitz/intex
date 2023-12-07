@@ -153,7 +153,7 @@ app.get('/admin', (req, res) => {
 		'pd.City',
 		'pd.Relationship_Status',
 		'pd.Occupational_Status',
-		knex.raw('ARRAY_TO_STRING(AggregatedAffiliation.Affiliation_Num, ?) AS Affiliation_Num', [', ']),
+		knex.raw('ARRAY_TO_STRING(AggregatedAffiliation."Affiliation_Num", ?) AS Affiliation_Num'),
 		knex.raw('ARRAY_TO_STRING(ARRAY_AGG(DISTINCT ao.Organization_Description::VARCHAR), ?) AS Organization_Description', [', ']),
 		'pd.SM_Use',
 		knex.raw('ARRAY_TO_STRING(ARRAY_AGG(DISTINCT pp.Platform_Num::VARCHAR), ?) AS Platform_Num', [', ']),
