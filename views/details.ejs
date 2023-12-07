@@ -142,7 +142,7 @@
 					<li>What is the average time you spend on social media every day?</li>
 					<p>
 						<%
-							var smTime = <%= surveyDetails[0].SM_Time %>;
+							var smTime = %><%= surveyDetails[0].SM_Time %><%;
 
 							switch (smTime) {
 								case 1:
