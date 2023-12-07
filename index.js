@@ -1,6 +1,7 @@
 // Intex Project
 // This is the index.js page. It is the brains of the node application that links everything together. 
 // Alex Fankhauser, Seth Brock, Zach Hansen, Preston Fitzgerald
+// Section 1 Group 11
 
 // import packages and prep apps. Express is for running the backend, express-session is for baking cookies. 
 const express = require('express');
@@ -9,14 +10,13 @@ const path = require('path');
 const port = process.env.PORT || 3000;
 
 const app = express();
-// load static
-app.use(express.static(path.join(__dirname, '/html')));
+
 // Use ejs to get access to database and other fun things
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
 
-// Preheating the oven. We don't have a very strong log on our oven
+// Preheating the oven. We don't have a very strong lock on our oven
 app.use(session({
     secret: 'your_secret_key', // This should be a long and random string, but it isn't
     resave: false, // Don't save the session if nothing changed
@@ -68,7 +68,7 @@ app.post('/validate',(req,res) => { //This is the route called by the login func
     });
 })
 
-//cookie monster
+//cookie monster (log out)
 app.get('/logout', function (req, res, next) {
   // logout logic
 
@@ -92,7 +92,7 @@ app.get('/logout', function (req, res, next) {
 //Protected routes
 //These are used to see if someone is logged in
 
-// trying the redirect stuff
+// Protect the admin (dashboard page)
 app.use('/admin', (req, res, next) => {
   if (!req.session.loggedIn) {
     return res.redirect('/graphs')
@@ -119,6 +119,7 @@ app.use('/newAccount', (req, res, next) => {
   next(); // Allow access to protected route
 });
 
+// This helps the login page determine if it needs to generate an error message
 app.use('/loggedin', (req, res, next) => {
   if (!req.session.loggedIn) {
     return res.redirect('/relogin');
@@ -128,15 +129,17 @@ app.use('/loggedin', (req, res, next) => {
 })
 
 //pages
-//data page
+//This is when you mess up your login
 app.get('/relogin', (req,res) =>{
   res.render('relog')
 })
 
+// Go to the general user dashboard
 app.get("/graphs", (req,res) => {
   res.render('graphs')
 });
 
+// Go to the admin dashboard
 app.get('/admin', (req, res) => {
 	knex.select('Participant_ID',
 				'Timestamp',
@@ -194,20 +197,14 @@ app.post("/details",  (req, res)=> {
  });
 });
 
-app.get('/userView', (req, res) => {
-  res.render('graphs')
-})
+// Another route to go to the user dashboard page
+// app.get('/userView', (req, res) => {
+//   res.render('graphs')
+// })
 
 // Survey page - use to write
 app.get("/survey", (req, res) => {
   res.render('survey')});
-
-// This verifies Database functionality. If it looks like it was stolen from Professor Anderson, just know that it was. Because we knew that it worked.
-app.get('/test', (req, res) => {
-  knex.select().from('Accounts').then( Accounts => {
-      res.render('displayCountry', { account : Accounts });
-  });
-});
 
 //This is the login page
 app.get('/login',(req,res) => {
@@ -224,7 +221,7 @@ app.get('/account', (req, res) => {
  });
 });
 
-//This is an accountant
+//This is an accountant (edits accounts)
 app.post("/editAccount", (req, res)=> {
   // grab the usernames from the database
   knex.select('Username').from('Accounts').then(uname =>{
@@ -236,7 +233,7 @@ app.post("/editAccount", (req, res)=> {
       uname.shift();
     }
     // if the username is not in the database or if it is equal to the logged in account's username
-    // go ahead and create the account
+    // go ahead and edit the account
     if ((!aUsernames.includes(req.body.Username)) || (req.body.Username == req.session.username))
     { 
     knex("Accounts").where("Account_Num", parseInt(req.body.Account_Num)).update({
@@ -252,7 +249,7 @@ app.post("/editAccount", (req, res)=> {
   return res.redirect("/account");})
 });
 
-// this is a senior accountant
+// this is a senior accountant (creates accounts)
 app.post("/newAccount", (req, res)=> {
   // grab the usernames from the Accounts table in our database and push them to an array
   knex.select('Username').from('Accounts').then(uname =>{
@@ -282,7 +279,7 @@ app.post("/newAccount", (req, res)=> {
  })
 });
 
-// This route is inevitable
+// This route is inevitable (Thanos snaps your account out of existance)
 app.post("/deleteAccount", (req, res) => {
   // delete the account based on the account_num of the account logged in then send to logout route
   knex("Accounts").where("Account_Num",req.body.Account_Num).del().then( account => {
@@ -293,7 +290,7 @@ app.post("/deleteAccount", (req, res) => {
  });
 });
 
-// these are log in log out pages designed to simply set a session storage variable. Don't worry about it. 
+// these are log in log out pages designed to simply set a session storage variable
 app.get('/loggedin', (req, res) => {
   res.render('loggedin')
 });
