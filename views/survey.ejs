@@ -139,12 +139,11 @@
 	<!-- Here is the survey in all of it's glory. I used a variety of input with some Javascript to make it more fun-->
 	<section class="py-5 border-bottom" id="features">
 		<div class="container px-5 my-5" style="width: 65%; margin: auto">
-			<form action="/newSurvey" method="post" name="survey" onsubmit="validateForm()">
+			<form action="/newSurvey" method="post" name="survey">
 				<ol>
 					<!--Q1: AGE-->
 					<li><label for="age">What is your age?</label></li>
-					<input type="number" min="1" max="100" id="age" name="age" style="text-align: center;" class="form-number">
-						<p id="error"></p><br/>
+					<input type="number" min="1" max="100" id="age" name="age" style="text-align: center;" class="form-number"><br/><br/>
 
 					<!--Q2: GENDER-->
 					<li><label for="gender">What is your gender?</label></li>
@@ -303,8 +302,10 @@
 					<div style="width: 25%;"><input type="range" name="si" id="si" min="1" max="5" class="form-range">
 					<p id="20Output" style="text-align: center;"></p></div>
 				</ol>
+				<p id="error" style="color: red; font-weight: bolder;"></p><br/>
 				<br/><br/>
-				<button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3">Submit</button>
+				<button type="button" onclick="validateForm()" class="btn btn-primary btn-lg px-4 me-sm-3">Submit</button>
+				<span hidden><button id="my-button" onclick="testing()" type="submit"></button></span>
 			</form>
 		</div>
 	</section>
@@ -619,6 +620,7 @@
 			s20Output.innerHTML = t20Output;
 		};
 	</script>
+	<!-- This script determines if the user is logged in to change the navbar -->
 	<script>
 		if (sessionStorage.getItem('login') == 'true') {
 			document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>'
@@ -626,16 +628,26 @@
 			document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Log In</a></li>'
 		}
 	</script>
+	<!-- This script checks to make sure that the form is filled out -->
 	<script>
+		const button = document.getElementById('my-button');
+
 		function validateForm() {
 			let validate = document.forms['survey']['age'].value;
 			if (validate == ''){
-				document.getElementById('error').innerHTML = "Please include your age";
+				document.getElementById('error').innerHTML = '<a href="#features" style="color: red; text-decoration:none">Please include your age (located at top)</a>';
 				return false;
 			}
-			console.log('it worked')
+			else{}
+			clickButton(button)
 		}
+
+		// Click submit
+		function clickButton(buttonElement) {
+            const clickEvent = new MouseEvent('click');
+            buttonElement.dispatchEvent(clickEvent);
+            }
 	</script>	
 </body>
-
+<span hidden><button id="my-button" onclick="testing()" type="submit"></button></span>
 </html>
