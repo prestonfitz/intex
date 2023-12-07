@@ -167,7 +167,7 @@ app.get('/admin', (req, res) => {
 				.innerJoin('Platforms as p', 'pp.Platform_Num', 'p.Platform_Num')
 				.innerJoin('ParticipantOrganizations as po', "pd.Participant_ID", "po.Participant_ID")
 				.innerJoin('AffiliatedOrganizations as ao', "po.Affiliation_Num", "ao.Affiliation_Num")
-				.where("pd.Participant_ID", req.body.userid).then(personalDetails => {
+				.then(personalDetails => {
 	res.render("admin", {personalDetails: personalDetails});
 }).catch( err => {
 	console.log(err);
