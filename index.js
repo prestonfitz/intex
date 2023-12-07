@@ -141,10 +141,11 @@ app.get("/graphs", (req,res) => {
 app.get('/admin', (req, res) => {
 	knex.with('AggregatedAffiliation', (qb) => {
 		qb
-			.select('Participant_ID', knex.raw('ARRAY_AGG(DISTINCT Affiliation_Num::VARCHAR) AS Affiliation_Num'))
-			.from('ParticipantOrganizations')
-			.groupBy('Participant_ID');
-		})
+		  .select('Participant_ID')
+		  .select(knex.raw('ARRAY_AGG(DISTINCT "Affiliation_Num"::VARCHAR) AS "Affiliation_Num"'))
+		  .from('ParticipantOrganizations')
+		  .groupBy('Participant_ID');
+	  	})
 		.select(
 		'pd.Participant_ID',
 		'pd.Timestamp',
