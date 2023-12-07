@@ -138,7 +138,7 @@ app.get("/graphs", (req,res) => {
   res.render('graphs')
 });
 
-app.post('/admin', (req, res) => {
+app.get('/admin', (req, res) => {
 	knex.select("pd.Participant_ID", 
 				"pd.Timestamp", 
 				"pd.Age", 
