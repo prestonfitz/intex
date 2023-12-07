@@ -147,11 +147,11 @@ app.get('/admin', (req, res) => {
 		'pd.City',
 		'pd.Relationship_Status',
 		'pd.Occupational_Status',
-		knex.raw('STRING_AGG(DISTINCT po.Affiliation_Num::VARCHAR, ?) AS Affiliation_Num', [', ']),
-		knex.raw('STRING_AGG(DISTINCT ao.Organization_Description::VARCHAR, ?) AS Organization_Description', [', ']),
+		knex.raw('STRING_AGG(po.Affiliation_Num::VARCHAR, ?) AS Affiliation_Num', [', ']),
+		knex.raw('STRING_AGG(ao.Organization_Description::VARCHAR, ?) AS Organization_Description', [', ']),
 		'pd.SM_Use',
-		knex.raw('STRING_AGG(DISTINCT pp.Platform_Num::VARCHAR, ?) AS Platform_Num', [', ']),
-		knex.raw('STRING_AGG(DISTINCT p.Platform_Name::VARCHAR, ?) AS Platform_Name', [', ']),
+		knex.raw('STRING_AGG(pp.Platform_Num::VARCHAR, ?) AS Platform_Num', [', ']),
+		knex.raw('STRING_AGG(p.Platform_Name::VARCHAR, ?) AS Platform_Name', [', ']),
 		'pd.SM_Time',
 		'pd.SM_No_Purpose',
 		'pd.SM_Distraction',
@@ -167,15 +167,7 @@ app.get('/admin', (req, res) => {
 		'pd.Sleep_Issues'
 	  )
 	  .from('PersonalDetails as pd')
-	  .leftJoin(
-		knex
-		  .select('Participant_ID', knex.raw('STRING_AGG(DISTINCT Affiliation_Num::VARCHAR, ?) AS Affiliation_Num', [', ']))
-		  .from('ParticipantOrganizations')
-		  .groupBy('Participant_ID')
-		  .as('po'),
-		'pd.Participant_ID',
-		'po.Participant_ID'
-	  )
+	  .leftJoin('ParticipantOrganizations as po', 'pd.Participant_ID', 'po.Participant_ID')
 	  .leftJoin('ParticipantPlatforms as pp', 'pd.Participant_ID', 'pp.Participant_ID')
 	  .leftJoin('Platforms as p', 'pp.Platform_Num', 'p.Platform_Num')
 	  .leftJoin('AffiliatedOrganizations as ao', 'po.Affiliation_Num', 'ao.Affiliation_Num')
