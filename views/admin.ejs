@@ -136,17 +136,21 @@
                             <th scope="col">Gender</th>
                             <th scope="col">City</th>
                             <th scope="col">Relationship Status</th>
+                            <th scope="col">Occupational Status</th>
+                            <th scope="col">Affiliated Organization</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% for (let iCount = 0; iCount < personalDetails.length; iCount++) { %>
                             <tr>
                                 <th scope="row"><%= personalDetails[iCount].Participant_ID %></th>
-                                <td><%= personalDetails[iCount].Timestamp %></td>
+                                <td><%= new Date(personalDetails[iCount].Timestamp).toLocaleString() %></td>
                                 <td><%= personalDetails[iCount].Age %></td>
                                 <td><%= personalDetails[iCount].Gender %></td>
                                 <td><%= personalDetails[iCount].City %></td>
                                 <td><%= personalDetails[iCount].Relationship_Status %></td>
+                                <td><%= personalDetails[iCount].Occupational_Status %></td>
+                                <td><%= personalDetails[iCount].Organization_Description %></td>
                             </tr>
                         <% } %>
                     </tbody>

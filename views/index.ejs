@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Hello Provo City technical committee! We know that you will be looking for names and descriptions of pages. We have included these on all of our pages, though not always in the comments. We got a bootstrap template that came with name and description meta tags, and we chose to use those in some cases. So if you are struggling to find those comments, check the meta tags. -->
+        <!-- This page, is the home page. It serves to inform the user about what the SMUMH is about and act as a hub for the rest of the site -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Welcome to the homepage for the SMUMH! Come learn the effects that social media can have on your mental health." />
@@ -40,15 +42,17 @@
                             <p class="lead text-white-75 mb-4">Exploring the effects of social media on the mental health of the Provo community</p>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/survey">Take our survey</a>
-                                <!--<a class="btn btn-outline-light btn-lg px-4" href="#features">Learn More</a>-->
+                                <a class="btn btn-outline-light btn-lg px-4" href="#features">Learn More</a>
                             </div>
                         </div>
+                        <!-- Putting the id here makes it line up better with the nav bar -->
+                        <div id="features"></div>
                     </div>
                 </div>
             </div>
         </header>
-        <!--Features section-->
-        <section class="py-5 border-bottom" id="features">
+        <!--A brief summary of why we get this data-->
+        <section class="py-5 border-bottom" >
             <div class="container px-5 my-5">
                 <div class="row gx-5">
                     <div class="col-lg-4 mb-5 mb-lg-0">
@@ -132,7 +136,16 @@
                 </div>
             </div>
         </section>
-        <!-- Contact section-->
+        <!-- A brief description of the SMUMH -->
+        <section class="py-5 border-bottom" id="features">
+            <div class="container px-5 my-5">
+                <div class="text-center mb-5" style="width: 70%; margin: auto">
+                    <h2 class="fw-bolder">About the Social Media Usage<br/> and Mental Health Committee</h2>
+                    <p>Amidst the ever-expanding role of social media in daily life, Provo’s city government recognizes a pressing need to explore the intricate relationship between digital connectivity and mental health within their community. With a surge in concerns regarding rising levels of anxiety, depression, and social isolation, Provo’s local government has created a Social Media Usage and Mental Health committee (SMU MH committee) to investigate how social media usage patterns may contribute to these challenges. By delving into this connection, they seek a nuanced understanding of the specific influences and stressors that digital platforms may exert on residents' mental well-being.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Contact section, just in case we want it later -->
         <!-- <section class="bg-light py-5">
             <div class="container px-5 my-5 px-5">
                 <div class="text-center mb-5">
@@ -201,6 +214,7 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- Checks for log in to see what to display in the navbar -->
         <script>
             if (sessionStorage.getItem('login') == 'true') {
                 document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Account</a></li>'
