@@ -90,7 +90,7 @@
                     <label>Participant_ID:</label>
                     <br/><p><%= surveyDetails[0].Participant_ID %></p><br/>
                     <label>Time submitted:</label>
-                    <br/><p><%= surveyDetails[0].Timestamp %></p><br/>
+                    <br/><p><% surveyDetails[0].Timestamp.substring(0,23) %></p><br/>
                     <label>City:</label>
                     <br/><p><%= surveyDetails[0].City %></p><br/>
 					<!--Q1: AGE-->
