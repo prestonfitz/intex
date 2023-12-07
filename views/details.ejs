@@ -114,8 +114,8 @@
                     <br/>
                     <% oOrganization_Description = []
                     for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
-                        if (!oOrganization_Description.includes(<%= surveyDetails[iCount].Organization_Description %>)){ 
-                            oOrganization_Description.push(<%= surveyDetails[iCount].Organization_Description %>);%>
+                        if (!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){ 
+                            oOrganization_Description.push(surveyDetails[iCount].Organization_Description);%>
                         <p><%= surveyDetails[iCount].Organization_Description %></p>
                     <% }} %>
                     <br/>
@@ -129,8 +129,8 @@
                     <br/>
                     <% oPlatform_name = []
                     for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
-                        if (!oPlatform_name.includes(<%= surveyDetails[iCount].Platform_Name %>)){ 
-                            oPlatform_name.push(<%= surveyDetails[iCount].Platform_Name %>);%>
+                        if (!oPlatform_name.includes(surveyDetails[iCount].Platform_Name)){ 
+                            oPlatform_name.push(surveyDetails[iCount].Platform_Name);%>
                         <p><%= surveyDetails[iCount].Platform_Name %></p>
                     <% }} %>
                     <br/>
