@@ -92,6 +92,14 @@ app.get('/logout', function (req, res, next) {
 //Protected routes
 //These are used to see if someone is logged in
 
+// trying the redirect stuff
+app.use('/admin', (req, res, next) => {
+  if (!req.session.loggedIn) {
+    return res.redirect('/graphs')
+  }
+  next();
+})
+
 // This protects the account route
 // an idea to check changing the username: run an if statement where it is not in the database OR it is the current session username
 app.use('/account', (req, res, next) => {
@@ -124,14 +132,6 @@ app.use('/loggedin', (req, res, next) => {
 //data page
 app.get('/relogin', (req,res) =>{
   res.render('relog')
-})
-
-// trying the redirect stuff
-app.use('/graphs', (req, res, next) => {
-  if (req.session.loggedIn) {
-    return res.redirect('/admin')
-  }
-  next();
 })
 
 app.get("/graphs", (req,res) => {
