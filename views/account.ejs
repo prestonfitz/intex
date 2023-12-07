@@ -51,7 +51,7 @@
         <!-- This is the account information form. It auto generates the account data from the database and allows account creation. -->
         <section class="bg-light py-5 border-bottom">
             <div class="container px-5 my-5">
-               <form action="editAccount" method="post" class="AccountEditor" aria-required="true">
+               <form action="/editAccount" method="post" class="AccountEditor" aria-required="true">
                 <input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>">
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
                         <input class="form-control" type="text" id="Username" name="Username" value="<%= myaccount[0].Username %>">
@@ -80,7 +80,7 @@
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <!-- top sneaky button to hide work with the function to ensure users know what they're doing -->
-            <span hidden><form method='post' action='deleteAccount'><input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>"><button id="my-button" onclick="testing()" type="submit"></button></form></span>
+            <span hidden><form method='post' action='/deleteAccount'><input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>"><button id="my-button" onclick="testing()" type="submit"></button></form></span>
             <div class="container px-5"><p class="m-0 text-center text-white">smumh@byu.net  |  (801) 378-1557</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
         </footer>
 
