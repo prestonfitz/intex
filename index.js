@@ -139,20 +139,16 @@ app.get("/graphs", (req,res) => {
 });
 
 app.get('/admin', (req, res) => {
-	knex.select('pd.Participant_ID',
-				'pd.Timestamp',
-				'pd.Age',
-				'pd.Gender',
-				'pd.City',
-				'pd.Relationship_Status',
-				'pd.Occupational_Status')
+	knex.select('Participant_ID',
+				'Timestamp',
+				'Age',
+				'Gender',
+				'City',
+				'Relationship_Status',
+				'Occupational_Status')
   		.from('PersonalDetails as pd')
-  			.leftJoin('AggregatedAffiliation as po', 'pd.Participant_ID', 'po.Participant_ID')
-			.leftJoin('ParticipantPlatforms as pp', 'pd.Participant_ID', 'pp.Participant_ID')
-			.leftJoin('Platforms as p', 'pp.Platform_Num', 'p.Platform_Num')
-			.leftJoin('AffiliatedOrganizations as ao', 'po.Affiliation_Num', 'ao.Affiliation_Num')
-		.orderBy('pd.Timestamp', 'asc')
-		.orderBy('pd.Participant_ID', 'asc')
+		.orderBy('Timestamp', 'asc')
+		.orderBy('Participant_ID', 'asc')
 		.then(personalDetails => {
 	res.render("admin", {personalDetails: personalDetails});
 }).catch( err => {
