@@ -144,27 +144,31 @@ app.get('/admin', (req, res) => {
 
 //this route creates a page to display selected survey information
 app.post("/details",  (req, res)=> {
-  knex.select("Participant_ID", 
-              "Timestamp", 
-              "Age", 
-              "Gender", 
-              "City",
-              "Relationship_Status",
-              "Occupational_Status",
-              'SM_Use',
-              'SM_Time',
-              'SM_No_Purpose',
-              "SM_Distraction",
-              'SM_Restless_Withdrawal',
-              'Easily_Distracted',
-              'Worries',
-              'Concentration_Difficulty',
-              'SM_Comparing',
-              'SM_Comparing_Feel',
-              'SM_Validation',
-              'Depressed_or_Down',
-              'Activity_Interest',
-              'Sleep_Issues').from("PersonalDetails").where("Participant_ID", req.body.userid).then(surveyDetails => {
+  knex.select("pd.Participant_ID", 
+              "pd.Timestamp", 
+              "pd.Age", 
+              "pd.Gender", 
+              "pd.City",
+              "pd.Relationship_Status",
+              "pd.Occupational_Status",
+              'pd.SM_Use',
+              'pd.SM_Time',
+              'pd.SM_No_Purpose',
+              "pd.SM_Distraction",
+              'pd.SM_Restless_Withdrawal',
+              'pd.Easily_Distracted',
+              'pd.Worries',
+              'pd.Concentration_Difficulty',
+              'pd.SM_Comparing',
+              'pd.SM_Comparing_Feel',
+              'pd.SM_Validation',
+              'pd.Depressed_or_Down',
+              'pd.Activity_Interest',
+              'pd.Sleep_Issues')
+              .from("PersonalDetails as pd")
+              .innerJoin('ParticipantPlatforms as pp', 'pd.Participant_ID', 'pp.Participant_ID')
+              .innerJoin('Platforms as p', 'pp.Platform_Num', 'p.Platform_Num')
+              .where("Participant_ID", req.body.userid).then(surveyDetails => {
   res.render("details", {surveyDetails: surveyDetails});
  }).catch( err => {
     console.log(err);
