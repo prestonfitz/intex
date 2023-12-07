@@ -156,7 +156,11 @@
 
 					<!--Q5: AFFILIATED ORGANIZATIONS-->
 					<li><label>What type of organizations are you affiliated with?</label></li>
-                    <br/><p><%= surveyDetails[0].SM_Use %></p><br/>
+                    <br/>
+                    <% for (iCount = 0; iCount < surveyDetails.length; iCount++) { %>
+                    <p><%= surveyDetails[iCount].SM_Use %></p><br/>
+                    <% } %>
+                    <br/>
 
 					<!--Q6: USE SOCIAL MEDIA-->
 					<li><label>Do you use social media?</label></li>
