@@ -164,7 +164,8 @@ app.post("/details",  (req, res)=> {
               'pd.SM_Validation',
               'pd.Depressed_or_Down',
               'pd.Activity_Interest',
-              'pd.Sleep_Issues')
+              'pd.Sleep_Issues',
+              'p.Platform_Name')
               .from("PersonalDetails as pd")
               .innerJoin('ParticipantPlatforms as pp', 'pd.Participant_ID', 'pp.Participant_ID')
               .innerJoin('Platforms as p', 'pp.Platform_Num', 'p.Platform_Num')
