@@ -115,6 +115,12 @@
                     <% for (iCount = 0; iCount < surveyDetails.length; iCount++) { %>
                     <p><%= surveyDetails[iCount].Organization_Description %></p>
                     <% } %>
+                    <% oOrganization_Description = []
+                    for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
+                        if (!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){ 
+                            oOrganization_Description.push('surveyDetails[iCount].Organization_Description");%>
+                        <p><%= surveyDetails[iCount].Organization_Description %></p>
+                    <% }} %>
                     <br/>
 
 					<!--Q6: USE SOCIAL MEDIA-->
@@ -124,9 +130,12 @@
 					<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
 					<li><label>What social media platforms do you commonly use?</label></li>
                     <br/>
-                    <% for (iCount = 0; iCount < surveyDetails.length; iCount++) { %>
-                    <p><%= surveyDetails[iCount].Platform_Name %></p>
-                    <% } %>
+                    <% oPlatform_name = []
+                    for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
+                        if (!oPlatform_name.includes(surveyDetails[iCount].Platform_Name)){ 
+                            oPlatform_name.push('surveyDetails[iCount].Platform_Name");%>
+                        <p><%= surveyDetails[iCount].Platform_Name %></p>
+                    <% }} %>
                     <br/>
 
 
