@@ -4,9 +4,9 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="This survey helps us gage the mental health impact of social media usage on the citizens of Provo, UT" />
+	<meta name="description" content="Survey <%= surveyDetails[0].Participant_ID %> data" />
 	<meta name="author" content="Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen" />
-	<title>Social Media Usage and Mental Health | Survey</title>
+	<title>Social Media Usage and Mental Health | Survey Data</title>
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="../assets/provoFavicon.png"/>
 	<!-- Bootstrap icons-->
@@ -48,52 +48,7 @@
 		
 
 	</style>
-		<style>
-			/* .container2 {
-				font-size: 24px;
-				cursor: pointer;
-				caret-color: transparent;
-				display: flex;
-				align-items: center;
-			}
-			img { padding-right: 5px;}
 
-
-			/* Hide the browser's default checkbox */
-			.container2 input {
-			display: none;
-			}
-
-			/* Hide the checked checkbox */
-			.img-checked {
-				display: none;
-			}
-			.img-hover {
-				display: none;
-			}
-
-
-			.container2 input:checked ~ .img-checked {
-				display: inline;
-			}
-
-
-			.container2 input:checked ~ .img-unchecked {
-				display: none;
-			}
-
-			.container2:hover input:not(:checked) ~ .img-hover {
-				display: inline;
-			} */
-
-			/* .container2:hover input:not(:checked) ~ .img-checked {
-				display: none;
-			}
-
-			.container2:hover input:not(:checked) ~ .img-unchecked {
-				display: none;
-			} */
-		</style>
 </head>
 
 <body onload="q9(); q10(); q11(); q12(); q13(); q14(); q15(); q16(); q17(); q18(); q19(); q20()">
@@ -127,7 +82,7 @@
 			</div>
 		</div>
 	</header>
-	<!-- Here is the survey in all of it's glory. I used a variety of input with some Javascript to make it more fun-->
+	<!-- Here is the survey data in all of it's glory. -->
 	<section class="py-5 border-bottom" id="features">
 		<div class="container px-5 my-5" style="width: 65%; margin: auto">
 			<form>
@@ -158,7 +113,7 @@
 					<li><label>What type of organizations are you affiliated with?</label></li>
                     <br/>
                     <% for (iCount = 0; iCount < surveyDetails.length; iCount++) { %>
-                    <p><%= surveyDetails[iCount].Platform_Name %></p><br/>
+                    <p><%= surveyDetails[iCount].Organization_Description %></p>
                     <% } %>
                     <br/>
 
@@ -167,8 +122,12 @@
                     <br/><p><%= surveyDetails[0].SM_Use %></p><br/>
 
 					<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
-					<!--Something extra: replace the checkboxes with platform logos-->
 					<li><label>What social media platforms do you commonly use?</label></li>
+                    <br/>
+                    <% for (iCount = 0; iCount < surveyDetails.length; iCount++) { %>
+                    <p><%= surveyDetails[iCount].Platform_Name %></p>
+                    <% } %>
+                    <br/>
 
 
 					<!--Q8: TIME SPENT ON SOCIAL MEDIA-->
@@ -250,6 +209,8 @@
 	<script src="../js/scripts.js"></script>
 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 	
+
+    <!-- The following are scripts run on start up to set number values to be read by humans -->
     <script>
 		let i9Output = parseInt(document.getElementById("9Output").textContent);
         let s9Output = document.getElementById('9Output')
