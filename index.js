@@ -143,8 +143,7 @@ app.get('/admin', (req, res) => {
 })
 
 //this route creates a page to display selected survey information
-app.post("/details", (req, res)=> {
-  console.log(req.body.userid)
+app.post("/details",  (req, res)=> {
   knex.select("Participant_ID", 
               "Timestamp", 
               "Age", 
@@ -165,8 +164,7 @@ app.post("/details", (req, res)=> {
               'SM_Validation',
               'Depressed_or_Down',
               'Activity_Interest',
-              'Sleep_Issues'
-              ).from("PersonalDetails").where("Participant_ID", req.body.userid).then(surveyDetails => {
+              'Sleep_Issues').from("PersonalDetails").where("Participant_ID", req.body.userid).then(surveyDetails => {
   res.render("details", {surveyDetails: surveyDetails});
  }).catch( err => {
     console.log(err);
