@@ -75,7 +75,7 @@
 			<div class="row gx-5 justify-content-center">
 				<div class="text-center">
 					<br><br><br><br><br>
-					<h1 class="display-5 fw-bolder text-white mb-2">Survey <%= surveyDetails[0].Participant_ID %> data</h1><br>
+					<h1 class="display-5 fw-bolder text-white mb-2">Survey <%= surveyDetails[0].Participant_ID %> Data</h1><br>
 					<p class="lead text-white-75 mb-4">
 					</p>
 				</div>
@@ -111,14 +111,16 @@
 
 					<!--Q5: AFFILIATED ORGANIZATIONS-->
           			<li>What type of organizations are you affiliated with?</li>
+					<ol type="a">
 					<%
 						let oOrganization_Description = []
 						for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
 							if (!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){ 
 								oOrganization_Description.push(surveyDetails[iCount].Organization_Description);
 					%>
-						<p><%= surveyDetails[iCount].Organization_Description %></p>
+						<li><%= surveyDetails[iCount].Organization_Description %></li>
 					<% }} %>
+					</ol>
 					<br/>
 
 					<!--Q6: USE SOCIAL MEDIA-->
@@ -127,14 +129,16 @@
 
 					<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
 					<li>What social media platforms do you commonly use?</li>
+					<ol type="a">
                     <% 
 						let oPlatform_name = []
 						for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
 							if (!oPlatform_name.includes(surveyDetails[iCount].Platform_Name)){ 
 								oPlatform_name.push(surveyDetails[iCount].Platform_Name);
 					%>
-                        <p><%= surveyDetails[iCount].Platform_Name %></p>
+                        <li><%= surveyDetails[iCount].Platform_Name %></li>
                     <% }} %>
+					</ol>
                     <br/>
 
 
@@ -260,18 +264,18 @@
         let s11Output = document.getElementById('11Output');
       
         function q11() {
-          if (i11Output == 1) {
-            t11Output = "Almost never";
-          } else if (i11Output == 2) {
-            t11Output = "Rarely";
-          } else if (i11Output == 3) {
-            t11Output = "Sometimes";
-          } else if (i11Output == 4) {
-            t11Output = "Often";
-          } else if (i11Output == 5) {
-            t11Output = "Always";
-          }
-          s11Output.innerHTML = t11Output;
+			if (this.value == 1) {
+				t11Output = "Strongly Disagree";
+			} else if (this.value == 2) {
+				t11Output = "Disagree";
+			} else if (this.value == 3) {
+				t11Output = "Neutral";
+			} else if (this.value == 4) {
+				t11Output = "Agree";
+			} else if (this.value == 5) {
+				t11Output = "Strongly Agree";
+			}
+          	s11Output.innerHTML = t11Output;
         }
       </script>
       
@@ -280,18 +284,18 @@
         let s12Output = document.getElementById('12Output');
       
         function q12() {
-          if (i12Output == 1) {
-            t12Output = "Almost never";
-          } else if (i12Output == 2) {
-            t12Output = "Rarely";
-          } else if (i12Output == 3) {
-            t12Output = "Sometimes";
-          } else if (i12Output == 4) {
-            t12Output = "Often";
-          } else if (i12Output == 5) {
-            t12Output = "Always";
-          }
-          s12Output.innerHTML = t12Output;
+			if (this.value == 1) {
+				t12Output = "Not Easily Distracted";
+			} else if (this.value == 2) {
+				t12Output = "Occasionally Distracted";
+			} else if (this.value == 3) {
+				t12Output = "Moderately Distracted";
+			} else if (this.value == 4) {
+				t12Output = "Easily Distracted";
+			} else if (this.value == 5) {
+				t12Output = "Highly Distracted";
+			}
+			s12Output.innerHTML = t12Output;
         }
       </script>
       
@@ -300,18 +304,18 @@
         let s13Output = document.getElementById('13Output');
       
         function q13() {
-          if (i13Output == 1) {
-            t13Output = "Almost never";
-          } else if (i13Output == 2) {
-            t13Output = "Rarely";
-          } else if (i13Output == 3) {
-            t13Output = "Sometimes";
-          } else if (i13Output == 4) {
-            t13Output = "Often";
-          } else if (i13Output == 5) {
-            t13Output = "Always";
-          }
-          s13Output.innerHTML = t13Output;
+			if (this.value == 1) {
+				t13Output = "Not Bothered";
+			} else if (this.value == 2) {
+				t13Output = "Occasionally Bothered";
+			} else if (this.value == 3) {
+				t13Output = "Moderately Bothered";
+			} else if (this.value == 4) {
+				t13Output = "Easily Bothered";
+			} else if (this.value == 5) {
+				t13Output = "Highly Bothered";
+			}
+          	s13Output.innerHTML = t13Output;
         }
       </script>
       
@@ -320,18 +324,18 @@
         let s14Output = document.getElementById('14Output');
       
         function q14() {
-          if (i14Output == 1) {
-            t14Output = "Almost never";
-          } else if (i14Output == 2) {
-            t14Output = "Rarely";
-          } else if (i14Output == 3) {
-            t14Output = "Sometimes";
-          } else if (i14Output == 4) {
-            t14Output = "Often";
-          } else if (i14Output == 5) {
-            t14Output = "Always";
-          }
-          s14Output.innerHTML = t14Output;
+			if (this.value == 1) {
+				t14Output = "Strongly Disagree";
+			} else if (this.value == 2) {
+				t14Output = "Disagree";
+			} else if (this.value == 3) {
+				t14Output = "Neutral";
+			} else if (this.value == 4) {
+				t14Output = "Agree";
+			} else if (this.value == 5) {
+				t14Output = "Strongly Agree";
+			}
+          	s14Output.innerHTML = t14Output;
         }
       </script>
       
@@ -359,18 +363,22 @@
         let s16Output = document.getElementById('16Output');
       
         function q16() {
-        if (i16Output == 1) {
-            t16Output = "Really bad";
-          } else if (i16Output == 2) {
-            t16Output = "bad";
-          } else if (i16Output == 3) {
-            t16Output = "Okay";
-          } else if (i16Output == 4) {
-            t16Output = "Good";
-          } else if (i16Output == 5) {
-            t16Output = "Really good";
-          }
-          s16Output.innerHTML = t16Output;
+			if (this.value == 1) {
+				t16Output = "Really Bad"
+			}
+			else if (this.value == 2) {
+				t16Output = "Bad"
+			}
+			else if (this.value == 3) {
+				t16Output = "Okay"
+			}
+			else if (this.value == 4) {
+				t16Output = "Good"
+			}
+			else if (this.value == 5) {
+				t16Output = "Really Good"
+			}
+          	s16Output.innerHTML = t16Output;
         }
       </script>
       
