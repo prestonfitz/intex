@@ -64,36 +64,6 @@
             </div>
         </section>
 
-        <!--Raw Data only to be shown to admin-->
-        <section class="container px-5 my-5" id="rawData">
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Timestamp</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">City</th>
-                            <th scope="col">Relationship Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for (let iCount = 0; iCount < PersonalDetails.length; iCount++) { %>
-                            <tr>
-                                <th scope="row"><%= PersonalDetails[iCount].Participant_ID %></th>
-                                <td><%= PersonalDetails[iCount].Timestamp %></td>
-                                <td><%= PersonalDetails[iCount].Age %></td>
-                                <td><%= PersonalDetails[iCount].Gender %></td>
-                                <td><%= PersonalDetails[iCount].City %></td>
-                                <td><%= PersonalDetails[iCount].Relationship_Status %></td>
-                            </tr>
-                        <% } %>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
