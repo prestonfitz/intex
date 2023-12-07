@@ -94,31 +94,32 @@
 			<form>
 				<ol>
 					<!--Q1: AGE-->
-					<li><label for="age"><b>What is your age?</b></label></li>
+          			<li><label for="age">What is your age?</label></li>
                     <p><%= surveyDetails[0].Age %></p><br/>
                     
 					<!--Q2: GENDER-->
-					<li><label for="gender"><b>What is your gender?</b></label></li>
+          			<li><label for="gender">What is your gender?</label></li>
                     <p><%= surveyDetails[0].Gender %></p><br/>
 
 					<!--Q3: RELATIONSHIP STATUS-->
-					<li><label for="relationship"><b>What is your relationship status?</b></label></li>
+					<li><label for="relationship">What is your relationship status?</label></li>
                     <p><%= surveyDetails[0].Relationship_Status %></p><br/>
 
 					<!--Q4: OCCUPATION STATUS-->
-					<b><li><label>What is your occupation status?</label></li></b>
+					<li><label>What is your occupation status?</label></li>
                     <p><%= surveyDetails[0].Occupational_Status %></p><br/>
 
 					<!--Q5: AFFILIATED ORGANIZATIONS-->
-					<li><label>What type of organizations are you affiliated with?</label></li>
-                    <br/>
-                    <% oOrganization_Description = []
-                    for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
-                        if (!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){ 
-                            oOrganization_Description.push(surveyDetails[iCount].Organization_Description);%>
-                        <p><%= surveyDetails[iCount].Organization_Description %></p>
-                    <% }} %>
-                    <br/>
+          			<li><label>What type of organizations are you affiliated with?</label></li>
+					<%
+						let oOrganization_Description = []
+						for (iCount = 0; iCount < surveyDetails.length; iCount++) { 
+							if (!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){ 
+								oOrganization_Description.push(surveyDetails[iCount].Organization_Description);
+					%>
+						<p><%= surveyDetails[iCount].Organization_Description %></p>
+					<% }} %>
+					<br/>
 
 					<!--Q6: USE SOCIAL MEDIA-->
 					<li><label>Do you use social media?</label></li>

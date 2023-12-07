@@ -10844,3 +10844,6 @@ textarea.form-control-lg {
 
 
 /* This is my custom CSS */
+ol > li::marker {
+  font-weight: bold;
+}
