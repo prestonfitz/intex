@@ -12,6 +12,7 @@ Total time for the project is estimated to be around 120 hours
 
 ### Project Background
 **Note that this is a fictional scenario, Provo was not consulted in this and Plainsville is a fake place.**
+
 Amidst the ever-expanding role of social media in daily life, Provo’s city government recognizes a pressing need to explore the intricate relationship between digital connectivity and mental health within their community. With a surge in concerns regarding rising levels of anxiety, depression, and social isolation, Provo’s local government has created a Social Media Usage and Mental Health committee (SMU MH committee) to investigate how social media usage patterns may contribute to these challenges. By delving into this connection, they seek a nuanced understanding of the specific influences and stressors that digital platforms may exert on residents' mental well-being.
 
 The SMU MH committee has acquired a dataset about social media usage and mental health from a nearby community called Plainsville with similar demographics. We were contracted by the SMU MH committee and were asked to do three things:
