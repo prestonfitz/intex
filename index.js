@@ -139,59 +139,71 @@ app.get("/graphs", (req,res) => {
 });
 
 app.get('/admin', (req, res) => {
-	knex.select('pd.Participant_ID',
-				'pd.Timestamp',
-				'pd.Age',
-				'pd.Gender',
-				'pd.City',
-				'pd.Relationship_Status',
-				'pd.Occupational_Status',
-				knex.raw('STRING_AGG(DISTINCT po.Affiliation_Num::VARCHAR, ?) AS Affiliation_Num', [', ']),
-    			knex.raw('STRING_AGG(DISTINCT ao.Organization_Description::VARCHAR, ?) AS Organization_Description', [', ']),
-    			'pd.SM_Use',
-    			knex.raw('STRING_AGG(DISTINCT pp.Platform_Num::VARCHAR, ?) AS Platform_Num', [', ']),
-    			knex.raw('STRING_AGG(DISTINCT p.Platform_Name::VARCHAR, ?) AS Platform_Name', [', ']),
-				'pd.SM_Time',
-				'pd.SM_No_Purpose',
-				'pd.SM_Distraction',
-				'pd.SM_Restless_Withdrawal',
-				'pd.Easily_Distracted',
-				'pd.Worries',
-				'pd.Concentration_Difficulty',
-				'pd.SM_Comparing',
-				'pd.SM_Comparing_Feel',
-				'pd.SM_Validation',
-				'pd.Depressed_or_Down',
-				'pd.Activity_Interest',
-				'pd.Sleep_Issues')
-	  	.from('PersonalDetails as pd')
-	  		.leftJoin('ParticipantOrganizations as po', 'pd.Participant_ID', 'po.Participant_ID')
-	  		.leftJoin('ParticipantPlatforms as pp', 'pd.Participant_ID', 'pp.Participant_ID')
-	  		.leftJoin('Platforms as p', 'pp.Platform_Num', 'p.Platform_Num')
-	  		.leftJoin('AffiliatedOrganizations as ao', 'po.Affiliation_Num', 'ao.Affiliation_Num')
-	  	.groupBy('pd.Participant_ID',
-				'pd.Timestamp',
-				'pd.Age',
-				'pd.Gender',
-				'pd.City',
-				'pd.Relationship_Status',
-				'pd.Occupational_Status',
-				'pd.SM_Use',
-				'pd.SM_Time',
-				'pd.SM_No_Purpose',
-				'pd.SM_Distraction',
-				'pd.SM_Restless_Withdrawal',
-				'pd.Easily_Distracted',
-				'pd.Worries',
-				'pd.Concentration_Difficulty',
-				'pd.SM_Comparing',
-				'pd.SM_Comparing_Feel',
-				'pd.SM_Validation',
-				'pd.Depressed_or_Down',
-				'pd.Activity_Interest',
-				'pd.Sleep_Issues')
-	  	.orderBy('pd.Timestamp', 'asc')
-	  	.orderBy('pd.Participant_ID', 'asc')
+	knex.select(
+		'pd.Participant_ID',
+		'pd.Timestamp',
+		'pd.Age',
+		'pd.Gender',
+		'pd.City',
+		'pd.Relationship_Status',
+		'pd.Occupational_Status',
+		knex.raw('STRING_AGG(DISTINCT po.Affiliation_Num::VARCHAR, ?) AS Affiliation_Num', [', ']),
+		knex.raw('STRING_AGG(DISTINCT ao.Organization_Description::VARCHAR, ?) AS Organization_Description', [', ']),
+		'pd.SM_Use',
+		knex.raw('STRING_AGG(DISTINCT pp.Platform_Num::VARCHAR, ?) AS Platform_Num', [', ']),
+		knex.raw('STRING_AGG(DISTINCT p.Platform_Name::VARCHAR, ?) AS Platform_Name', [', ']),
+		'pd.SM_Time',
+		'pd.SM_No_Purpose',
+		'pd.SM_Distraction',
+		'pd.SM_Restless_Withdrawal',
+		'pd.Easily_Distracted',
+		'pd.Worries',
+		'pd.Concentration_Difficulty',
+		'pd.SM_Comparing',
+		'pd.SM_Comparing_Feel',
+		'pd.SM_Validation',
+		'pd.Depressed_or_Down',
+		'pd.Activity_Interest',
+		'pd.Sleep_Issues'
+	  )
+	  .from('PersonalDetails as pd')
+	  .leftJoin(
+		knex
+		  .select('Participant_ID', knex.raw('STRING_AGG(DISTINCT Affiliation_Num::VARCHAR, ?) AS Affiliation_Num', [', ']))
+		  .from('ParticipantOrganizations')
+		  .groupBy('Participant_ID')
+		  .as('po'),
+		'pd.Participant_ID',
+		'po.Participant_ID'
+	  )
+	  .leftJoin('ParticipantPlatforms as pp', 'pd.Participant_ID', 'pp.Participant_ID')
+	  .leftJoin('Platforms as p', 'pp.Platform_Num', 'p.Platform_Num')
+	  .leftJoin('AffiliatedOrganizations as ao', 'po.Affiliation_Num', 'ao.Affiliation_Num')
+	  .groupBy(
+		'pd.Participant_ID',
+		'pd.Timestamp',
+		'pd.Age',
+		'pd.Gender',
+		'pd.City',
+		'pd.Relationship_Status',
+		'pd.Occupational_Status',
+		'pd.SM_Use',
+		'pd.SM_Time',
+		'pd.SM_No_Purpose',
+		'pd.SM_Distraction',
+		'pd.SM_Restless_Withdrawal',
+		'pd.Easily_Distracted',
+		'pd.Worries',
+		'pd.Concentration_Difficulty',
+		'pd.SM_Comparing',
+		'pd.SM_Comparing_Feel',
+		'pd.SM_Validation',
+		'pd.Depressed_or_Down',
+		'pd.Activity_Interest',
+		'pd.Sleep_Issues'
+	  )
+	  .orderBy('pd.Timestamp', 'asc')
+	  .orderBy('pd.Participant_ID', 'asc')
 		.then(personalDetails => {
 	res.render("admin", {personalDetails: personalDetails});
 }).catch( err => {
