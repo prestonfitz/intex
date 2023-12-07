@@ -19,7 +19,8 @@
 				font-weight: medium;}
 		
 		/* This rounds the corners on the number box and the drop down boxes */
-		input[type=number] 	{border-radius: 10px;}
+		input[type=number] 	{border-radius: 10px;
+							border-color: black;}
 		
 		select	{border-radius: 10px;
 				text-align: center;}
@@ -43,7 +44,8 @@
 		.radio-label	{margin-right: 15px;
 						line-height: 32px;}
 
-		input:invalid	{border-color: red;}
+
+		
 
 	</style>
 		<style>
@@ -119,7 +121,7 @@
 				<div class="text-center">
 					<br><br><br><br><br>
 					<h1 class="display-5 fw-bolder text-white mb-2">Social Media and Mental Health Survery</h1><br>
-					<p class="lead text-white-50 mb-4">With a surge in concerns regarding rising levels of anxiety,
+					<p class="lead text-white-75 mb-4">With a surge in concerns regarding rising levels of anxiety,
 						depression,
 						and social isolation, Provo City has created a Social Media Usage and Mental Health committee
 						(SMU MH committee)
@@ -137,12 +139,12 @@
 	<!-- Here is the survey in all of it's glory. I used a variety of input with some Javascript to make it more fun-->
 	<section class="py-5 border-bottom" id="features">
 		<div class="container px-5 my-5" style="width: 65%; margin: auto">
-			<form action="/newSurvey" method="post">
+			<form action="/newSurvey" method="post" name="survey" onsubmit="validateForm()">
 				<ol>
 					<!--Q1: AGE-->
 					<li><label for="age">What is your age?</label></li>
-					<input type="number" min="1" max="100" id="age" name="age" style="text-align: center;"
-						required="required" class="form-number"><br><br>
+					<input type="number" min="1" max="100" id="age" name="age" style="text-align: center;" class="form-number">
+						<p id="error"></p><br/>
 
 					<!--Q2: GENDER-->
 					<li><label for="gender">What is your gender?</label></li>
@@ -624,6 +626,16 @@
 			document.getElementById('account').innerHTML = '<li class="nav-item"><a class="nav-link" href="/account">Log In</a></li>'
 		}
 	</script>
+	<script>
+		function validateForm() {
+			let validate = document.forms['survey']['age'].value;
+			if (validate == ''){
+				document.getElementById('error').innerHTML = "Please include your age";
+				return false;
+			}
+			console.log('it worked')
+		}
+	</script>	
 </body>
 
 </html>

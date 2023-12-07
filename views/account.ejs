@@ -51,7 +51,7 @@
         <!-- This is the account information form. It auto generates the account data from the database and allows account creation. -->
         <section class="bg-light py-5 border-bottom">
             <div class="container px-5 my-5">
-               <form action="editAccount" method="post" class="AccountEditor">
+               <form action="editAccount" method="post" class="AccountEditor" aria-required="true">
                 <input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>">
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
                         <input class="form-control" type="text" id="Username" name="Username" value="<%= myaccount[0].Username %>">

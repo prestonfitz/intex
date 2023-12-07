@@ -137,8 +137,21 @@ app.get("/graphs", (req,res) => {
 });
 
 app.get('/admin', (req, res) => {
-  res.render('admin')
+  knex.select('Account_Num').from('Accounts').then(account =>{
+    res.render('admin', {account: account})
+  })
 })
+
+//this route creates a page to display selected survey information
+app.post("/details", (req, res)=> {
+  console.log(req.body.userid)
+  knex.select("Account_Num", "Username", "Password", "Email", "Admin_Status").from("Accounts").where("Account_Num", req.body.userid).then(account => {
+  res.render("details", {account: account});
+ }).catch( err => {
+    console.log(err);
+    res.status(500).json({err});
+ });
+});
 
 app.get('/userView', (req, res) => {
   res.render('graphs')
