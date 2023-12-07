@@ -149,6 +149,11 @@
                                 <td><%= personalDetails[iCount].City %></td>
                                 <td><%= personalDetails[iCount].Relationship_Status %></td>
                                 <td><%= personalDetails[iCount].Occupational_Status %></td>
+                                <td>
+                                    <form action="/details/<%= personalDetails[iCount].Participant_ID %>" method="post">
+                                        <button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" style="width: 200px"><i class="bi bi-eye"></i></button>
+                                    </form>
+                                </td>
                             </tr>
                         <% } %>
                     </tbody>
