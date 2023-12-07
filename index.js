@@ -146,7 +146,7 @@ app.get('/admin', (req, res) => {
 				'City',
 				'Relationship_Status',
 				'Occupational_Status')
-  		.from('PersonalDetails as pd')
+  		.from('PersonalDetails')
 		.orderBy('Timestamp', 'asc')
 		.orderBy('Participant_ID', 'asc')
 		.then(personalDetails => {
