@@ -61,18 +61,18 @@
                 <input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>">
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
                         <!-- input that has a default value of the logged in accounts's username -->
-                        <input class="form-control" type="text" id="Username" name="Username" value="<%= myaccount[0].Username %>">
+                        <input class="form-control" type="text" id="Username" name="Username" value="<%= myaccount[0].Username %>" required="required">
                         <label for="Username">Username:</label>
                         <p id="stop" style="color: red; font-weight: bolder;"></p>
                     </div>
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
                         <!-- input that has a default value of the logged in accounts's password -->
-                        <input class="form-control" type="text" id="Password" name="Password" value="<%= myaccount[0].Password %>">
+                        <input class="form-control" type="text" id="Password" name="Password" value="<%= myaccount[0].Password %>" required="required">
                         <label for="Password">Password:</label>
                     </div>
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
                         <!-- input that has a default value of the logged in accounts's email -->
-                        <input class="form-control" type="text" id="Email" name="Email" value="<%= myaccount[0].Email %>" />
+                        <input class="form-control" type="text" id="Email" name="Email" value="<%= myaccount[0].Email %>"  required="required"/>
                         <label for="Email">Email:</label>    
                     </div>
                     <div class="form-floating mb-3"></div>
