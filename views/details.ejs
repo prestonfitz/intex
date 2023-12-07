@@ -85,25 +85,25 @@
 	<!-- Here is the survey data in all of it's glory. -->
 	<section class="py-5 border-bottom" id="features">
 		<div class="container px-5 my-5" style="width: 65%; margin: auto">
+      <label><b>Participant_ID:</b></label>
+                    <br/><p><%= surveyDetails[0].Participant_ID %></p><br/>
+                    <label><b>Time submitted:</b></label>
+                    <br/><p><%= new Date(surveyDetails[0].Timestamp).toLocaleString() %></p><br/>
+                    <label><b>City:</b></label>
+                    <br/><p><%= surveyDetails[0].City %></p><br/>
 			<form>
 				<ol>
-                    <label>Participant_ID:</label>
-                    <br/><p><%= surveyDetails[0].Participant_ID %></p><br/>
-                    <label>Time submitted:</label>
-                    <br/><p><%= new Date(surveyDetails[0].Timestamp).toLocaleString() %></p><br/>
-                    <label>City:</label>
-                    <br/><p><%= surveyDetails[0].City %></p><br/>
 					<!--Q1: AGE-->
-					<li><label for="age">What is your age?</label></li>
-                    <br/><p><%= surveyDetails[0].Age %></p><br/>
+					<li><label for="age"><b>What is your age?</b></label></li>
+                    <p><%= surveyDetails[0].Age %></p><br/>
                     
 					<!--Q2: GENDER-->
-					<li><label for="gender">What is your gender?</label></li>
-                    <br/><p><%= surveyDetails[0].Gender %></p><br/>
+					<li><label for="gender"><b>hat is your gender?</b></label></li>
+                    <p><%= surveyDetails[0].Gender %></p><br/>
 
 					<!--Q3: RELATIONSHIP STATUS-->
-					<li><label for="relationship">What is your relationship status?</label></li>
-                    <br/><p><%= surveyDetails[0].Relationship_Status %></p><br/>
+					<li><label for="relationship"><b>What is your relationship status?</b></label></li>
+                    <p><%= surveyDetails[0].Relationship_Status %></p><br/>
 
 					<!--Q4: OCCUPATION STATUS-->
 					<li><label>What is your occupation status?</label></li>
