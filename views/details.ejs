@@ -51,7 +51,7 @@
 
 </head>
 
-<body onload="q9(); q10(); q11(); q12(); q13(); q14(); q15(); q16(); q17(); q18(); q19(); q20()">
+<body onload="q6(); q9(); q10(); q11(); q12(); q13(); q14(); q15(); q16(); q17(); q18(); q19(); q20()">
 	<!-- Responsive navbar-->
 	<nav class="navbar navbar-expand-lg navbar-white bg-white">
 		<div class="container px-5">
@@ -125,7 +125,7 @@
 
 					<!--Q6: USE SOCIAL MEDIA-->
 					<li>Do you use social media?</li>
-                    <p><%= surveyDetails[0].SM_Use %></p><br/>
+                    <p id="6Output"><%= surveyDetails[0].SM_Use %></p><br/>
 
 					<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
 					<li>What social media platforms do you commonly use?</li>
@@ -217,6 +217,20 @@
 	
 
     <!-- The following are scripts run on start up to set number values to be read by humans -->
+	<script>
+		let i6Output = document.getElementById("6Output").textContent;
+        let s6Output = document.getElementById('6Output');
+
+		function q6() {
+			if (i6Output == 'true') {
+				t6Output = "Yes";
+			}
+			else if (i6Output == 'false') {
+				t6Output = "No";
+			}
+			s6Output.innerHTML = t6Output;
+		}
+	</script>
     <script>
 		let i9Output = parseInt(document.getElementById("9Output").textContent);
         let s9Output = document.getElementById('9Output')
