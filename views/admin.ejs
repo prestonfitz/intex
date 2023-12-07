@@ -126,7 +126,7 @@
         <!--Raw Data only to be shown to admin-->
         <section class="container px-5 my-5" id="rawData">
             <div class="table-responsive">
-                <table class="table table-hover" id="myTable">
+                <table class="table table-hover" id="surveyDataTable">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -160,18 +160,6 @@
                 </table>
             </div>
         </section>
-
-        <script>
-            $(document).ready(function(){
-              $("#userid").on("keyup", function() {
-                var value = $(this).val();
-                $("#myTable tr").filter(function() {
-                  $(this).toggle($(this).text().indexOf(value) > -1)
-                });
-              });
-            });
-        </script>
-
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
