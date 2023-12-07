@@ -138,7 +138,7 @@ app.get("/graphs", (req,res) => {
   res.render('graphs')
 });
 
-app.get('/admin', (req, res) => {
+app.post('/admin', (req, res) => {
 	knex.select("pd.Participant_ID", 
 				"pd.Timestamp", 
 				"pd.Age", 
@@ -173,7 +173,7 @@ app.get('/admin', (req, res) => {
 	console.log(err);
 	res.status(500).json({err});
 });
-})
+});
 
 //this route creates a page to display selected survey information
 app.post("/details",  (req, res)=> {
