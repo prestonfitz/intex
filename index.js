@@ -168,6 +168,8 @@ app.post("/details",  (req, res)=> {
               .from("PersonalDetails as pd")
               .innerJoin('ParticipantPlatforms as pp', 'pd.Participant_ID', 'pp.Participant_ID')
               .innerJoin('Platforms as p', 'pp.Platform_Num', 'p.Platform_Num')
+              .innerJoin('ParticipantOrganizations as po', "pd.Participant_ID", "po.Participant_ID")
+              .innerJoin('AffiliatedOrganizations as ao', "po.Affiliation_Num", "ao.Affiliation_Num")
               .where("pd.Participant_ID", req.body.userid).then(surveyDetails => {
   res.render("details", {surveyDetails: surveyDetails});
  }).catch( err => {
