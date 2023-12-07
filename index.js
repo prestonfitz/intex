@@ -302,6 +302,11 @@ app.get('/loggedOut', (req, res) =>{
   res.render('loggedOut')
 });
 
+// This sets the success variable
+app.get('/success', (req, res) =>{
+  res.render('success')
+})
+
 //This is the new accounts page
 app.get('/newAccount', (req, res) => {
   res.render('newAccount')
@@ -348,7 +353,7 @@ app.post("/newSurvey", async (req, res)=> {
  });
 
  // redirect the user back to the home page after submitting the survey
- res.redirect('/');
+ res.redirect('/success');
 
   // create a variable that will hold the array of checked organizations
   const checkboxValuesOrgs = [];
