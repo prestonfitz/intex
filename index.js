@@ -274,6 +274,7 @@ app.get('/account', (req, res) => {
 
 //This is an accountant
 app.post("/editAccount", (req, res)=> {
+  // grab the usernames from the database
   knex.select('Username').from('Accounts').then(uname =>{
     let aUsernames = [];
     let limit = uname.length;
@@ -282,6 +283,8 @@ app.post("/editAccount", (req, res)=> {
       aUsernames.push(uname[0].Username);
       uname.shift();
     }
+    // if the username is not in the database or if it is equal to the logged in account's username
+    // go ahead and create the account
     if ((!aUsernames.includes(req.body.Username)) || (req.body.Username == req.session.username))
     { 
     knex("Accounts").where("Account_Num", parseInt(req.body.Account_Num)).update({
@@ -289,12 +292,17 @@ app.post("/editAccount", (req, res)=> {
       Password: req.body.Password,
       Email: req.body.Email,
    }).then(myaccount => {})}
+
+   // otherwise, send them to reedit to do some javascript
     else{return res.render('reedit')}
+
+  // redirect to account page after success
   return res.redirect("/account");})
 });
 
 // this is a senior accountant
 app.post("/newAccount", (req, res)=> {
+  // grab the usernames from the Accounts table in our database and push them to an array
   knex.select('Username').from('Accounts').then(uname =>{
     let aUsernames = [];
     let limit = uname.length;
@@ -304,6 +312,7 @@ app.post("/newAccount", (req, res)=> {
       aUsernames.push(uname[0].Username);
       uname.shift();
     }
+    // check to see if the username is available and if it is, add the account to the database
     if (!aUsernames.includes(req.body.Username)){
     knex("Accounts").insert({
       Username: req.body.Username,
@@ -312,13 +321,18 @@ app.post("/newAccount", (req, res)=> {
       Admin_Status: req.body.Admin_Status
    }).then(myaccount => {});
   }
+  // if the username is not available, send them to the recreate page
+  // to do some javascript
   else{return res.render('recreate')}
+
+  // redirect to the account page after successful creation
   res.redirect("/account");
  })
 });
 
 // This route is inevitable
 app.post("/deleteAccount", (req, res) => {
+  // delete the account based on the account_num of the account logged in then send to logout route
   knex("Accounts").where("Account_Num",req.body.Account_Num).del().then( account => {
     res.redirect("/logout");
  }).catch( err => {

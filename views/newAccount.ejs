@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- This page is used to create a new account -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Create a new employee account here" />
@@ -13,6 +14,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
     </head>
+    <!-- again we check for errors based on a function written later in this page -->
     <body onload="errorCheck()">
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-white bg-white">
@@ -38,6 +40,7 @@
                             <br><br><br><br>
                             <h1 class="display-5 fw-bolder text-white mb-2">Create new employee account</h1><br>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                <!-- button that scrolls to the new account input boxes -->
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#editAccount">Create new account</a>
                             </div>
                         </div>
@@ -52,20 +55,25 @@
             <div class="container px-5 my-5">
                <form action="/newAccount" method="post">
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <!-- input for username -->
                         <input class="form-control" type="text" id="Username" name="Username" >
                         <label for="Username">Username:</label>
                         <p id="stop" style="color: red; font-weight: bolder;"></p>
                     </div>
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <!-- input for password -->
                         <input class="form-control" type="text" id="Password" name="Password" >
                         <label for="Password">Password:</label>
                     </div>
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <!-- input for email -->
                         <input class="form-control" type="text" id="Email" name="Email" />
                         <label for="Email">Email:</label>    
                     </div>
                     <div class="form-floating mb-3"></div>
+                    <!-- hidden input that sets admin status to true since all users have it lol -->
                     <input type="hidden" id="Admin_Status" name="Admin_Status" value="true">
+                    <!-- submit button that calls the /newAccount route -->
                     <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit" style="width: 75%; margin: auto">Create account</button></div>  
                </form>
             </div>
@@ -88,6 +96,8 @@
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <script>
+            // Here is that function I told you about earlier that checks for errors on load
+            // Basically it tells the person if the username is already in use when they try to create a new account
             function errorCheck(){
             if (sessionStorage.getItem('fail') == 'true')
             {

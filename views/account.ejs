@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- This page can be accessed if you are logged in and allows you to see and edit account information -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Users edit account data from this page. It also links to account creation pages and allows users to log out or delete their account" />
@@ -13,6 +14,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
     </head>
+    <!--Checks to see if there are any login or account creation errors and then gives an error message-->
     <body onload="errorCheck()">
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-white bg-white">
@@ -38,7 +40,9 @@
                             <br><br><br><br>
                             <h1 class="display-5 fw-bolder text-white mb-2">View and modify account data</h1><br>
                             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                <!--Button that sends you to the create new account route-->
                                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/newAccount">Create new account</a>
+                                <!--Button scrolls down to edit account data-->
                                 <a class="btn btn-outline-light btn-lg px-4" href="#editAccount">Edit account data</a>
                             </div>
                         </div>
@@ -51,27 +55,36 @@
         <!-- This is the account information form. It auto generates the account data from the database and allows account creation. -->
         <section class="bg-light py-5 border-bottom">
             <div class="container px-5 my-5">
+                <!-- create the form of method post -->
                <form action="/editAccount" method="post" class="AccountEditor" aria-required="true">
+                <!-- hidden input that has the value of the logged in account number -->
                 <input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>">
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <!-- input that has a default value of the logged in accounts's username -->
                         <input class="form-control" type="text" id="Username" name="Username" value="<%= myaccount[0].Username %>">
                         <label for="Username">Username:</label>
                         <p id="stop" style="color: red; font-weight: bolder;"></p>
                     </div>
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <!-- input that has a default value of the logged in accounts's password -->
                         <input class="form-control" type="text" id="Password" name="Password" value="<%= myaccount[0].Password %>">
                         <label for="Password">Password:</label>
                     </div>
                     <div class="form-floating mb-3" style="margin: auto; width: 75%">
+                        <!-- input that has a default value of the logged in accounts's email -->
                         <input class="form-control" type="text" id="Email" name="Email" value="<%= myaccount[0].Email %>" />
                         <label for="Email">Email:</label>    
                     </div>
                     <div class="form-floating mb-3"></div>
+                    <!-- hidden input that sets the account's admin status to true since all accounts have admin status -->
                     <input type="hidden" id="Admin_Status" name="Admin_Status" value="true">
+                    <!-- Submit button for the form to update the account with the edited information -->
                     <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit" style="width: 75%; margin: auto">Update account</button></div>  
                </form>
                <br>
+               <!-- Button that calls the /logout route that will log the user out and munch the cookie -->
                <div class="d-grid"><a class="btn btn-secondary btn-lg" href="/logout" style="width: 75%; margin: auto;">Log out</a></div><br>
+               <!-- Button that calls the deleteAccount javascript function -->
                <div class="d-grid"><a class="btn btn-secondary btn-lg" onclick="deleteAccount()" style="width: 75%; margin: auto; background-color: red;" id="beCareful">Delete account</a></div>
             </div>
         </section>
@@ -80,6 +93,7 @@
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <!-- top sneaky button to hide work with the function to ensure users know what they're doing -->
+            <!-- It will allow them to confirm that they want to delete the account before it actually deletes -->
             <span hidden><form method='post' action='/deleteAccount'><input type="hidden" id="Account_Num" name="Account_Num" value="<%= myaccount[0].Account_Num %>"><button id="my-button" onclick="testing()" type="submit"></button></form></span>
             <div class="container px-5"><p class="m-0 text-center text-white">smumh@byu.net  |  (801) 378-1557</p><p class="m-0 text-center text-white">Copyright &copy; Provo City 2023</p></div>
         </footer>
@@ -112,6 +126,7 @@
             const button = document.getElementById('my-button');
         </script>
         <script>
+            // Here is a function that checks for the failure of editing an account by telling them the new username they chose is already in use
             function errorCheck(){
             if (sessionStorage.getItem('fail') == 'true')
             {
