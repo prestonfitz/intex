@@ -120,7 +120,7 @@
 			<div class="row gx-5 justify-content-center">
 				<div class="text-center">
 					<br><br><br><br><br>
-					<h1 class="display-5 fw-bolder text-white mb-2">Record for <%= account[0].Username %></h1><br>
+					<h1 class="display-5 fw-bolder text-white mb-2">Record for <%= surveyDetails[0].Participant_ID %></h1><br>
 					<p class="lead text-white-75 mb-4">
 					</p>
 				</div>
@@ -132,81 +132,98 @@
 		<div class="container px-5 my-5" style="width: 65%; margin: auto">
 			<form>
 				<ol>
+                    <label>Participant_ID:</label>
+                    <br/><p><%= surveyDetails[0].Participant_ID %></p><br/>
+                    <label>Time submitted:</label>
+                    <br/><p><%= surveyDetails[0].Timestamp %></p><br/>
+                    <label>City:</label>
+                    <br/><p><%= surveyDetails[0].City %></p><br/>
 					<!--Q1: AGE-->
 					<li><label for="age">What is your age?</label></li>
-                    
+                    <br/><p><%= surveyDetails[0].Age %></p><br/>
                     
 					<!--Q2: GENDER-->
 					<li><label for="gender">What is your gender?</label></li>
-                    
+                    <br/><p><%= surveyDetails[0].Gender %></p><br/>
 
 					<!--Q3: RELATIONSHIP STATUS-->
 					<li><label for="relationship">What is your relationship status?</label></li>
-                    
+                    <br/><p><%= surveyDetails[0].Relationship_Status %></p><br/>
 
 					<!--Q4: OCCUPATION STATUS-->
 					<li><label>What is your occupation status?</label></li>
-                    
+                    <br/><p><%= surveyDetails[0].Occupational_Status %></p><br/>
 
 					<!--Q5: AFFILIATED ORGANIZATIONS-->
 					<li><label>What type of organizations are you affiliated with?</label></li>
-                    
+                    <!-- <br/><p><%= surveyDetails[0]. %></p><br/> -->
 
 					<!--Q6: USE SOCIAL MEDIA-->
 					<li><label>Do you use social media?</label></li>
+                    <br/><p><%= surveyDetails[0].SM_Use %></p><br/>
 
 					<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
 					<!--Something extra: replace the checkboxes with platform logos-->
 					<li><label>What social media platforms do you commonly use?</label></li>
-					
+					<!-- <br/><p><%= surveyDetails[0]. %></p><br/> -->
 
 					<!--Q8: TIME SPENT ON SOCIAL MEDIA-->
 					<li><label for="time">What is the average time you spend on social media every day?</label></li>
-
-					<!--HIDDEN INPUT TO WRITE TIME SPENT STRING TO DATABASE-->
-					<input type="hidden" name="timeOutput2" id="timeOutput2" value="">
+                    <br/><p><%= surveyDetails[0].SM_Time %></p><br/>
 
 					<!--Q9: ON SOCIAL MEDIA WITH NO PURPOSE-->
 					<li><label for="np">How often do you find yourself using social media without a specific
 							purpose?</label></li>
+                            <br/><p><%= surveyDetails[0].SM_No_Purpose %></p><br/>
 
 					<!--Q10: DISTRACTED BY SOCIAL MEDIA-->
 					<li><label for="dsm">How often do you get distracted by social media when you are busy doing
 							something?</label></li>
+                            <br/><p><%= surveyDetails[0].SM_Distraction %></p><br/>
 
 					<!--Q11: RESTLESS AFTER NOT USING SOCIAL MEDIA-->
 					<li><label for="rw">Do you feel restless if you haven&#39;t used social media in a while?</label>
 					</li>
+                    <br/><p><%= surveyDetails[0].SM_Restless_Withdrawal %></p><br/>
 
 					<!--Q12: HOW EASILY DISTRACTED-->
 					<li><label for="ed">How easily distracted are you?</label></li>
+                    <br/><p><%= surveyDetails[0].Easily_Distracted %></p><br/>
 
 					<!--Q13: BOTHERED BY WORRIES-->
 					<li><label for="w">How much are you bothered by worries?</label></li>
+                    <br/><p><%= surveyDetails[0].Worries %></p><br/>
 
 					<!--Q14: DIFFICULTY CONCENTRATING-->
 					<li><label for="dc">Do you find it difficult to concentrate on things?</label></li>
+                    <br/><p><%= surveyDetails[0].Concentration_Difficulty %></p><br/>
 
 					<!--Q15: FREQUENCY COMPARING THROUGH SOCIAL MEDIA-->
 					<li><label for="smc">How often do you compare yourself to other successful people through the use of
 							social media?</label></li>
+                            <br/><p><%= surveyDetails[0].SM_Comparing %></p><br/>
 
 					<!--Q16: FEELINGS ABOUT COMPARISONS ON SOCIAL MEDIA-->
 					<li><label for="cf">Following the previous question, how do you feel about these comparisons,
 							generally speaking?</label></li>
+                            <br/><p><%= surveyDetails[0].SM_Comparing_Feel %></p><br/>
 
 					<!--Q17: LOOKING FOR VALIDATION THROUGH SOCIAL MEDIA-->
 					<li><label for="val">How often do you look to seek validation from features of social media?</label>
 					</li>
+                    <br/><p><%= surveyDetails[0].SM_Validation %></p><br/>
 
 					<!--Q18: FEELING DEPRESSED OR DOWN-->
 					<li><label for="dd">How often do you feel depressed or down?</label></li>
+                    <br/><p><%= surveyDetails[0].Depressed_or_Down %></p><br/>
 
 					<!--Q19: INTEREST IN DAILY ACTIVITIES-->
 					<li><label for="ai">How frequently does your interested in daily activities fluctuate?</label></li>
+                    <br/><p><%= surveyDetails[0].Activity_Interest %></p><br/>
 
 					<!--Q20: SLEEP ISSUES-->
 					<li><label for="si">How often do you face issues regarding sleep?</label></li>
+                    <br/><p><%= surveyDetails[0].Sleep_Issues %></p><br/>
 				</ol>
 				<br/><br/>
 				<button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" href="/graphs">Return to dashboard</button>
