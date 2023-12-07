@@ -96,7 +96,7 @@
 		</style>
 </head>
 
-<body>
+<body onload="successCheck()">
 	<!-- Responsive navbar-->
 	<nav class="navbar navbar-expand-lg navbar-white bg-white">
 		<div class="container px-5">
@@ -647,6 +647,16 @@
             const clickEvent = new MouseEvent('click');
             buttonElement.dispatchEvent(clickEvent);
             }
+
+		// check for success
+		function successCheck(){
+            if (sessionStorage.getItem('submit') == 'true')
+            {
+				console.log('success')
+				alert('Thank you for telling us about your social media habits!');
+				sessionStorage.clear('fail');
+				sessionStorage.setItem('login', 'true');
+            }}
 	</script>	
 </body>
 <span hidden><button id="my-button" onclick="testing()" type="submit"></button></span>
