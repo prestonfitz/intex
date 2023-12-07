@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
+        <meta name="description" content="This is the administrative data page that allows for access to the raw data" />
         <meta name="author" content="Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen" />
         <title>Social Media Usage and Mental Health | The Data</title>
         <!-- Favicon-->
@@ -12,6 +12,11 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../css/styles.css" rel="stylesheet" />
+        <style>
+            select	{border-radius: 10px;
+				text-align: center;
+                width: 200px;}
+        </style>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -36,7 +41,7 @@
                     <div class="text-center">
                         <br><br><br><br>
                         <h1 class="display-5 fw-bolder text-white mb-2">Administrative Dashboard</h1>
-                        <p class="lead text-white-50 mb-4">Below are the analytics and data from the mental health survey updated in realtime.</p>
+                        <p class="lead text-white-75 mb-4">Below are the analytics and data from the mental health survey updated in realtime.</p>
                     </div>
                 </div>
             </div>
@@ -45,7 +50,7 @@
         <!--Dashboard section-->
         <section class="py-5 border-bottom" id="features">
             <div class="container px-5 my-5">
-                <!--<iframe src="https://sethbrock.retool.com/apps/Provo%20Mental%20Health" width="100%" height="800px"></iframe>-->
+                <iframe src="https://sethbrock.retool.com/apps/Provo%20Mental%20Health" width="100%" height="800px"></iframe>
                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/userView">See User View</a>
             </div>
         </section>
@@ -57,8 +62,7 @@
                     <div class="text-center">
                         
                         <h1 class="display-5 fw-bolder text-white mb-2">Raw Data</h1>
-                        <p class="lead text-white-50 mb-4">Below are the raw data for those who have taken the survey. 
-                            You may filter to specific entries or view all the data together.</p>
+                        <p class="lead text-white-75 mb-4">Select a record below to view its answers to the questions</p>
                     </div>
                 </div>
             </div>
@@ -66,20 +70,19 @@
 
         <!--Data section-->
         <section class="py-5 border-bottom" id="features">
-            <div class="container px-5 my-5">
-                <iframe src="https://sethbrock.retool.com/apps/Provo%20Mental%20Health" width="100%" height="800px"></iframe>
+            <div class="container px-5 my-5" style="width: 300px; text-align: center;">
+                <!-- This is a dropdown menu designed to link to individual records -->
+                <form action="/details" method="post">
+                <select id="userid" name="userid">
+                    <% for (let iCount = 0; iCount < personalDetails.length; iCount++) { %>
+                    <option value="<%= personalDetails[iCount].Participant_ID %>"><%= personalDetails[iCount].Participant_ID %></option>
+                    <% } %>
+                </select>
+                <br/><br/><button type="submit" class="btn btn-primary btn-lg px-4 me-sm-3" style="width: 200px">See record</button>
+                </form>
             </div>
         </section>
 
-        <!-- This is a dropdown menu, not because we want it, but because we have to. There are so many easier, better ways to do this, but here we are -->
-        <form action="/details" method="post">
-        <select id="userid" name="userid">
-            <% for (let iCount = 0; iCount < personalDetails.length; iCount++) { %>
-            <option value="<%= personalDetails[iCount].Participant_ID %>"><%= personalDetails[iCount].Participant_ID %></option>
-            <% } %>
-        </select>
-        <button type="submit">Submit</button>
-        </form>
 
         <!-- Footer-->
         <footer class="py-5 bg-dark">
