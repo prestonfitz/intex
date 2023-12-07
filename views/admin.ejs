@@ -74,8 +74,8 @@
         <!-- This is a dropdown menu, not because we want it, but because we have to. There are so many easier, better ways to do this, but here we are -->
         <form action="/details" method="post">
         <select id="userid" name="userid">
-            <% for (let iCount = 0; iCount < account.length; iCount++) { %>
-            <option value="<%= account[iCount].Account_Num %>"><%= account[iCount].Account_Num %></option>
+            <% for (let iCount = 0; iCount < personalDetails.length; iCount++) { %>
+            <option value="<%= personalDetails[iCount].Participant_ID %>"><%= personalDetails[iCount].Participant_ID %></option>
             <% } %>
         </select>
         <button type="submit">Submit</button>

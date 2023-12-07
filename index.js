@@ -137,15 +137,36 @@ app.get("/graphs", (req,res) => {
 });
 
 app.get('/admin', (req, res) => {
-  knex.select('Account_Num').from('Accounts').then(account =>{
-    res.render('admin', {account: account})
+  knex.select('Participant_ID').from('PersonalDetails').then(personalDetails =>{
+    res.render('admin', {personalDetails: personalDetails})
   })
 })
 
 //this route creates a page to display selected survey information
 app.post("/details", (req, res)=> {
   console.log(req.body.userid)
-  knex.select("Account_Num", "Username", "Password", "Email", "Admin_Status").from("Accounts").where("Account_Num", req.body.userid).then(account => {
+  knex.select("Participant_ID", 
+              "Timestamp", 
+              "Age", 
+              "Gender", 
+              "City",
+              "Relationship_Status",
+              "Occupational_Status",
+              'SM_Use',
+              'SM_Time',
+              'SM_No_Purpose',
+              "SM_Distraction",
+              'SM_Restless_Withdrawal',
+              'Easily_Distracted',
+              'Worries',
+              'Concentration_Difficulty',
+              'SM_Comparing',
+              'SM_Comparing_Feel',
+              'SM_Validation',
+              'Depressed_or_Down',
+              'Activity_Interest',
+              'Sleep_Issues'
+              ).from("PersonalDetails").where("Account_Num", req.body.userid).then(account => {
   res.render("details", {account: account});
  }).catch( err => {
     console.log(err);
