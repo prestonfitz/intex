@@ -114,7 +114,9 @@ app.use('/newAccount', (req, res, next) => {
 app.use('/loggedin', (req, res, next) => {
   if (!req.session.loggedIn) {
     return res.redirect('/relogin');
+    console.log('here');
   }
+  console.log('there')
   next();
 })
 
