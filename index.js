@@ -166,8 +166,8 @@ app.post("/details", (req, res)=> {
               'Depressed_or_Down',
               'Activity_Interest',
               'Sleep_Issues'
-              ).from("PersonalDetails").where("Account_Num", req.body.userid).then(account => {
-  res.render("details", {account: account});
+              ).from("PersonalDetails").where("Participant_ID", req.body.userid).then(surveyDetails => {
+  res.render("details", {surveyDetails: surveyDetails});
  }).catch( err => {
     console.log(err);
     res.status(500).json({err});
