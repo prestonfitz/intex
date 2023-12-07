@@ -1,4 +1,4 @@
-# Group 1-11 INTEX Project Fall 2023
+# Group 1-11 INTEX Project Fall 2023: Provo City Study on Social Media and its Impacts on Mental Health
 ## Authors: Alex Fankhauser, Preston Fitzgerald, Seth Brock, Zach Hansen
 
 INTEX is short for "Integrated Exercise" and is an opportunity to practice what we have learned in IS 402, IS 403, IS 404, and IS 415 throughout the semester. A breakdown of the classes are as follows:
@@ -21,4 +21,4 @@ The SMU MH committee has acquired a dataset about social media usage and mental 
 2. Create a website that gathers information from Provo citizens about their social media usage and mental health.
 3. Create a dashboard to investigate the high-level relationship between social media usage and mental health.
 
-The files that this README is written for are in relation to the second and third points and the website made to address them.
+The files that this README is written for are in relation to the second and third points and the website made to address them. The website was hosted at mentalhealthprovo.is404.net, though was left up only long enough to be graded and then taken down.
