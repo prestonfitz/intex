@@ -140,6 +140,29 @@
 
 					<!--Q8: TIME SPENT ON SOCIAL MEDIA-->
 					<li>What is the average time you spend on social media every day?</li>
+					<p>
+						<%
+							var smTime = <%= surveyDetails[0].SM_Time %>;
+
+							switch (smTime) {
+								case 1:
+									document.write("Strongly Disagree");
+									break;
+								case 2:
+									document.write("Disagree");
+									break;
+								case 3:
+									document.write("Neutral");
+									break;
+								case 4:
+									document.write("Agree");
+									break;
+								case 5:
+									document.write("Strongly Agree");
+									break;
+							}
+						%>
+					</p>
                     <p><%= surveyDetails[0].SM_Time %></p><br/>
 
 					<!--Q9: ON SOCIAL MEDIA WITH NO PURPOSE-->
