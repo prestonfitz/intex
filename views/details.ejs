@@ -145,9 +145,10 @@
 						<!--Q5: AFFILIATED ORGANIZATIONS-->
 						<li>What type of organizations are you affiliated with?</li>
 						<ol type="a">
-							<% let oOrganization_Description=[] for (iCount=0; iCount < surveyDetails.length; iCount++) { if
-								(!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){
-								oOrganization_Description.push(surveyDetails[iCount].Organization_Description); %>
+							<% let oOrganization_Description=[];
+								for (iCount=0; iCount < surveyDetails.length; iCount++) { 
+									if (!oOrganization_Description.includes(surveyDetails[iCount].Organization_Description)){
+										oOrganization_Description.push(surveyDetails[iCount].Organization_Description); %>
 								<li>
 									<%= surveyDetails[iCount].Organization_Description %>
 								</li>
@@ -164,9 +165,10 @@
 						<!--Q7: SOCIAL MEDIA PLATFORMS USED-->
 						<li>What social media platforms do you commonly use?</li>
 						<ol type="a">
-							<% let oPlatform_name=[] for (iCount=0; iCount < surveyDetails.length; iCount++) { if
-								(!oPlatform_name.includes(surveyDetails[iCount].Platform_Name)){
-								oPlatform_name.push(surveyDetails[iCount].Platform_Name); %>
+							<% let oPlatform_name=[]; 
+								for (iCount=0; iCount < surveyDetails.length; iCount++) { 
+									if (!oPlatform_name.includes(surveyDetails[iCount].Platform_Name)){
+										oPlatform_name.push(surveyDetails[iCount].Platform_Name); %>
 								<li>
 									<%= surveyDetails[iCount].Platform_Name %>
 								</li>
