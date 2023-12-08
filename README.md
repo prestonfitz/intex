@@ -36,7 +36,7 @@ The website for this project has many funcitonalities, including:
 ### Usage
 This website is intended to be used by Provo citizens and Provo City/SMU MH officials to learn more about Social Media's effects on mental health. The website is set up in a simple way to show only pertinent information and make navigation intuitive. Starting at the homepage, a user can simply click the menu item labeled "Survey" to contribute to the survey responses and refine the legitimacy of data trends and insights collected. Another click to the "Data" menu item will take the user to a Tableau dashboard with live insights into the data collected designed to make the data engaging and easily-interpreted. Admin-level users can view individual survey responses from the same menu item. The last possible menu option "Login" allows admin-level users to use their credentials to login to access the data. After logging in the menu item is changed to "Account" where they can edit their account info, create a new account for other users, and delete their account.
 
-For investigation into the full capabilities of the website (this is for you TA's), the following username and password can be used.
+For investigation into the full capabilities of the website (this is for you TA's), the following username and password can be used. After the completion of grading, the login information will be deleted for data protection.
 
 - Username: admin
 - Password: badmin
