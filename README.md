@@ -56,7 +56,7 @@ Support requests can be made over email to smumh@byu.net or over phone to (801) 
 
 ### Project Deliverables
 The following deliverables were due and submitted through this README file:
-- [Video]([url](https://byu.box.com/s/rnqzfvyxtkwb4mtf1bvozizn3hron358))
+- [Video](https://byu.box.com/s/rnqzfvyxtkwb4mtf1bvozizn3hron358)
 - [Source code]([url](https://github.com/prestonfitz/intex))
 - [Powerpoint slides]([url](https://byu-my.sharepoint.com/:p:/g/personal/golfzach_byu_edu/EQBRjwV6aMRAplgjrd83b0kBxhIA9zYxvgrKzEaTxVt1MQ?e=M2KeZy))
 - This README (username and password above under [Usage](#Usage) with the URL)
