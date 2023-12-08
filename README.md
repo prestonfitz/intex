@@ -38,10 +38,8 @@ This website is intended to be used by Provo citizens and Provo City/SMU MH offi
 
 For investigation into the full capabilities of the website (this is for you TA's), the following username and password can be used.
 
-Username: admin
-
-Password: badmin
-
+- Username: admin
+- Password: badmin
 
 ### Installation
 Code from GitHub is directly injected into an AWS Beanstalk application using AWS CodePipeline. Before this was set up, a simple way to get the code uploaded to the side was by compressing all the files in the folder (except "node_modules" which is provided by AWS) and uploading them as a new version.
