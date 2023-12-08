@@ -54,4 +54,13 @@ We do not accept outside contributors to the project, though if you like this ba
 ### Support
 Support requests can be made over email to smumh@byu.net or over phone to (801) 378-1557. The same contact information is displayed in the footers for every page on the website.
 
+### Project Deliverables
+The following deliverables were due and submitted through this README file:
+- Video:
+- Source code:
+- Powerpoint slides
+- This README (username and password above under [Usage](#Usage) with the URL
+- Normalization spreadsheet
+- Python Colab file for exploratory data analysis: 
+
 ### Project Status: Completed
