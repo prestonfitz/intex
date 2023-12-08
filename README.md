@@ -42,6 +42,7 @@ Username: admin
 
 Password: badmin
 
+
 ### Installation
 Code from GitHub is directly injected into an AWS Beanstalk application using AWS CodePipeline. Before this was set up, a simple way to get the code uploaded to the side was by compressing all the files in the folder (except "node_modules" which is provided by AWS) and uploading them as a new version.
 
