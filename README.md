@@ -57,11 +57,11 @@ Support requests can be made over email to smumh@byu.net or over phone to (801) 
 ### Project Deliverables
 The following deliverables were due and submitted through this README file:
 - [Video](https://byu.box.com/s/rnqzfvyxtkwb4mtf1bvozizn3hron358)
-- [Source code]([url](https://github.com/prestonfitz/intex))
-- [Powerpoint slides]([url](https://byu-my.sharepoint.com/:p:/g/personal/golfzach_byu_edu/EQBRjwV6aMRAplgjrd83b0kBxhIA9zYxvgrKzEaTxVt1MQ?e=M2KeZy))
+- [Source code](https://github.com/prestonfitz/intex)
+- [Powerpoint slides](https://byu-my.sharepoint.com/:p:/g/personal/golfzach_byu_edu/EQBRjwV6aMRAplgjrd83b0kBxhIA9zYxvgrKzEaTxVt1MQ?e=M2KeZy)
 - This README (username and password above under [Usage](#Usage) with the URL)
-- [Normalization spreadsheet]([url](https://byu-my.sharepoint.com/:x:/g/personal/golfzach_byu_edu/EXu1Evm3CydHhP6Q13fCljEBdcYFXu7S67qPlIUPTgX1jw?e=pfiyAj))
-- [ERD]([url](https://byu-my.sharepoint.com/:b:/g/personal/pgf23_byu_edu/EbBi5oGnHkdLoSxxoU5txg4BrVYPCKvFx9o_RGJ2PfX5iw?e=qxcg0N))
-- [Python Colab file]([url](https://colab.research.google.com/drive/12jdtk6qUzCBZ888-eUqdEUMBVbaS-n7n?usp=sharing)https://colab.research.google.com/drive/12jdtk6qUzCBZ888-eUqdEUMBVbaS-n7n?usp=sharing) for exploratory data analysis
+- [Normalization spreadsheet](https://byu-my.sharepoint.com/:x:/g/personal/golfzach_byu_edu/EXu1Evm3CydHhP6Q13fCljEBdcYFXu7S67qPlIUPTgX1jw?e=pfiyAj)
+- [ERD](https://byu-my.sharepoint.com/:b:/g/personal/pgf23_byu_edu/EbBi5oGnHkdLoSxxoU5txg4BrVYPCKvFx9o_RGJ2PfX5iw?e=qxcg0N)
+- [Python Colab file](https://colab.research.google.com/drive/12jdtk6qUzCBZ888-eUqdEUMBVbaS-n7n?usp=sharing) for exploratory data analysis
 
 ### Project Status: Completed
